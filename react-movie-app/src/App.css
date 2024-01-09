@@ -3,17 +3,22 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+
+}
+body{
+  background: #EED794;
+
 }
 
 .logo {
-  height: 6em;
+  height: 20em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
-.logo:hover {
+/* .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
-}
+} */
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
