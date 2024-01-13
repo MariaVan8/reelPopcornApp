@@ -1,11 +1,17 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
+import React, { useState } from 'react'
 import reelPopcornLogo from '/images/reel-popcorn.png'
 import './App.css'
 
 function App() {
-  // const [count, setCount] = useState(0)
+ //load api data with fetch
+const [movies, setMovies] = useState([]);
+fetch("https://api.themoviedb.org/3/movie/popular?api_key=b49aeaca09961dbfa4e7d1b0fea43944")
+.then((response) => response.json())
+.then((data) => {
+  console.log(data);
 
+  
+});
   return (
     <>
       <div>
@@ -13,20 +19,8 @@ function App() {
           <img src={reelPopcornLogo} className="logo" alt="Reel Popcorn logo" />
         </a>
       </div>
-      {/* <h1>Reel Popcorn</h1> */}
-      {/* <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
     </>
   )
 }
 
-export default App
+export default App;
