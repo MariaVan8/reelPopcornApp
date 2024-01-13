@@ -23,7 +23,6 @@ function HomePage() {
     }, []);    
   return (
     <>
-    <Header />
     <div>
       <h1>Top 12 Popular Movies</h1>
       <ul>
@@ -32,7 +31,6 @@ function HomePage() {
         ))}
       </ul>
     </div>
-    <Footer />
     </>  )
 }
 
