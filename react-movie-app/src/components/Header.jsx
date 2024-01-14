@@ -4,9 +4,11 @@ import Nav from './Nav';
 
 function Header() {
   return (
-    <div>
-      <Nav/>
-      <img src={reelPopcornLogo} alt="Reel Popcorn Logo" />
+    <div class="main-header">
+      <div class="main-nav">
+        <img class="logo" src={reelPopcornLogo} alt="Reel Popcorn Logo" />
+        <Nav />
+      </div>
     </div>
   )
 }
