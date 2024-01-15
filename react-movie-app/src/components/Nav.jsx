@@ -6,12 +6,12 @@ const Nav = () => {
     e.target.blur();
   }
   return (
-    <nav class="nav" onClick={blur}>
+    <nav className="nav" onClick={blur}>
       <ul>
-        <li><NavLink to="/">home</NavLink></li>
-        <li><NavLink to="/AboutUs">about us</NavLink></li>
-        <li><NavLink to="/Favorites">favourites</NavLink></li>
-        <li><NavLink to="/WatchLater">watch later</NavLink></li>
+        <li><NavLink to="/" className="nav-link">home</NavLink></li>
+        <li><NavLink to="/AboutUs" className="nav-link">about us</NavLink></li>
+        <li><NavLink to="/Favorites" className="nav-link">favourites</NavLink></li>
+        <li><NavLink to="/WatchLater" className="nav-link">watch later</NavLink></li>
       </ul></nav>
   )
 }

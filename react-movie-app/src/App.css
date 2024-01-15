@@ -1,7 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,800;1,400;1,800&family=Passion+One:wght@400;700&display=swap');
 
-body {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Passion One', sans-serif;
 
+}
+
+body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -25,8 +34,8 @@ body {
 
 @media (min-width: 640px) {
   body {
-    background: url("./images/popcorn-bg.jpg");
-    background-size: inherit;
+    background: url("./images/popcorn-bg-02.jpg");
+    background-size: cover;
     background-position: bottom;
   }
 
@@ -36,6 +45,7 @@ body {
     width: 100%;
     margin: 0 auto;
     background: #EED794;
+
   }
 
   .main-nav {
@@ -64,7 +74,7 @@ body {
   .nav ul {
     display: flex;
     flex-direction: row;
-    gap: 2vh;
+    gap: 4vh;
     justify-content: center;
     align-items: center;
   }
@@ -74,13 +84,20 @@ body {
     flex-direction: row;
   }
 
-  .nav ul li a {
+  .nav-link {
     color: #fff;
     font-weight: 700;
-    font-size: 1.4em;
+    font-size: 1.6em;
     text-shadow: 1px 1px 2px #F2AF06;
     font-family: 'Passion One', sans-serif;
+    transition: all 0.6s ease;
   }
+
+  .nav-link:hover {
+    color: #F7465B;
+    text-shadow: 1px 1px 2px #fff;
+  }
+
 
   main {
     display: flex;
@@ -90,6 +107,12 @@ body {
     width: 100%;
     height: auto;
     color: #fff;
+  }
+
+  .home-heading {
+    font-size: 4em;
+    text-shadow: 1px 1px 2px #F2AF06;
+
 
   }
 
