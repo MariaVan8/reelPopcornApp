@@ -8,6 +8,21 @@ export const MovieProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [favourites, setFavourites] = useState([]);
 
+  // Load favorites from local storage when the component mounts
+  useEffect(() => {
+    console.log("Loading Favourites from Local Storage");
+    const storedFavourites = JSON.parse(localStorage.getItem("favourites"));
+    console.log("Stored Favourites:", storedFavourites);
+    if (storedFavourites) {
+      setFavourites(storedFavourites);
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("Saving Favourites to Local Storage");
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+  }, [favourites]);
+
   useEffect(() => {
     // Fetch movie data when the component mounts
     fetch(
@@ -26,6 +41,11 @@ export const MovieProvider = ({ children }) => {
         console.error("Error fetching movie data:", error);
       });
   }, []);
+
+  useEffect(() => {
+    // Save favorites to local storage whenever it changes
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+  }, [favourites]);
 
   // Function to toggle a movie's favorite status
   const toggleFavourite = (movie) => {
@@ -47,7 +67,6 @@ export const MovieProvider = ({ children }) => {
       prevFavourites.filter((fav) => fav.id !== movie.id)
     );
   };
-
   const contextValue = {
     movies,
     favourites,
