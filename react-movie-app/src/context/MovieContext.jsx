@@ -11,11 +11,21 @@ export const MovieProvider = ({ children }) => {
     return storedFavourites ? JSON.parse(storedFavourites) : [];
   });
 
+  const [watchlist, setWatchlist] = useState(() => {
+    const storedWatchlist = sessionStorage.getItem("watchlist");
+    return storedWatchlist ? JSON.parse(storedWatchlist) : [];
+  });
+
   // Use effect to save favorites to both local storage and session storage whenever it changes
   useEffect(() => {
     localStorage.setItem("favourites", JSON.stringify(favourites));
     sessionStorage.setItem("favourites", JSON.stringify(favourites));
   }, [favourites]);
+
+  useEffect(() => {
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+    sessionStorage.setItem("watchlist", JSON.stringify(watchlist));
+  }, [watchlist]);
 
   useEffect(() => {
     const fetchMovies = () => {
@@ -51,6 +61,17 @@ export const MovieProvider = ({ children }) => {
     }
   };
 
+  // Function to toggle a movie's watchlist status
+  const toggleWatchlist = (movie) => {
+    const isWatchlist = watchlist.some((item) => item.id === movie.id);
+
+    if (isWatchlist) {
+      removeFromWatchlist(movie);
+    } else {
+      addToWatchlist(movie);
+    }
+  };
+
   const addToFavList = (movie) => {
     const updatedFavourites = [...favourites, movie];
     setFavourites(updatedFavourites);
@@ -61,12 +82,26 @@ export const MovieProvider = ({ children }) => {
     setFavourites(updatedFavourites);
   };
 
+  const addToWatchlist = (movie) => {
+    const updatedWatchlist = [...watchlist, movie];
+    setWatchlist(updatedWatchlist);
+  };
+
+  const removeFromWatchlist = (movie) => {
+    const updatedWatchlist = watchlist.filter((item) => item.id !== movie.id);
+    setWatchlist(updatedWatchlist);
+  };
+
   const contextValue = {
     movies,
     favourites,
+    watchlist,
     toggleFavourite,
+    toggleWatchlist,
     addToFavList,
+    addToWatchlist,
     removeFromFavList,
+    removeFromWatchlist,
   };
 
   return (
