@@ -10,8 +10,9 @@ function HomePage() {
     useContext(MovieContext);
 
   return (
-    <div>
-      <h1 className="home-heading">Top 12 Popular Movies</h1>
+    <div className='home-container'>
+      <h1>welcome to reel popcorn</h1>
+      <h2>where movie and popcorn lovers meet</h2>
       <ul>
         {movies.map(movie => (
           <li key={movie.id}>
