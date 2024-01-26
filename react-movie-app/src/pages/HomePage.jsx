@@ -16,16 +16,6 @@ function HomePage() {
         {movies.map(movie => (
           <li key={movie.id}>
             <div className="movie-container">
-              <button onClick={() => toggleFavourite(movie)}>
-                {favourites.some((fav) => fav.id === movie.id)
-                  ? "Remove from Favorites"
-                  : "Add to Favorites"}
-              </button>
-              <button onClick={() => toggleWatchlist(movie)}>
-                {watchlist.some((item) => item.id === movie.id)
-                  ? "Remove from Watchlist"
-                  : "Add to Watchlist"}
-              </button>
               <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
               <div className="movie-info">
                 <h2>{movie.title}</h2>
