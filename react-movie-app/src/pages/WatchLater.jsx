@@ -39,16 +39,8 @@ function WatchLater() {
                 </Link>
                 <div className="button-group">
                   <button
+                    className={`button-icon`}
                     onClick={() => toggleFavourite(movie)}
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      background: "none",
-                      cursor: "pointer",
-                    }}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
