@@ -292,26 +292,22 @@ body {
     gap: 2vh;
   }
 
-  .heart-button {
+
+ 
+
+  .button-icon {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
-    background-color: transparent;
-    border: 2px solid #ccc;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
     cursor: pointer;
   }
 
-  .heart-icon {
-    width: 24px;
-    height: 24px;
-    fill: #fff; /* Default color for heart icon */
-  }
-
-  .heart-icon.favorite {
-    fill: red; /* Color for filled heart icon when it is a favorite */
+  .button-group {
+    display: flex;
   }
 
 
