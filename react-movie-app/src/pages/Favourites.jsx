@@ -5,16 +5,14 @@ import { MovieContext } from "../context/MovieContext";
 import { Link } from "react-router-dom";
 
 function Favourites() {
-  const { favourites, removeFromFavList, movies } = useContext(MovieContext);
+  const { favourites, removeFromFavList } = useContext(MovieContext);
 
   return (
     <div>
-      <h1>Favourites</h1>
       <div className="home-container">
-        <h1>welcome to reel popcorn</h1>
-        <h2>where movie and popcorn lovers meet</h2>
+        <h1>Favourites</h1>
         <ul>
-          {movies.map((movie) => (
+          {favourites.map((movie) => (
             <li key={movie.id}>
               <div className="movie-container">
                 <img
