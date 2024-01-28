@@ -5,10 +5,11 @@ import { MovieContext } from "../context/MovieContext";
 import { Link } from "react-router-dom";
 
 function WatchLater() {
-  const { watchlist, removeFromWatchlist } = useContext(MovieContext);
+  const { toggleFavourite, toggleWatchlist, watchlist, favourites } =
+    useContext(MovieContext);
 
   return (
-    <div className="home-container">
+    <div className="watchlater-container">
       <h1>Watch Later</h1>
       <ul>
         {watchlist.map((movie) => (
@@ -36,8 +37,27 @@ function WatchLater() {
                 <Link to={`/movies/${movie.id}`}>
                   <button>More Info</button>
                 </Link>
-                <button onClick={() => removeFromFavList(movie)}>
-                  Remove from Favorites
+                <button onClick={() => toggleFavourite(movie)}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    fill={
+                      favourites.some((fav) => fav.id === movie.id)
+                        ? "red"
+                        : "white"
+                    }
+                  >
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C16.09 3.81 17.76 3 19.5 3 22.58 3 25 5.42 25 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                  </svg>
+                </button>
+                <button onClick={() => toggleWatchlist(movie)}>
+                  {watchlist.some((item) => item.id === movie.id) ? (
+                    <span>-</span>
+                  ) : (
+                    <span>+</span>
+                  )}
                 </button>
               </div>
             </div>
