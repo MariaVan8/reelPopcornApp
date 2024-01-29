@@ -7,25 +7,37 @@ export const MovieContext = React.createContext();
 export const MovieProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [favourites, setFavourites] = useState(() => {
-    const storedFavourites = sessionStorage.getItem("favourites");
+    const storedFavourites = localStorage.getItem("favourites");
     return storedFavourites ? JSON.parse(storedFavourites) : [];
   });
 
   const [watchlist, setWatchlist] = useState(() => {
-    const storedWatchlist = sessionStorage.getItem("watchlist");
+    const storedWatchlist = localStorage.getItem("watchlist");
     return storedWatchlist ? JSON.parse(storedWatchlist) : [];
   });
 
   // Use effect to save favorites to both local storage and session storage whenever it changes
   useEffect(() => {
-    localStorage.setItem("favourites", JSON.stringify(favourites));
-    sessionStorage.setItem("favourites", JSON.stringify(favourites));
-  }, [favourites]);
+    const saveDataToStorage = () => {
+      localStorage.setItem("favourites", JSON.stringify(favourites));
+      sessionStorage.setItem("favourites", JSON.stringify(favourites));
+      localStorage.setItem("watchlist", JSON.stringify(watchlist));
+      sessionStorage.setItem("watchlist", JSON.stringify(watchlist));
+    };
 
-  useEffect(() => {
-    localStorage.setItem("watchlist", JSON.stringify(watchlist));
-    sessionStorage.setItem("watchlist", JSON.stringify(watchlist));
-  }, [watchlist]);
+    // Save data before the browser window is closed or refreshed
+    const handleBeforeUnload = () => {
+      saveDataToStorage();
+    };
+
+    // Attach the event listener
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    // Cleanup the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [favourites, watchlist]);
 
   useEffect(() => {
     const fetchMovies = () => {
@@ -44,6 +56,20 @@ export const MovieProvider = ({ children }) => {
         .catch((error) => {
           console.error("Error fetching movie data:", error);
         });
+    };
+
+    // Load data from localStorage on component mount
+    const loadFromStorage = () => {
+      const storedFavourites = localStorage.getItem("favourites");
+      const storedWatchlist = localStorage.getItem("watchlist");
+
+      if (storedFavourites) {
+        setFavourites(JSON.parse(storedFavourites));
+      }
+
+      if (storedWatchlist) {
+        setWatchlist(JSON.parse(storedWatchlist));
+      }
     };
 
     // Fetch movie data when the component mounts
