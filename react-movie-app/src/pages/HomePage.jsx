@@ -5,15 +5,62 @@ import { MovieContext } from "../context/MovieContext";
 import { Link } from "react-router-dom";
 
 function HomePage() {
+  const [search, setSearch] = useState("");
+  const [sort, setSort] = useState("popularity");
   const { movies, toggleFavourite, toggleWatchlist, favourites, watchlist } =
     useContext(MovieContext);
+    console.log(movies);
+
+    const options = [
+      { value: "popularity", label: "Popularity" },
+      { value: "top-rated", label: "Top Rated" },
+      { value: "upcoming", label: "Upcoming" },
+      { value: "now-playing", label: "Now Playing" },
+    ]
+
+    function sortMovies(option) {
+      setSearch('');
+      setSort(option.target.value);
+    }
+
+    const filteredMovies = movies.filter((movie) => {
+      if (search !== "") {
+        return movie.title.toLowerCase().includes(search.toLowerCase());
+      }
+      return true;
+    });
+  
+    const sortedMovies = [...filteredMovies].sort((a, b) => {
+      switch (sort) {
+        case "popularity":
+          return b.popularity - a.popularity;
+        case "top-rated":
+          return b.vote_average - a.vote_average;
+        case "upcoming":
+          return new Date(b.release_date) - new Date(a.release_date);
+        case "now-playing":
+          return new Date(a.release_date) - new Date(b.release_date);
+        default:
+          return 0;
+      }
+    });
+
 
   return (
     <div className="home-container">
       <h1>welcome to reel popcorn</h1>
       <h2>where movie and popcorn lovers meet</h2>
+      <input onChange={(e) => setSearch(e.target.value)} placeholder="Search Movie">
+      </input>
+      <select onChange={sortMovies}>
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
       <ul>
-        {movies.map((movie) => (
+        {sortedMovies.map((movie) => (
           <li key={movie.id}>
             <div className="movie-container">
               <img
