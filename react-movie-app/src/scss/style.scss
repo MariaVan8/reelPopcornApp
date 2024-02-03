@@ -1,5 +1,6 @@
 @use 'variables' as *;
 @use 'mixins' as *;
+@use 'typography' as *;
 @use './partials/movie' as *;
 
 
@@ -300,7 +301,7 @@ body {
   }
 
 
- 
+
 
   .button-icon {
     width: 40px;
