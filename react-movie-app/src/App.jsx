@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import "./App.css";
+import "./scss/style.scss";
 import HomePage from "./pages/HomePage";
 import { MovieProvider } from "./context/MovieContext";
 import AboutUs from "./pages/AboutUs";
@@ -19,7 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/movie/:id" element={<Movie />} />
+            <Route path="/movies/:id" element={<Movie />} />
             <Route path="/favorites" element={<FavoriteMovies />} />
             <Route path="/watchlater" element={<WatchLater />} />
           </Routes>
