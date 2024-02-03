@@ -1,0 +1,12 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use '../typography' as *;
+
+.carousel {
+    @include flex-col;
+    width: 100%;
+
+    @media (min-width: 760px) {}
+
+    @media (min-width: 960px) {}
+}

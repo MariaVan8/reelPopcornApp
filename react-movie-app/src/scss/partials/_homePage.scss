@@ -23,6 +23,12 @@
 
     }
 
+    &-search-filter {
+        @include flex-col;
+        margin: 20px auto;
+
+    }
+
     @media (min-width: 760px) {}
 
     @media (min-width: 960px) {
@@ -64,6 +70,15 @@
                 margin: 0;
                 font-weight: 300;
             }
+        }
+
+        &-search-filter {
+            @include flex-row;
+            // gap: 2vh;
+            width: 87%;
+            margin: 0 auto;
+            justify-content: space-between;
+            padding: 10px;
         }
 
         &-movie-container {

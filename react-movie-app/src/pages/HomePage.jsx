@@ -47,6 +47,7 @@ function HomePage() {
 
 
   return (
+
     <div className="home">
       <div className="home-heading">
         <h1>welcome to reel popcorn</h1>
@@ -86,7 +87,7 @@ function HomePage() {
                 <p>
                   {movie.overview.split(" ").slice(0, 20).join(" ") + "..."}
                 </p>
-                <Link to={`/movies/${movie.id}`}>
+                <Link to={`/movie/${movie.id}`}>
                   <button>More Info</button>
                 </Link>
                 <div className="button-group">
