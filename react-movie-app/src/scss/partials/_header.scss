@@ -1,2 +1,43 @@
-// @use 'mixins' as *;
-// @use 'variables' as *;
+@use '../mixins' as *;
+@use '../variables' as *;
+
+.header {
+    @include flex-col;
+    width: 100%;
+    background-color: $primary-color;
+
+    &-nav {
+        @include flex-col;
+        width: 100%;
+
+        .logo {
+            width: 150px;
+            margin: 0 auto;
+        }
+    }
+
+    @media (min-width: 760px) {}
+
+    @media (min-width: 960px) {
+        @include flex-row;
+        margin: 0 auto;
+        background-color: $primary-color;
+
+
+        &-nav {
+            @include flex-row;
+            margin: 0 auto;
+            padding: 10px 20px;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+
+            .logo {
+                width: 8rem;
+                will-change: filter;
+                transition: filter 300ms;
+                margin: 0;
+            }
+        }
+    }
+}
