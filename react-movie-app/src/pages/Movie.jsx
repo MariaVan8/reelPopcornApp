@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { MovieContext } from '../context/MovieContext';
+// import '../scss/partials.scss/_movie.scss';
 
 function Movie() {
   const { movies } = useContext(MovieContext);
@@ -16,11 +17,11 @@ function Movie() {
   const imageUrl = movie ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '';
 
   return (
-    <div>
+    <div className='card'>
       {movie ? (
-        <div>
-          <h1>{movie.title}</h1>
+        <div className='card-container'>
           <img src={imageUrl} alt={movie.title} />
+          <h1>{movie.title}</h1>
           <p>{movie.overview}</p>
         </div>
       ) : (
