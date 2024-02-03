@@ -1,0 +1,115 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use '../typography' as *;
+
+@media (min-width: 760px) {}
+
+@media (min-width: 960px) {
+    .home {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .home-heading {
+        display: flex;
+        flex-direction: column;
+        margin: 40px auto;
+    }
+
+    .home-heading h1 {
+        font-size: 4em;
+        text-shadow: 1px 1px 2px $primary-color;
+        margin: 0;
+    }
+
+    .home-heading h3 {
+        font-size: 1.7em;
+        font-family: $primary-font;
+        margin: 0;
+        font-weight: 300;
+    }
+
+    .home ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        list-style: none;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        gap: 2vh;
+        margin: 0;
+        padding: 0;
+    }
+
+    .home ul li {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2vh;
+    }
+
+    .home-movie-container {
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+        width: 400px;
+        padding: 10px;
+        gap: 2vh;
+        height: 300 px;
+        border: 1px solid #fff;
+    }
+
+    .home-movie-container h2 {
+        margin: 0;
+    }
+
+    .home-movie-container img {
+        width: 200px;
+    }
+
+    .home-movie-info {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 0;
+            padding: 0;
+        }
+
+    }
+
+    .home-movie-info p {
+        margin: 0;
+        padding: 0;
+        font-size: 0.8rem;
+    }
+
+    .home-movie-info button {
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #fff;
+        background: none;
+        color: #fff;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.6s ease;
+    }
+
+    .home-movie-info button:hover {
+        background: #fff;
+        color: #F7465B;
+        border: 1px solid #fff;
+    }
+
+}

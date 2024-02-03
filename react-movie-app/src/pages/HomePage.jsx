@@ -47,28 +47,32 @@ function HomePage() {
 
 
   return (
-    <div className="home-container">
-      <h1>welcome to reel popcorn</h1>
-      <h2>where movie and popcorn lovers meet</h2>
-      <input onChange={(e) => setSearch(e.target.value)} placeholder="Search Movie">
-      </input>
-      <select onChange={sortMovies}>
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+    <div className="home">
+      <div className="home-heading">
+        <h1>welcome to reel popcorn</h1>
+        <h2>where movie and popcorn lovers meet</h2>
+      </div>
+      <div className="home-search-filter">
+        <input onChange={(e) => setSearch(e.target.value)} placeholder="Search Movie">
+        </input>
+        <select onChange={sortMovies}>
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </div>
       <ul>
         {sortedMovies.map((movie) => (
           <li key={movie.id}>
-            <div className="movie-container">
+            <div className="home-movie-container">
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                 alt={movie.title}
               />
-              <div className="movie-info">
-                <h2>{movie.title}</h2>
+              <div className="home-movie-info">
+                <h3>{movie.title}</h3>
                 {/* <p>Released: {movie.release_date}</p> */}
                 <p>
                   Released:{" "}
