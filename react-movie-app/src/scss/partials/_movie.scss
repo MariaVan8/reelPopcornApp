@@ -1,0 +1,26 @@
+@use '../mixins' as *;
+@use '../variables' as *;
+
+.card{
+    @include flex-col;
+    align-items: center;
+    background: url("../images/movie-black-bg.jpg");
+    background-size: cover;
+    background-position: bottom;
+    background-color: #000;
+    &-container{
+        background-color: rgb(12, 12, 12);
+        @include flex-col;
+        align-items: center;
+        width: 60%;
+        padding-top: 3rem;
+    }
+    h1{
+        text-align: center;
+    }
+
+    img{
+        width: 20rem;
+        height: 27rem;
+    }
+}
