@@ -9,41 +9,41 @@ function HomePage() {
   const [sort, setSort] = useState("popularity");
   const { movies, toggleFavourite, toggleWatchlist, favourites, watchlist } =
     useContext(MovieContext);
-    console.log(movies);
+  console.log(movies);
 
-    const options = [
-      { value: "popularity", label: "Popularity" },
-      { value: "top-rated", label: "Top Rated" },
-      { value: "upcoming", label: "Upcoming" },
-      { value: "now-playing", label: "Now Playing" },
-    ]
+  const options = [
+    { value: "popularity", label: "Popularity" },
+    { value: "top-rated", label: "Top Rated" },
+    { value: "upcoming", label: "Upcoming" },
+    { value: "now-playing", label: "Now Playing" },
+  ]
 
-    function sortMovies(option) {
-      setSearch('');
-      setSort(option.target.value);
+  function sortMovies(option) {
+    setSearch('');
+    setSort(option.target.value);
+  }
+
+  const filteredMovies = movies.filter((movie) => {
+    if (search !== "") {
+      return movie.title.toLowerCase().includes(search.toLowerCase());
     }
+    return true;
+  });
 
-    const filteredMovies = movies.filter((movie) => {
-      if (search !== "") {
-        return movie.title.toLowerCase().includes(search.toLowerCase());
-      }
-      return true;
-    });
-  
-    const sortedMovies = [...filteredMovies].sort((a, b) => {
-      switch (sort) {
-        case "popularity":
-          return b.popularity - a.popularity;
-        case "top-rated":
-          return b.vote_average - a.vote_average;
-        case "upcoming":
-          return new Date(b.release_date) - new Date(a.release_date);
-        case "now-playing":
-          return new Date(a.release_date) - new Date(b.release_date);
-        default:
-          return 0;
-      }
-    });
+  const sortedMovies = [...filteredMovies].sort((a, b) => {
+    switch (sort) {
+      case "popularity":
+        return b.popularity - a.popularity;
+      case "top-rated":
+        return b.vote_average - a.vote_average;
+      case "upcoming":
+        return new Date(b.release_date) - new Date(a.release_date);
+      case "now-playing":
+        return new Date(a.release_date) - new Date(b.release_date);
+      default:
+        return 0;
+    }
+  });
 
 
   return (
