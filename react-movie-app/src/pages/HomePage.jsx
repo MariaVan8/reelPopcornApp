@@ -64,67 +64,67 @@ function HomePage() {
           ))}
         </select>
       </div>
-      <ul>
+      <div className="home-movies">
         {sortedMovies.map((movie) => (
-          <li key={movie.id}>
-            <div className="home-movie-container">
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                alt={movie.title}
-              />
-              <div className="home-movie-info">
-                <h3>{movie.title}</h3>
-                {/* <p>Released: {movie.release_date}</p> */}
-                <p>
-                  Released:{" "}
-                  {new Date(movie.release_date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })}
-                </p>
-                <p>Rating: {parseFloat(movie.vote_average).toFixed(2)}</p>
-                <p>
-                  {movie.overview.split(" ").slice(0, 20).join(" ") + "..."}
-                </p>
-                <Link to={`/movie/${movie.id}`}>
-                  <button>More Info</button>
-                </Link>
-                <div className="button-group">
-                  <button
-                    className={`button-icon`}
-                    onClick={() => toggleFavourite(movie)}
+          // <li key={movie.id}>
+          <div className="home-movie-container" key={movie.id}>
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt={movie.title}
+            />
+            <div className="home-movie-info">
+              <h3>{movie.title}</h3>
+              {/* <p>Released: {movie.release_date}</p> */}
+              <p>
+                Released:{" "}
+                {new Date(movie.release_date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
+              </p>
+              <p>Rating: {parseFloat(movie.vote_average).toFixed(2)}</p>
+              <p>
+                {movie.overview.split(" ").slice(0, 20).join(" ") + "..."}
+              </p>
+              <Link to={`/movie/${movie.id}`}>
+                <button>More Info</button>
+              </Link>
+              <div className="home-button-group">
+                <button
+                  className={`button-icon`}
+                  onClick={() => toggleFavourite(movie)}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    fill={
+                      favourites.some((fav) => fav.id === movie.id)
+                        ? "red"
+                        : "white"
+                    }
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      width="24"
-                      height="24"
-                      fill={
-                        favourites.some((fav) => fav.id === movie.id)
-                          ? "red"
-                          : "white"
-                      }
-                    >
-                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C16.09 3.81 17.76 3 19.5 3 22.58 3 25 5.42 25 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                  </button>
-                  <button
-                    className={`button-icon watchlist-button`}
-                    onClick={() => toggleWatchlist(movie)}
-                  >
-                    {watchlist.some((item) => item.id === movie.id) ? (
-                      <span>-</span>
-                    ) : (
-                      <span>+</span>
-                    )}
-                  </button>
-                </div>
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C16.09 3.81 17.76 3 19.5 3 22.58 3 25 5.42 25 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                  </svg>
+                </button>
+                <button
+                  className={`button-icon watchlist-button`}
+                  onClick={() => toggleWatchlist(movie)}
+                >
+                  {watchlist.some((item) => item.id === movie.id) ? (
+                    <span>-</span>
+                  ) : (
+                    <span>+</span>
+                  )}
+                </button>
               </div>
             </div>
-          </li>
+          </div>
+          // </li>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

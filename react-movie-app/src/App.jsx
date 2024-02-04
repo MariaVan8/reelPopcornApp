@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Carousel from "./components/Carousel";
+// import Carousel from "./components/Carousel";
 import "./scss/style.scss";
 import HomePage from "./pages/HomePage";
 import { MovieProvider } from "./context/MovieContext";
@@ -17,7 +17,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <main>
-          <Carousel />
+          {/* <Carousel /> */}
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about-us" element={<AboutUs />} />
