@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
-import { useParams } from 'react-router-dom';
-import { MovieContext } from '../context/MovieContext';
-// import '../scss/partials.scss/_movie.scss';
+import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
+import { MovieContext } from "../context/MovieContext";
+import heart from "/images/heart.png";
 
 function Movie() {
   const { movies } = useContext(MovieContext);
@@ -14,15 +14,30 @@ function Movie() {
   const movie = movies.find((movie) => movie.id === movieId);
 
   // Check if movie is found before constructing imageUrl
-  const imageUrl = movie ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '';
+  const imageUrl = movie
+    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+    : "";
+  console.log(movie.vote_average);
+
+  // Define the style object for the background image
+  const cardContainerStyle = {
+    backgroundImage: `url(${imageUrl})`,
+    backgroundSize: "cover", // Cover  the entire container
+    backgroundPosition: "center", // Center the background image
+  };
 
   return (
-    <div className='card'>
+    <div className="card" style={cardContainerStyle}>
       {movie ? (
-        <div className='card-container'>
-          <img src={imageUrl} alt={movie.title} />
+        <div className="card-container">
+          {/* <img src={imageUrl} alt={movie.title} /> */}
           <h1>{movie.title}</h1>
+          <div className="card-info">
+            <p>{movie.vote_average}</p>
+            <img src={heart} alt="heart" />
+          </div>
           <p>{movie.overview}</p>
+            <p>{movie.release_date}</p>
         </div>
       ) : (
         <p>Movie not found</p>

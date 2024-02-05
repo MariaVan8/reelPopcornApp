@@ -4,23 +4,30 @@
 .card{
     @include flex-col;
     align-items: center;
-    background: url("../images/movie-black-bg.jpg");
-    background-size: cover;
-    background-position: bottom;
-    background-color: #000;
     &-container{
-        background-color: rgb(12, 12, 12);
+        backdrop-filter: blur(3px);
+        background-color: rgba(12, 12, 12, 0.089);
         @include flex-col;
         align-items: center;
-        width: 60%;
-        padding-top: 3rem;
+        width: 90%;
+        border-radius: 10px;
+        margin-top: 12rem;
+    }
+
+    &-info{
+        display: flex;
+        align-items: center;
+        width: 100%;
+    justify-content: space-around;
     }
     h1{
         text-align: center;
+        font-size: 2rem;
     }
 
     img{
-        width: 20rem;
-        height: 27rem;
+        width: 2rem;
+        height: 2rem;
     }
+
 }
