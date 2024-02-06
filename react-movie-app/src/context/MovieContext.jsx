@@ -51,47 +51,14 @@ export const MovieProvider = ({ children }) => {
           const sortedMovies = data.results
             .sort((a, b) => b.popularity - a.popularity)
             .slice(0, 12);
-
           setMovies(sortedMovies);
-
-          // // Sort by coming soon (ascending order based on release date)
-          // const sortByComingSoon = (a, b) => new Date(a.releaseDate) - new Date(b.releaseDate);
-
-          // // Sort by now playing (those playing now come first)
-          // const sortByNowPlaying = (a, b) => b.isNowPlaying - a.isNowPlaying;
-
-          // // Sort by top rated (descending order)
-          // const sortByTopRated = (a, b) => b.rating - a.rating;
-          // // Sort by popularity (descending order)
-          // const sortByPopularity = (a, b) => b.popularity - a.popularity;
-
-          // // Use the appropriate sorting function based on the `sort` state
-          // let sortedMovies;
-          // switch (sort) {
-          //   case 'comingSoon':
-          //     sortedMovies = data.results.sort(sortByComingSoon);
-          //     break;
-          //   case 'nowPlaying':
-          //     sortedMovies = data.results.sort(sortByNowPlaying);
-          //     break;
-          //   case 'topRated':
-          //     sortedMovies = data.results.sort(sortByTopRated);
-          //     break;
-          //   default: // 'popularity'
-          //     sortedMovies = data.results.sort((a, b) => b.popularity - a.popularity);
-          //     break;
-          // }
-
-          // // Limit to top 12
-          // sortedMovies = sortedMovies.slice(0, 12);
-
-          // setMovies(sortedMovies);
-
 
         })
         .catch((error) => {
           console.error("Error fetching movie data:", error);
         });
+
+
     };
 
     // Load data from localStorage on component mount
