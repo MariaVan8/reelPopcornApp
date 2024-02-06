@@ -46,16 +46,19 @@ export const MovieProvider = ({ children }) => {
       )
         .then((response) => response.json())
         .then((data) => {
+
           // Sort movies based on popularity (descending order) and then limit to top 12
           const sortedMovies = data.results
             .sort((a, b) => b.popularity - a.popularity)
             .slice(0, 12);
-
           setMovies(sortedMovies);
+
         })
         .catch((error) => {
           console.error("Error fetching movie data:", error);
         });
+
+
     };
 
     // Load data from localStorage on component mount

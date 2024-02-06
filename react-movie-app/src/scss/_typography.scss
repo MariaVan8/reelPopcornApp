@@ -15,7 +15,15 @@ h6 {
 p,
 a,
 li,
-span {
+span,
+input,
+select {
     font-family: $secondary-font;
     font-size: 1rem;
+}
+
+a:hover {
+
+    color: $primary-color;
+
 }
