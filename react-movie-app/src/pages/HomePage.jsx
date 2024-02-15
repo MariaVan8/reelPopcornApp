@@ -5,18 +5,18 @@ import { MovieContext } from "../context/MovieContext";
 import { Link } from "react-router-dom";
 
 function HomePage() {
-  const [search, setSearch] = useState("");
-  const [sort, setSort] = useState("popularity");
-  const { movies, toggleFavourite, toggleWatchlist, favourites, watchlist } =
-    useContext(MovieContext);
-  console.log(movies);
-
   const options = [
     { value: "popularity", label: "Popularity" },
     { value: "top-rated", label: "Top Rated" },
     { value: "upcoming", label: "Upcoming" },
     { value: "now-playing", label: "Now Playing" },
   ]
+
+  const [search, setSearch] = useState("");
+  const [sort, setSort] = useState(options[0].value);
+  const { movies, fetchUpcomingMovies, fetchPopularMovies, fetchTopRatedMovies, fetchNowPlayingMovies ,toggleFavourite, toggleWatchlist, favourites, watchlist } =
+    useContext(MovieContext);
+
 
   function sortMovies(option) {
     setSearch('');
@@ -29,8 +29,23 @@ function HomePage() {
     }
     return true;
   });
-
-  const sortedMovies = [...filteredMovies].sort((a, b) => {
+  useEffect(() => {
+    
+    if (sort === "popularity") {
+      fetchPopularMovies();
+    } 
+    else if (sort === "upcoming") {      
+      fetchUpcomingMovies();
+    }
+    else if (sort === "now-playing") {
+      fetchNowPlayingMovies();
+    }
+    else {
+      fetchTopRatedMovies();
+    }
+  }, [sort, fetchPopularMovies, fetchUpcomingMovies, fetchNowPlayingMovies, fetchTopRatedMovies]);
+  
+  const sorting = [...filteredMovies].sort((a, b) => {
     switch (sort) {
       case "popularity":
         return b.popularity - a.popularity;
@@ -65,7 +80,7 @@ function HomePage() {
         </select>
       </div>
       <div className="home-movies">
-        {sortedMovies.map((movie) => (
+        {sorting.map((movie) => (
           // <li key={movie.id}>
           <div className="home-movie-container" key={movie.id}>
             <img
