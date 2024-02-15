@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
 import { MovieContext } from "../context/MovieContext";
-import "../scss/partials/_watchLater.scss";
 
 import { Link } from "react-router-dom";
 
