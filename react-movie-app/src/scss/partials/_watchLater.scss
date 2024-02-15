@@ -1,0 +1,28 @@
+.watchlater-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 2vh;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 2vh;
+    }
+  }
+}
