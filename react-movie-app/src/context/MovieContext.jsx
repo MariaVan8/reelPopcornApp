@@ -6,6 +6,8 @@ export const MovieContext = React.createContext();
 // Create a provider component
 export const MovieProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
+
+
   const [favourites, setFavourites] = useState(() => {
     const storedFavourites = localStorage.getItem("favourites");
     return storedFavourites ? JSON.parse(storedFavourites) : [];
@@ -39,24 +41,81 @@ export const MovieProvider = ({ children }) => {
     };
   }, [favourites, watchlist]);
 
-  useEffect(() => {
-    const fetchMovies = () => {
-      fetch(
-        "https://api.themoviedb.org/3/movie/popular?api_key=b49aeaca09961dbfa4e7d1b0fea43944"
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          // Sort movies based on popularity (descending order) and then limit to top 12
-          const sortedMovies = data.results
-            .sort((a, b) => b.popularity - a.popularity)
-            .slice(0, 12);
 
-          setMovies(sortedMovies);
-        })
-        .catch((error) => {
-          console.error("Error fetching movie data:", error);
-        });
-    };
+  const fetchPopularMovies = () => {
+    fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=b49aeaca09961dbfa4e7d1b0fea43944`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+
+        // Sort movies based on popularity (descending order) and then limit to top 12
+        const popularMovies = data.results
+          .sort((a, b) => b.popularity - a.popularity)
+          .slice(0, 12);
+
+        setMovies(popularMovies);
+      })
+      .catch((error) => {
+        console.error("Error fetching movie data:", error);
+      });
+
+
+  };
+  const fetchTopRatedMovies = () => {
+    fetch(
+      "https://api.themoviedb.org/3/movie/top_rated?api_key=b49aeaca09961dbfa4e7d1b0fea43944"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const topRated = data.results
+          .sort((a, b) => b.vote_average - a.vote_average)
+          .slice(0, 12);
+       setMovies(topRated); // Set movies state here
+    
+      })
+      .catch((error) => {
+        console.error("Error fetching upcoming movie data:", error);
+      });
+  };
+  const fetchNowPlayingMovies = () => {
+    fetch(
+      "https://api.themoviedb.org/3/movie/now_playing?api_key=b49aeaca09961dbfa4e7d1b0fea43944"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const upcomingMovies = data.results
+          .sort((a, b) => new Date(a.release_date) - new Date(b.release_date))
+          .slice(0, 12);
+       setMovies(upcomingMovies); // Set movies state here
+
+      })
+      .catch((error) => {
+        console.error("Error fetching upcoming movie data:", error);
+      });
+  };
+  const fetchUpcomingMovies = () => {
+    fetch(
+      "https://api.themoviedb.org/3/movie/upcoming?api_key=b49aeaca09961dbfa4e7d1b0fea43944"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const upcomingMovies = data.results
+          .sort((a, b) => new Date(b.release_date) - new Date(a.release_date))
+          .slice(0, 12);
+          console.log("fetching upcoming movies", data)
+       setMovies(upcomingMovies); // Set movies state here
+      console.log("fetching upcoming movies", upcomingMovies)
+      console.log(upcomingMovies,"upcoming moviest  his const should be")
+      })
+      .catch((error) => {
+        console.error("Error fetching upcoming movie data:", error);
+      });
+  };
+
+  useEffect(() => {
+   
+    
 
     // Load data from localStorage on component mount
     const loadFromStorage = () => {
@@ -73,9 +132,10 @@ export const MovieProvider = ({ children }) => {
     };
 
     // Fetch movie data when the component mounts
-    fetchMovies();
-  }, []);
+    fetchPopularMovies();
+  }, [setMovies, setFavourites, setWatchlist]);
 
+  
   // Function to toggle a movie's favorite status
   const toggleFavourite = (movie) => {
     const isFavourite = favourites.some((fav) => fav.id === movie.id);
@@ -120,8 +180,14 @@ export const MovieProvider = ({ children }) => {
 
   const contextValue = {
     movies,
+
     favourites,
     watchlist,
+    
+    fetchPopularMovies,
+    fetchUpcomingMovies,
+    fetchNowPlayingMovies,
+    fetchTopRatedMovies,
     toggleFavourite,
     toggleWatchlist,
     addToFavList,
