@@ -102,7 +102,7 @@ function HomePage() {
               <p>
                 {movie.overview.split(" ").slice(0, 20).join(" ") + "..."}
               </p>
-              <Link to={`/movie/${movie.id}`}>
+              <Link to={`/movies/${movie.id}`}>
                 <button>More Info</button>
               </Link>
               <div className="home-button-group">
