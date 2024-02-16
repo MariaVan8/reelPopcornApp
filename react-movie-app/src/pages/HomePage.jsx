@@ -29,23 +29,27 @@ function HomePage() {
     }
     return true;
   });
+
   useEffect(() => {
-    
-    if (sort === "popularity") {
-      fetchPopularMovies();
-    } 
-    else if (sort === "upcoming") {      
-      fetchUpcomingMovies();
+    switch (sort) {
+      case "popularity":
+        fetchPopularMovies();
+        break;
+      case "top-rated":
+        fetchTopRatedMovies();
+        break;
+      case "upcoming":
+        fetchUpcomingMovies();
+        break;
+      case "now-playing":
+        fetchNowPlayingMovies();
+        break;
+      default:
+        break;
     }
-    else if (sort === "now-playing") {
-      fetchNowPlayingMovies();
-    }
-    else {
-      fetchTopRatedMovies();
-    }
-  }, [sort, fetchPopularMovies, fetchUpcomingMovies, fetchNowPlayingMovies, fetchTopRatedMovies]);
+  }, [sort]);
   
-  const sorting = [...filteredMovies].sort((a, b) => {
+  const sortedMovies = [...filteredMovies].sort((a, b) => {
     switch (sort) {
       case "popularity":
         return b.popularity - a.popularity;
@@ -80,7 +84,7 @@ function HomePage() {
         </select>
       </div>
       <div className="home-movies">
-        {sorting.map((movie) => (
+        {sortedMovies.map((movie) => (
           // <li key={movie.id}>
           <div className="home-movie-container" key={movie.id}>
             <img
