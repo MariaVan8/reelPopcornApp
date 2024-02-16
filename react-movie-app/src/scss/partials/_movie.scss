@@ -4,31 +4,39 @@
 .card{
     @include flex-col;
     width: 90%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* More pronounced shadow for depth */
-    transition: transform 0.3s ease; 
+    // box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* More pronounced shadow for depth */
+    // transition: transform 0.3s ease; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.75), 0 10px 20px rgba(0, 0, 0, 0.1); /* Multiple shadows for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     align-items: center;
     border-radius: 10px;
     margin: 1rem;
+    
+
+
   
     &-container{
+        position: relative; /* For positioning the pseudo-elements */
+        overflow: hidden;
        //backdrop-filter: blur(3px);
         background-color: rgba(12, 12, 12, 0.089);
         @include flex-col;
         align-items: center;
-        width: 25rem;
-        height: 25rem;
+        width: 28rem;
+        height: 28rem;
         border-radius: 10px;
+    
    
     }
 
     &-icon{
-        background-color: $white-color;
+        width: 3rem;
     }
     &-top{
         height: 25rem;
         display: flex;
         justify-content: space-around;
-        margin: 1rem;
+        margin: 1rem 1rem 7rem ;
         padding: 2rem;
         border: 5px solid $primary-color;
     }
@@ -57,18 +65,19 @@
         display: flex;  
         align-items: center;
         justify-content: space-around;
-        width: 45%;
+        width: 55%;
         height: 10rem;
+        gap: 1rem;
     }
 
     &-bottom{
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        width: 70%;
+        width: 90%;
         height: 10rem;
         margin-top: 10rem;
-        margin-bottom: 5rem;
+        margin-bottom: 7rem;
     
     }
 
@@ -76,7 +85,9 @@
         font-size: 1.5rem;
         font-weight: 800;
         border: 2px solid $primary-color;
-        width: 5rem;
+        width: 6rem;
+        padding: 0 0.2rem;
+        text-align: center;
     
     }
 
