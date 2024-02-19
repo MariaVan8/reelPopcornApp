@@ -59,6 +59,7 @@ useEffect(() => {
   // Find the movie by id, ensure you compare the same type (both numbers or both strings)
   const movie = movies.find((movie) => movie.id === movieId);
 
+  console.log(movie);
   // Check if movie is found before constructing imageUrl
   const imageUrl = movie
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
