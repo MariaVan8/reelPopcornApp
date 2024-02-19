@@ -2,124 +2,129 @@
 @use '../variables' as *;
 
 .card{
-    @include flex-col;
-    width: 90%;
-    // box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* More pronounced shadow for depth */
-    // transition: transform 0.3s ease; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.75), 0 10px 20px rgba(0, 0, 0, 0.1); /* Multiple shadows for depth */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    align-items: center;
-    border-radius: 10px;
-    margin: 1rem;
+    
+}
+
+// .card{
+//     @include flex-col;
+//     width: 90%;
+//     // box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* More pronounced shadow for depth */
+//     // transition: transform 0.3s ease; 
+//     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.75), 0 10px 20px rgba(0, 0, 0, 0.1); /* Multiple shadows for depth */
+//     transition: transform 0.3s ease, box-shadow 0.3s ease;
+//     align-items: center;
+//     border-radius: 10px;
+//     margin: 1rem;
     
 
 
   
-    &-container{
-        position: relative; /* For positioning the pseudo-elements */
-        overflow: hidden;
-       //backdrop-filter: blur(3px);
-        background-color: rgba(12, 12, 12, 0.089);
-        @include flex-col;
-        align-items: center;
-        width: 28rem;
-        height: 28rem;
-        border-radius: 10px;
+//     &-container{
+//         position: relative; /* For positioning the pseudo-elements */
+//         overflow: hidden;
+//        //backdrop-filter: blur(3px);
+//         background-color: rgba(12, 12, 12, 0.089);
+//         @include flex-col;
+//         align-items: center;
+//         width: 28rem;
+//         height: 28rem;
+//         border-radius: 10px;
     
    
-    }
+//     }
 
-    &-icon{
-        width: 3rem;
-    }
-    &-top{
-        height: 25rem;
-        display: flex;
-        justify-content: space-around;
-        margin: 1rem 1rem 7rem ;
-        padding: 2rem;
-        border: 5px solid $primary-color;
-    }
-    &-space{
-        height: 6rem;
-        width: 12rem;
-    }
+//     &-icon{
+//         width: 3rem;
+//     }
+//     &-top{
+//         height: 25rem;
+//         display: flex;
+//         justify-content: space-around;
+//         margin: 1rem 1rem 7rem ;
+//         padding: 2rem;
+//         border: 5px solid $primary-color;
+//     }
+//     &-space{
+//         height: 6rem;
+//         width: 12rem;
+//     }
 
-    &-info{
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        width: 25%;
-        justify-content: space-around;
-    }
+//     &-info{
+//         display: flex;
+//         align-items: center;
+//         flex-direction: column;
+//         width: 25%;
+//         justify-content: space-around;
+//     }
 
-    &-plus{
-        color: $white-color;
-        font-weight: 800;
-        font-size: 1rem;
-        padding: 0.2rem 0.6rem 0.5rem;
-        border: 2px solid $white-color;
-    }
+//     &-plus{
+//         color: $white-color;
+//         font-weight: 800;
+//         font-size: 1rem;
+//         padding: 0.2rem 0.6rem 0.5rem;
+//         border: 2px solid $white-color;
+//     }
 
-    &-extra{
-        display: flex;  
-        align-items: center;
-        justify-content: space-around;
-        width: 55%;
-        height: 10rem;
-        gap: 1rem;
-    }
+//     &-extra{
+//         display: flex;  
+//         align-items: center;
+//         justify-content: space-around;
+//         width: 55%;
+//         height: 10rem;
+//         gap: 1rem;
+//     }
 
-    &-bottom{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        width: 90%;
-        height: 10rem;
-        margin-top: 10rem;
-        margin-bottom: 7rem;
+//     &-bottom{
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: space-around;
+//         width: 90%;
+//         height: 10rem;
+//         margin-top: 10rem;
+//         margin-bottom: 7rem;
     
-    }
+//     }
 
-    &-text{
-        font-size: 1.5rem;
-        font-weight: 800;
-        border: 2px solid $primary-color;
-        width: 6rem;
-        padding: 0 0.2rem;
-        text-align: center;
+//     &-text{
+//         font-size: 1.5rem;
+//         font-weight: 800;
+//         border: 2px solid $primary-color;
+//         width: 6rem;
+//         padding: 0 0.2rem;
+//         text-align: center;
     
-    }
+//     }
 
-    &-btn{
-        background-color: $primary-color;
-        color: $white-color;
-        font-size: 1.5rem;
-        font-weight: 800;
-        padding: 0.5rem;
-        border: 2px solid $primary-color;
-        width: 100%;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        &:hover{
-            background-color: $secondary-color;
-            border: 2px solid $secondary-color;
-        }
+//     &-btn{
+//         background-color: $primary-color;
+//         color: $white-color;
+//         font-size: 1.5rem;
+//         font-weight: 800;
+//         padding: 0.5rem;
+//         border: 2px solid $primary-color;
+//         width: 100%;
+//         text-align: center;
+//         cursor: pointer;
+//         transition: all 0.3s ease;
+//         &:hover{
+//             background-color: $secondary-color;
+//             border: 2px solid $secondary-color;
+//         }
     
-    }
-    h1{
-        text-align: center;
-        font-size: 2rem;
-    }
+//     }
+//     h1{
+//         text-align: center;
+//         font-size: 2rem;
+//     }
 
-    img{
-        width: 2rem;
-        height: 2rem;
-    }
+//     img{
+//         width: 2rem;
+//         height: 2rem;
+//     }
 
-}
+// }
 
-.hidden{
-    display: none;
-}
+// .hidden{
+//     display: none;
+// }
+
