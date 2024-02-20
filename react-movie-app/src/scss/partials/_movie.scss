@@ -2,7 +2,134 @@
 @use '../variables' as *;
 
 .card{
-    
+    h2{
+        text-align: center
+    }
+    @include flex-col;
+    padding: 1rem;
+    &-top{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    align-items: center;
+    position: relative; 
+    gap: 1rem;
+    }
+
+    &-container{
+        position: relative;
+        margin-left: 2rem;
+        width: 100%;
+        aspect-ratio:6/7;
+        overflow: hidden;
+        background-position: center;
+        background-repeat: no-repeat; // Do not repeat the image
+        background-size: cover; // Cover the entire container
+        &::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 60px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000); // A gradient from transparent to black
+        }
+    }
+
+    &-image{
+        height: 2rem;
+        width: 2rem;
+    }
+
+    &-btn{
+        height: 2rem;
+        width: 4.5rem; 
+        padding: 0;
+    }
+
+    &-right{
+        @include flex-col;
+        align-items: center;
+        gap: 0.7rem;
+        margin-right: 2rem;
+        button{
+            border: 2px solid white;
+            border-radius: 14px;
+            padding: 0.5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    }
+
+    &-info{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        img{
+            height: 2rem;
+            width: 2rem;
+        }
+    }
+
+    &-bottom{
+        // padding: 0 2rem;
+        @include flex-col;
+      align-items: center;
+
+    }
+
+    @media (min-width: 450px){
+        &-container{
+        aspect-ratio:2.3/3;
+        background-position: center;
+        margin: 0 2rem 0 3rem;
+        }
+
+        &-bottom{
+            width: 100%;
+          
+        }
+    }
+
+    @media (min-width: 560px){
+        &-container{
+        aspect-ratio:3/4;
+        margin: 0 5rem;
+        // background-position: top;
+        }
+    }
+
+    @media (min-width: 760px) {
+    &-container{
+        aspect-ratio:3/4;
+        background-position: top;
+    };
+    }
+
+    @media (min-width: 860px){
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        &-container{
+            aspect-ratio:16/9;
+            background-position: center;
+            width: 100%;
+        };
+
+        &-top{
+            flex-direction: row-reverse;
+        }
+        &-bottom{
+            width: 30%;
+            p{
+            align-self: center;
+            }
+        }
+    }
+
+  
 }
 
 // .card{

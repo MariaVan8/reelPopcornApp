@@ -4,6 +4,8 @@ import { MovieContext } from "../context/MovieContext";
 import Trailer from "../components/Trailer";
 import heart from "/images/heart.png";
 import full from "/images/hd.png";
+import sub from "/images/subtitles.png"; 
+import play from "/images/play.png";
 
 function Movie() {
   const { movies } = useContext(MovieContext);
@@ -51,6 +53,42 @@ useEffect(() => {
   fetchTrailerUrl(id).then(setTrailerUrl);
 }, [id]);
 
+
+useEffect(() => {
+  // Generate a random duration for the movie
+  const hours = Math.floor(Math.random() * 3) + 1; // 1 to 3 hours
+  const minutes = Math.floor(Math.random() * 60); // 0 to 59 minutes
+  setDuration(`${hours}h ${minutes.toString().padStart(2, '0')}m`);
+
+    // Generate a random ranking between 1 and 10
+    const rank = Math.floor(Math.random() * 10) + 1;
+    setRanking(`#${rank} in Movies Today`);
+
+    const actors = [
+      'Michael Rivers', 'Jessica Stone', 'David Hale', 'Emily Clarkson', 
+      'Alex Duncan', 'Sarah Parker', 'Daniel Marsh', 'Olivia Turner', 
+      'James Ford', 'Laura Brooks', 'Ethan Grant', 'Natalie Cooper', 
+      'Ryan Bishop', 'Chloe Adams', 'Benjamin Knight', 'Sophia Bell', 
+      'Aaron Chase', 'Isabella Hart', 'Christopher Dean', 'Grace Alexander'
+    ];
+
+        // Shuffle the array and pick the first three names
+        actors.sort(() => 0.5 - Math.random());
+        setCasting(actors.slice(0, 3));
+    
+        const genreList = [
+          "Action", "Comedy", "Drama", "Fantasy", "Horror",
+          "Mystery", "Romance", "Thriller", "Western", "Documentary",
+          "Science Fiction", "Musical", "Biography", "Animation",
+          "Crime", "Historical", "War", "Adventure", "Superhero", "Noir"
+        ];
+
+        genreList.sort(() => 0.5 - Math.random());
+        setGenres(genreList.slice(0, 2));
+    
+
+}, []);
+
   // Convert URL parameter to a number for comparison if movie IDs are numbers
   const movieId = Number(id);
 
@@ -66,27 +104,40 @@ useEffect(() => {
   // Define the style object for the background image
   const cardContainerStyle = {
     backgroundImage: `url(${imageUrl})`,
-    backgroundSize: "contain", // Cover  the entire container
-    backgroundPosition: "center", // Center the background image
-    backgroundRepeat: "no-repeat", // Do not repeat the image
-    height: "22rem",
   };
 
   return (
 movie? (
-  <div className="card">
-    <a href="/">Back</a>
+  <>
+  <a href="/">Back</a>
   <h2>{movie.title}</h2>
+  <div className="card">
+ 
   <div className="card-top">
 
-  <div className="card-container" style={cardContainerStyle}></div>
+  <div className="card-container" style={cardContainerStyle}>......</div>
+  <div className="card-right">
+    <button>+</button>
+  <img src={heart} alt="heart" className="card-image" />
+  <button className="card-btn" onClick={openModal}><img src={play} alt="play"  width={"10rem"} height={"10rem"}/> Play</button>
+  
+  </div>
 
   </div>
   <div className="card-bottom">
+    <div className="card-info">
+    <p>{new Date(movie.release_date).getFullYear()}</p>
+      <span>{duration}</span>
+    <img src={full} alt="hd" />
+    </div>
+ 
+   
     <p>{movie.overview}</p>
-    <p>Release Date: {movie.release_date}</p>
+
+
   </div>
   </div>
+  </>
 ):(
   <>
   </>
