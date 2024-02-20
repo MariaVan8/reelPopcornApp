@@ -3,14 +3,13 @@ function Trailer({ trailerUrl, setShowModal }) {
     return (
       <div className="modal">
         <div className="modal-content">
-          <button onClick={() => setShowModal(false)}>Close</button>
+          <button onClick={() => setShowModal(false)}>X</button>
           <iframe
             src={trailerUrl}
             allow="autoplay; encrypted-media"
             allowFullScreen
             title="Movie Trailer"
           ></iframe>
-          <h2>TRAILER</h2>
         </div>
       </div>
     );

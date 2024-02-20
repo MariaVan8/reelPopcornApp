@@ -115,24 +115,31 @@ movie? (
  
   <div className="card-top">
 
-  <div className="card-container" style={cardContainerStyle}>......</div>
+  <div className="card-container" style={cardContainerStyle}></div>
   <div className="card-right">
     <button>+</button>
   <img src={heart} alt="heart" className="card-image" />
   <button className="card-btn" onClick={openModal}><img src={play} alt="play"  width={"10rem"} height={"10rem"}/> Play</button>
+  {showModal && <Trailer trailerUrl={trailerUrl} setShowModal={setShowModal} />}
+
   
   </div>
 
   </div>
   <div className="card-bottom">
     <div className="card-info">
-    <p>{new Date(movie.release_date).getFullYear()}</p>
+    <span>{new Date(movie.release_date).getFullYear()}</span>
       <span>{duration}</span>
     <img src={full} alt="hd" />
+    <img src={sub} alt="subtitles" />
     </div>
- 
-   
+    <div className="card-floor">
     <p>{movie.overview}</p>
+    <div className="card-casting">
+      <span><span>Starring:</span> {casting.join(', ')}</span>
+      <div><span>Genres: </span>{genres.join(', ')}</div>
+      </div>
+      </div>
 
 
   </div>
