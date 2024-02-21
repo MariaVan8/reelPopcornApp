@@ -3,7 +3,7 @@
 @use '../typography' as *;
 
 :root {
-    --primary: 35 100% 54%;
+    --primary: 35 100% 100%;
 }
 
 
@@ -54,13 +54,14 @@
         all: unset;
         font-size: 24px;
         padding: 14px 52px;
-        // background: hsl(0, 0%, 0%);
-        background: #222;
-        color: white;
+        background: hsl(0, 0%, 0%);
+        // background: #000;
+        color: $primary-color;
         text-transform: uppercase;
         position: relative;
         border-radius: 100px;
         cursor: pointer;
+        border: 1px solid $primary-color;
 
         >span {
             font-family: "Roboto";
