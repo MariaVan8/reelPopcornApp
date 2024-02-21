@@ -110,20 +110,24 @@ useEffect(() => {
   return (
 movie? (
   <>
-  
-  <div className="card">
-  <a href="/"><img src={back} alt="back" className="card-icon" /></a>
+  <div className="card-wrapper">
+  <div className="card" style={cardContainerStyle}>
+  {/* <a href="/"><img src={back} alt="back" className="card-icon" /></a> */}
   <h2 className="card-title">{movie.title}</h2>
-  <div className="card-top">
-  <div className="card-container" style={cardContainerStyle}></div>
-  <div className="card-right">
+  {/* <div className="card-top"> */}
+  {/* <div className="card-container" style={cardContainerStyle}></div> */}
+  {/* <div className="card-right">
     <button>+</button>
   <img src={heart} alt="heart" className="card-image" />
   <button className="card-btn" onClick={openModal}><img src={play} alt="play"  width={"10rem"} height={"10rem"}/> Play</button>
   {showModal && <Trailer trailerUrl={trailerUrl} setShowModal={setShowModal} />}
 
+  </div> */}
+  {/* </div> */}
+
   </div>
   </div>
+
   <div className="card-bottom">
     <div className="card-info">
     <span>{new Date(movie.release_date).getFullYear()}</span>
@@ -140,7 +144,6 @@ movie? (
       </div>
 
 
-  </div>
   </div>
   </>
 ):(
