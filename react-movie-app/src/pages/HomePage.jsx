@@ -33,6 +33,7 @@ function HomePage() {
     }
     return true;
   });
+
   useEffect(() => {
 
     if (sort === "popularity") {
@@ -111,7 +112,7 @@ function HomePage() {
       </div>
       {/* ... (existing code) */}
       <div className="home-movies">
-        {sorting.map((movie) => (
+        {sortedMovies.map((movie) => (
           // <li key={movie.id}>
           <div className="home-movie-container" key={movie.id}>
             <img
