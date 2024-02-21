@@ -6,6 +6,7 @@ import heart from "/images/heart.png";
 import full from "/images/hd.png";
 import sub from "/images/subtitles.png"; 
 import play from "/images/play.png";
+import back from "/images/arrow.png";
 
 function Movie() {
   const { movies } = useContext(MovieContext);
@@ -109,12 +110,11 @@ useEffect(() => {
   return (
 movie? (
   <>
-  <a href="/">Back</a>
-  <h2 className="card-title">{movie.title}</h2>
+  
   <div className="card">
- 
+  <a href="/"><img src={back} alt="back" className="card-icon" /></a>
+  <h2 className="card-title">{movie.title}</h2>
   <div className="card-top">
-
   <div className="card-container" style={cardContainerStyle}></div>
   <div className="card-right">
     <button>+</button>
@@ -122,9 +122,7 @@ movie? (
   <button className="card-btn" onClick={openModal}><img src={play} alt="play"  width={"10rem"} height={"10rem"}/> Play</button>
   {showModal && <Trailer trailerUrl={trailerUrl} setShowModal={setShowModal} />}
 
-  
   </div>
-
   </div>
   <div className="card-bottom">
     <div className="card-info">

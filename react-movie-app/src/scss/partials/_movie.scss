@@ -2,11 +2,17 @@
 @use '../variables' as *;
 
 .card{
+
+    &-icon{
+        width: 2rem;
+        height: 2rem;
+        align-self: flex-start;
+    }
     &-title{
         text-align: center;
         color: $primary-color;
         font-size: 2.5rem;
-        margin-bottom: 0;
+        margin: 0;
     }
     @include flex-col;
     padding: 1rem 2rem;
@@ -23,7 +29,7 @@
         position: relative;
         margin-left: 2rem;
         width: 100%;
-        aspect-ratio:6/7;
+        aspect-ratio:3/5;
         overflow: hidden;
         background-position: center;
         background-repeat: no-repeat; // Do not repeat the image
@@ -54,7 +60,7 @@
         @include flex-col;
         align-items: center;
         gap: 0.7rem;
-        margin-right: 2rem;
+        // margin-right: 1rem;
         button{
             border: 2px solid $white-color;
             border-radius: 14px;
@@ -101,10 +107,6 @@
 
         &-bottom{
             width: 100%;
-          
-            // p{
-            //     padding: 0rem 2rem;
-            // }
         }
         &-top{
             gap: 0;
@@ -149,7 +151,7 @@
     };
 
     &-floor{
-        padding: 0rem 4rem;
+        padding-left: 4rem;
     }
     }
 
@@ -159,7 +161,7 @@
         &-container{
            width: 26rem;
             background-position: top;
-            margin-left: 1rem;
+            margin: 0rem 0rem 0rem 1rem;
         };
 
         &-top{
@@ -177,14 +179,17 @@
         }
         &-floor{
             display: flex;
-            width: 80%;
+            width: 100%;
             gap: 1rem;
         }
 
         &-casting{
             width: 130%;
-            padding: 0rem 2rem;
+            // padding: 0rem 2rem;
             margin-top: 1rem;
+            @include flex-col;
+            gap: 1rem;
+            
         }
     }
 
@@ -195,6 +200,10 @@
             background-position: top;
             margin-left: 1rem;
         };
+
+        &-floor{
+            padding-left: 12rem;
+        }
     }
 
     @media (min-width: 1240px){
@@ -203,6 +212,10 @@
             width: 26rem;
      
         };
+
+        &-floor{
+            padding-left: 8rem;
+        }
     }
 
   
