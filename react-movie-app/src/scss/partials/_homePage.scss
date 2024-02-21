@@ -2,6 +2,11 @@
 @use '../mixins' as *;
 @use '../typography' as *;
 
+:root {
+    --primary: 35 100% 54%;
+}
+
+
 .home {
     @include flex-col;
     width: 100%;
@@ -42,8 +47,87 @@
         @include flex-row;
         // margin: 20px auto;
         justify-content: space-around;
-
+        gap: 2vh;
     }
+
+    &-filter-btn {
+        all: unset;
+        font-size: 24px;
+        padding: 14px 52px;
+        // background: hsl(0, 0%, 0%);
+        background: #222;
+        color: white;
+        text-transform: uppercase;
+        position: relative;
+        border-radius: 100px;
+        cursor: pointer;
+
+        >span {
+            font-family: "Roboto";
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 10;
+            transition: 0.25s ease;
+        }
+
+        :hover>span {
+            color: hsl(var(--primary) / 1);
+        }
+    }
+
+    @property --angle {
+        syntax: "<angle>";
+        initial-value: 0deg;
+        inherits: false;
+    }
+
+    .home-filter-btn::before,
+    .home-filter-btn::after {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        background-color: inherit;
+        border-radius: inherit;
+        background-image: conic-gradient(from var(--angle) at 50% 50%,
+                transparent 0%,
+                transparent 33%,
+                hsl(var(--primary)) 50%,
+                transparent 66%,
+                transparent 100%);
+        animation: rotate 2s infinite linear;
+        z-index: -1;
+    }
+
+    .home-filter-btn::before {
+        filter: blur(15px);
+    }
+
+    .inner {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(100px circle at var(--mouseX) var(--mouseY),
+                hsl(var(--primary) / 0.3),
+                transparent 50%);
+        border-radius: inherit;
+        z-index: 0;
+        opacity: 0;
+    }
+
+    .home-filter-btn:hover .inner {
+        opacity: 1;
+    }
+
+    @keyframes rotate {
+        0% {
+            --angle: 0deg;
+        }
+
+        100% {
+            --angle: 360deg;
+        }
+    }
+
+
 
     &-movie-container {
         @include flex-row;

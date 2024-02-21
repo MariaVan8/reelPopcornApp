@@ -14,9 +14,13 @@ function HomePage() {
 
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState(options[0].value);
-  const { movies, fetchUpcomingMovies, fetchPopularMovies, fetchTopRatedMovies, fetchNowPlayingMovies ,toggleFavourite, toggleWatchlist, favourites, watchlist } =
+  const { movies, fetchUpcomingMovies, fetchPopularMovies, fetchTopRatedMovies, fetchNowPlayingMovies, toggleFavourite, toggleWatchlist, favourites, watchlist } =
     useContext(MovieContext);
 
+  const handleSortClick = (option) => {
+    setSearch('');
+    setSort(option);
+  }
 
   function sortMovies(option) {
     setSearch('');
@@ -30,11 +34,11 @@ function HomePage() {
     return true;
   });
   useEffect(() => {
-    
+
     if (sort === "popularity") {
       fetchPopularMovies();
-    } 
-    else if (sort === "upcoming") {      
+    }
+    else if (sort === "upcoming") {
       fetchUpcomingMovies();
     }
     else if (sort === "now-playing") {
@@ -44,7 +48,7 @@ function HomePage() {
       fetchTopRatedMovies();
     }
   }, [sort, fetchPopularMovies, fetchUpcomingMovies, fetchNowPlayingMovies, fetchTopRatedMovies]);
-  
+
   const sorting = [...filteredMovies].sort((a, b) => {
     switch (sort) {
       case "popularity":
@@ -60,6 +64,28 @@ function HomePage() {
     }
   });
 
+  useEffect(() => {
+    const buttons = document.querySelectorAll(".home-filter-btn");
+
+    buttons.forEach((button) => {
+      button.addEventListener("mousemove", (e) => {
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        button.style.setProperty("--mouseX", `${x}px`);
+        button.style.setProperty("--mouseY", `${y}px`);
+      });
+    });
+
+    return () => {
+      // Cleanup the event listeners when the component unmounts
+      buttons.forEach((button) => {
+        button.removeEventListener("mousemove", () => { });
+      });
+    };
+  }, []);
+
 
   return (
 
@@ -69,16 +95,21 @@ function HomePage() {
         <h2>where movie and popcorn lovers meet</h2>
       </div>
       <div className="home-search-filter">
-        <input onChange={(e) => setSearch(e.target.value)} placeholder="Search Movie">
-        </input>
-        <select onChange={sortMovies}>
-          {options.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+        {/* <input onChange={(e) => setSearch(e.target.value)} placeholder="Search Movie">
+        </input> */}
+        {/* Replace select with buttons */}
+        {options.map((option) => (
+          <button
+            key={option.value}
+            onClick={() => handleSortClick(option.value)}
+            className={`home-filter-btn ${sort === option.value ? 'active' : ''}`}
+          >
+            <div class="inner"></div>
+            <span>{option.label}</span>
+          </button>
+        ))}
       </div>
+      {/* ... (existing code) */}
       <div className="home-movies">
         {sorting.map((movie) => (
           // <li key={movie.id}>

@@ -6,7 +6,7 @@ function Carousel() {
     const { movies } = useContext(MovieContext);
 
     useEffect(() => {
-        console.log(movies);
+        // console.log(movies);
     }, [movies]);
 
     let sortedMovies = [...movies]; // create a copy of movies to sort
