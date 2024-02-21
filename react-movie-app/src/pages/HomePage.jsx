@@ -35,22 +35,25 @@ function HomePage() {
   });
 
   useEffect(() => {
+    switch (sort) {
+      case "popularity":
+        fetchPopularMovies();
+        break;
+      case "top-rated":
+        fetchTopRatedMovies();
+        break;
+      case "upcoming":
+        fetchUpcomingMovies();
+        break;
+      case "now-playing":
+        fetchNowPlayingMovies();
+        break;
+      default:
+        break;
+    }
+  }, [sort]);
 
-    if (sort === "popularity") {
-      fetchPopularMovies();
-    }
-    else if (sort === "upcoming") {
-      fetchUpcomingMovies();
-    }
-    else if (sort === "now-playing") {
-      fetchNowPlayingMovies();
-    }
-    else {
-      fetchTopRatedMovies();
-    }
-  }, [sort, fetchPopularMovies, fetchUpcomingMovies, fetchNowPlayingMovies, fetchTopRatedMovies]);
-
-  const sorting = [...filteredMovies].sort((a, b) => {
+  const sortedMovies = [...filteredMovies].sort((a, b) => {
     switch (sort) {
       case "popularity":
         return b.popularity - a.popularity;
