@@ -112,8 +112,13 @@ movie? (
   <>
   <div className="card-wrapper">
   <div className="card" style={cardContainerStyle}>
-  {/* <a href="/"><img src={back} alt="back" className="card-icon" /></a> */}
+    <div className="card-container">
   <h2 className="card-title">{movie.title}</h2>
+  {/* <a href="/"><img src={back} alt="back" className="card-icon" /></a> */}
+  
+  <button className="card-btn" onClick={openModal}><img src={play} alt="play"  width={"13rem"} height={"13rem"}/> Play</button>
+  {showModal && <Trailer trailerUrl={trailerUrl} setShowModal={setShowModal} />}
+  </div>
   {/* <div className="card-top"> */}
   {/* <div className="card-container" style={cardContainerStyle}></div> */}
   {/* <div className="card-right">
@@ -130,10 +135,12 @@ movie? (
 
   <div className="card-bottom">
     <div className="card-info">
+    <img src={heart} alt="heart" className="card-image" />
     <span>{new Date(movie.release_date).getFullYear()}</span>
       <span>{duration}</span>
     <img src={full} alt="hd" />
     <img src={sub} alt="subtitles" />
+    <button>+</button>
     </div>
     <div className="card-floor">
     <p>{movie.overview}</p>
