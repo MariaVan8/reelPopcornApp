@@ -110,7 +110,7 @@ useEffect(() => {
 movie? (
   <>
   <a href="/">Back</a>
-  <h2>{movie.title}</h2>
+  <h2 className="card-title">{movie.title}</h2>
   <div className="card">
  
   <div className="card-top">
@@ -136,8 +136,8 @@ movie? (
     <div className="card-floor">
     <p>{movie.overview}</p>
     <div className="card-casting">
-      <span><span>Starring:</span> {casting.join(', ')}</span>
-      <div><span>Genres: </span>{genres.join(', ')}</div>
+      <span><span className="card-text">Starring:</span> {casting.join(', ')}</span>
+      <div><span className="card-text">Genres: </span>{genres.join(', ')}</div>
       </div>
       </div>
 
