@@ -122,6 +122,10 @@ function HomePage() {
               src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               alt={movie.title}
             />
+            {/* <img
+              src={`https://image.tmdb.org/t/p/w1280/${movie.backdrop_path}`}
+              alt={movie.title}
+            /> */}
             <div className="home-movie-info">
               <h3>{movie.title}</h3>
               {/* <p>Released: {movie.release_date}</p> */}
@@ -138,21 +142,21 @@ function HomePage() {
                 {movie.overview.split(" ").slice(0, 20).join(" ") + "..."}
               </p>
               <Link to={`/movie/${movie.id}`}>
-                <button>More Info</button>
+                <button className="neon-purple">More Info</button>
               </Link>
               <div className="home-button-group">
                 <button
-                  className={`button-icon`}
+                  className={`button-icon neon-pink`}
                   onClick={() => toggleFavourite(movie)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
+                    viewBox="0 0 25 25"
                     width="24"
                     height="24"
                     fill={
                       favourites.some((fav) => fav.id === movie.id)
-                        ? "red"
+                        ? "#FF53cd"
                         : "white"
                     }
                   >
@@ -160,13 +164,13 @@ function HomePage() {
                   </svg>
                 </button>
                 <button
-                  className={`button-icon watchlist-button`}
+                  className={`button-icon watchlist-button neon-blue`}
                   onClick={() => toggleWatchlist(movie)}
                 >
                   {watchlist.some((item) => item.id === movie.id) ? (
-                    <span>-</span>
+                    <p>-</p>
                   ) : (
-                    <span>+</span>
+                    <p>+</p>
                   )}
                 </button>
               </div>
