@@ -73,9 +73,9 @@
         z-index: 10;
     }
 
-    &-big{
-        display: none;
-    }
+    // &-big{
+    //     display: none;
+    // }
 
     &-right{
         @include flex-col;
@@ -102,16 +102,22 @@
             height: 2rem;
             width: 2rem;
         }
-        :nth-child(5){
-            background-color: $white-color;
-            height: 1.4rem;
-        }
+       
         :nth-child(6){
             border-radius: 20px;
             &:hover{
                 background-color: rgb(244, 42, 42);
             
             }
+        }
+    }
+    &-details{
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        :nth-child(4){
+            background-color: $white-color;
+            height: 1.4rem;
         }
     }
 
@@ -154,6 +160,9 @@
         &-floor{
             padding: 0rem 2rem;
         }
+        // &-big{
+        //     display: block;
+        //     }
     }
 
     // @media (min-width: 560px){
@@ -175,7 +184,7 @@
     // }
 
     @media (min-width: 760px) {
-        aspect-ratio:19/6;
+        // aspect-ratio:19/6;
         // background-position: top;
         background-position: 50% 25%;
         height: 35rem;
@@ -187,7 +196,7 @@
         width: 22rem;
         background-position: top;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         :nth-child(2){
        
             margin-right: 8rem;
@@ -195,8 +204,35 @@
         }
     };
 
+    &-wrapper{
+        width: 58%;
+    }
+
+    &-info{
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap */
+    align-items: center; 
+     }
+
+    &-bottom{
+        justify-content: space-evenly;
+        flex-direction: column-reverse;
+    }
+
     &-floor{
-        padding-left: 4rem;
+        padding: 0rem 0rem 0rem 1rem;
+    }
+
+    &-big{
+    display: flex;
+    }
+
+    &-info{
+    display: flex;
+    align-items: center;
+    width: 85%;
+      
+         
     }
     }
 
@@ -243,9 +279,9 @@
 
     @media (min-width: 960px){
         display: table-cell;
-        &-big{
-            display: flex;
-        }
+        // &-big{
+        //     display: flex;
+        // }
         width: 80%;
         &-container{
             width: 26rem;
@@ -259,6 +295,7 @@
     }
 
     @media (min-width: 1240px){
+        margin-top: 3rem 1rem 0 3rem;
         width: 65%;
         &-container{
             width: 26rem;
@@ -268,6 +305,10 @@
         &-floor{
             padding-left: 8rem;
         }
+
+        // &-big{
+        //     display: flex;
+        //     }
     }
 
   

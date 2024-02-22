@@ -110,7 +110,7 @@ useEffect(() => {
   return (
 movie? (
   <>
-  <div className="card-big">
+    <div className="card-big">
   <div className="card-wrapper">
     <div className="card" style={cardContainerStyle}>
       <div className="card-container">
@@ -123,11 +123,14 @@ movie? (
   <div className="card-bottom">
     <div className="card-info">
       <img src={heart} alt="heart" className="card-image" />
+      <button>+</button>
+      <div class="card-details">
       <span>{new Date(movie.release_date).getFullYear()}</span>
       <span>{duration}</span>
       <img src={full} alt="hd" />
       <img src={sub} alt="subtitles" />
-      <button>+</button>
+      </div>
+    
     </div>
     <div className="card-floor">
       <p>{movie.overview}</p>
