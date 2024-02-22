@@ -110,47 +110,33 @@ useEffect(() => {
   return (
 movie? (
   <>
+  <div className="card-big">
   <div className="card-wrapper">
-  <div className="card" style={cardContainerStyle}>
-    <div className="card-container">
-  <h2 className="card-title">{movie.title}</h2>
-  {/* <a href="/"><img src={back} alt="back" className="card-icon" /></a> */}
-  
-  <button className="card-btn" onClick={openModal}><img src={play} alt="play"  width={"13rem"} height={"13rem"}/> Play</button>
-  {showModal && <Trailer trailerUrl={trailerUrl} setShowModal={setShowModal} />}
+    <div className="card" style={cardContainerStyle}>
+      <div className="card-container">
+        <h2 className="card-title">{movie.title}</h2>
+        <button className="card-btn" onClick={openModal}><img src={play} alt="play"  width={"13rem"} height={"13rem"}/> Play</button>
+        {showModal && <Trailer trailerUrl={trailerUrl} setShowModal={setShowModal} />}
+      </div>
+    </div>
   </div>
-  {/* <div className="card-top"> */}
-  {/* <div className="card-container" style={cardContainerStyle}></div> */}
-  {/* <div className="card-right">
-    <button>+</button>
-  <img src={heart} alt="heart" className="card-image" />
-  <button className="card-btn" onClick={openModal}><img src={play} alt="play"  width={"10rem"} height={"10rem"}/> Play</button>
-  {showModal && <Trailer trailerUrl={trailerUrl} setShowModal={setShowModal} />}
-
-  </div> */}
-  {/* </div> */}
-
-  </div>
-  </div>
-
   <div className="card-bottom">
     <div className="card-info">
-    <img src={heart} alt="heart" className="card-image" />
-    <span>{new Date(movie.release_date).getFullYear()}</span>
+      <img src={heart} alt="heart" className="card-image" />
+      <span>{new Date(movie.release_date).getFullYear()}</span>
       <span>{duration}</span>
-    <img src={full} alt="hd" />
-    <img src={sub} alt="subtitles" />
-    <button>+</button>
+      <img src={full} alt="hd" />
+      <img src={sub} alt="subtitles" />
+      <button>+</button>
     </div>
     <div className="card-floor">
-    <p>{movie.overview}</p>
-    <div className="card-casting">
-      <span><span className="card-text">Starring:</span> {casting.join(', ')}</span>
-      <div><span className="card-text">Genres: </span>{genres.join(', ')}</div>
+      <p>{movie.overview}</p>
+      <div className="card-casting">
+        <span><span className="card-text">Starring:</span> {casting.join(', ')}</span>
+        <div><span className="card-text">Genres: </span>{genres.join(', ')}</div>
       </div>
-      </div>
-
-
+    </div>
+  </div>
   </div>
   </>
 ):(

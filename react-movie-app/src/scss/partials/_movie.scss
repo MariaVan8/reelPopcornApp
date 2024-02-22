@@ -11,7 +11,8 @@
     align-items: flex-end;
     width: 100%;
     background-size: cover;
-    background-position: center;
+    // background-position: center;
+    background-position: 50% 25%;
     aspect-ratio: 2/2.5;
     margin: 0 0 2rem;
     position: relative;
@@ -70,6 +71,10 @@
         align-items: center;
         gap: 1rem;
         z-index: 10;
+    }
+
+    &-big{
+        display: none;
     }
 
     &-right{
@@ -172,11 +177,11 @@
     @media (min-width: 760px) {
         aspect-ratio:19/6;
         // background-position: top;
-        background-position: 50% 30%;
+        background-position: 50% 25%;
         height: 35rem;
         align-items: flex-end;
         background-size: auto;
-        margin: 0 auto;
+        margin: 1rem;
 
     &-container{
         width: 22rem;
@@ -198,11 +203,11 @@
     @media (min-width: 860px){
         width: 100%;
         justify-content: space-between;
-        &-container{
-           width: 26rem;
-            background-position: top;
-            margin: 0rem 0rem 0rem 1rem;
-        };
+        // &-container{
+        //    width: 26rem;
+        //     background-position: top;
+        //     margin: 0rem 0rem 0rem 1rem;
+        // };
 
         &-top{
             flex-direction: row-reverse;
@@ -213,6 +218,8 @@
         }
         &-bottom{
             width: 100%;
+            display: flex;
+            justify-content: center;
             p{
             align-self: center;
             }
@@ -221,6 +228,7 @@
             display: flex;
             width: 100%;
             gap: 1rem;
+            padding-left: 0rem;
         }
 
         &-casting{
@@ -234,6 +242,10 @@
     }
 
     @media (min-width: 960px){
+        display: table-cell;
+        &-big{
+            display: flex;
+        }
         width: 80%;
         &-container{
             width: 26rem;
@@ -242,7 +254,7 @@
         };
 
         &-floor{
-            padding-left: 12rem;
+            // padding-left: 12rem;
         }
     }
 
