@@ -4,7 +4,13 @@
 
 :root {
     --primary: 35 100% 100%;
+    --angle: 0deg;
+    --primary-hue: 250;
+    --primary-saturation: 66%;
+    --primary-lightness: 61%;
 }
+
+  
 
 
 .home {
@@ -44,14 +50,17 @@
     }
 
     &-search-filter {
-        @include flex-row;
+        @include flex-col;
         // margin: 20px auto;
         justify-content: space-around;
         gap: 2vh;
     }
 
+    
+
     &-filter-btn {
         all: unset;
+     
         font-size: 24px;
         padding: 14px 52px;
         background: hsl(0, 0%, 0%);
@@ -62,9 +71,11 @@
         border-radius: 100px;
         cursor: pointer;
         border: 1px solid $primary-color;
+        font-family: $secondary-font;
+        // z-index: 1;
 
         >span {
-            font-family: "Roboto";
+            font-family: $secondary-font;
             letter-spacing: 1px;
             position: relative;
             z-index: 10;
@@ -74,59 +85,48 @@
         :hover>span {
             color: hsl(var(--primary) / 1);
         }
+      
     }
+    .active {
+        border: 1px solid #fff;
+    } 
+    // @property --angle {
+    //     syntax: "<angle>";
+    //     initial-value: 0deg;
+    //     inherits: false;
+    // }
 
-    @property --angle {
-        syntax: "<angle>";
-        initial-value: 0deg;
-        inherits: false;
-    }
-
-    .home-filter-btn::before,
-    .home-filter-btn::after {
-        content: "";
-        position: absolute;
-        inset: -2px;
-        background-color: inherit;
-        border-radius: inherit;
-        background-image: conic-gradient(from var(--angle) at 50% 50%,
-                transparent 0%,
-                transparent 33%,
-                hsl(var(--primary)) 50%,
-                transparent 66%,
-                transparent 100%);
-        animation: rotate 2s infinite linear;
-        z-index: -1;
-    }
+.home-filter-btn::before,
+.home-filter-btn::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background-color: inherit;
+    border-radius: inherit;
+    background-image: conic-gradient(from var(--angle) at 50% 50%,
+            transparent 0%,
+            transparent 33%,
+            hsl(var(--primary-hue), var(--primary-saturation), var(--primary-lightness)) 50%,
+            transparent 66%,
+            transparent 100%);
+    animation: rotate 2s infinite linear;
+    z-index: -1;
+}
 
     .home-filter-btn::before {
         filter: blur(15px);
     }
 
-    .inner {
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(100px circle at var(--mouseX) var(--mouseY),
-                hsl(var(--primary) / 0.3),
-                transparent 50%);
-        border-radius: inherit;
-        z-index: 0;
-        opacity: 0;
+ 
+@keyframes rotate {
+    0% {
+        --angle: 0deg; // Start the rotation from 0 degrees
     }
-
-    .home-filter-btn:hover .inner {
-        opacity: 1;
+    100% {
+        --angle: 360deg; // Rotate the full 360 degrees
     }
+}
 
-    @keyframes rotate {
-        0% {
-            --angle: 0deg;
-        }
-
-        100% {
-            --angle: 360deg;
-        }
-    }
 
 
 
@@ -208,6 +208,20 @@
         flex-wrap: wrap;
         width: 100%;
 
+        .inner {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(100px circle at var(--mouseX) var(--mouseY),
+                    hsl(var(--primary) / 0.3),
+                    transparent 50%);
+            border-radius: inherit;
+            z-index: 0;
+            opacity: 0;
+        }
+    
+        .home-filter-btn:hover .inner {
+            opacity: 1;
+        }
         ul {
             @include flex-row;
             flex-wrap: wrap;
