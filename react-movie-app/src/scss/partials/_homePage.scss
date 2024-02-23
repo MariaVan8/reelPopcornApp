@@ -10,8 +10,6 @@
     --primary-lightness: 61%;
 }
 
-
-
 .neon-red {
     --neon: #FF5161;
     --neon-glow: #D30302;
@@ -120,23 +118,25 @@
         // margin: 20px auto;
         justify-content: space-around;
         gap: 2vh;
+        padding: 20px;
     }
 
 
 
     &-filter-btn {
         all: unset;
-
         font-size: 24px;
         padding: 14px 52px;
         background: hsl(0, 0%, 0%);
         // background: #000;
-        color: $primary-color;
+        color: #ffdb4e;
         text-transform: uppercase;
         position: relative;
         border-radius: 100px;
         cursor: pointer;
-        border: 1px solid $primary-color;
+        // border: 1px solid $primary-color;
+        border: 3px solid #ffdb4e;
+
         font-family: $secondary-font;
         // z-index: 1;
 
@@ -155,7 +155,10 @@
     }
 
     .active {
-        border: 1px solid #fff;
+        border: 3px solid var(--neon);
+
+        // border: 1px solid #fff;
+        color: #2dd9fe;
     }
 
     // @property --angle {
