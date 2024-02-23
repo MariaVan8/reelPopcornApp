@@ -1,9 +1,14 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use '../typography' as *;
+
 .fav-container {
-  display: flex;
-  flex-direction: column;
+  @include flex-col;
   width: 100%;
   margin: 0 auto;
   text-align: center;
+  min-height: 100vh;
+  justify-content: center;
 
   h1 {
     font-size: 2em;
