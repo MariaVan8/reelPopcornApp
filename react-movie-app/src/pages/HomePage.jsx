@@ -106,7 +106,7 @@ function HomePage() {
           <button
             key={option.value}
             onClick={() => handleSortClick(option.value)}
-            className={`home-filter-btn ${sort === option.value ? 'active' : ''}`}
+            className={`home-filter-btn ${sort === option.value ? 'active neon-blue' : ''}`}
           >
             <div class="inner"></div>
             <span>{option.label}</span>
