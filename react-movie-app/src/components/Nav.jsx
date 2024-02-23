@@ -56,25 +56,49 @@ const Nav = () => {
       </label>
       <div className="background">&nbsp;</div>
 
-      <nav class="nav-menu">
+      <nav className="nav-menu">
         <ul className="list">
           <li>
-            <NavLink to="/" className="nav-link">
+            <NavLink
+              to="/"
+              className="nav-link"
+              onClick={() => {
+                document.getElementById("navi-toggle").checked = false;
+              }}
+            >
               home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/AboutUs" className="nav-link">
+            <NavLink
+              to="/AboutUs"
+              className="nav-link"
+              onClick={() => {
+                document.getElementById("navi-toggle").checked = false;
+              }}
+            >
               about us
             </NavLink>
           </li>
           <li>
-            <NavLink to="/Favorites" className="nav-link">
+            <NavLink
+              to="/Favorites"
+              className="nav-link"
+              onClick={() => {
+                document.getElementById("navi-toggle").checked = false;
+              }}
+            >
               favourites
             </NavLink>
           </li>
           <li>
-            <NavLink to="/WatchLater" className="nav-link">
+            <NavLink
+              to="/WatchLater"
+              className="nav-link"
+              onClick={() => {
+                document.getElementById("navi-toggle").checked = false;
+              }}
+            >
               watch later
             </NavLink>
           </li>
