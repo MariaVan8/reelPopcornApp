@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
-import reelPopcornLogo from '/images/reel-popcorn.png';
+import React, { useEffect, useState, useRef } from "react";
+import { NavLink } from "react-router-dom";
+import reelPopcornLogo from "/images/reel-popcorn.png";
 
 const Nav = () => {
   const navRef = useRef(null);
@@ -19,19 +19,19 @@ const Nav = () => {
     };
 
     const setInitial = () => {
-      setLogoHeight(navRef.current.querySelector('.logo').offsetHeight);
+      setLogoHeight(navRef.current.querySelector(".logo").offsetHeight);
     };
 
     handleScroll(); // Call it once to set the initial state
-    setInitial();  // Set the initial logo height
+    setInitial(); // Set the initial logo height
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', setInitial); // Update initial offset on resize
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", setInitial); // Update initial offset on resize
 
     // Cleanup function to remove the event listeners when the component unmounts
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', setInitial);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", setInitial);
     };
   }, [logoHeight]);
 
@@ -39,20 +39,49 @@ const Nav = () => {
     e.target.blur();
   }
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <nav ref={navRef} className={`nav neon-purple ${isSticky ? 'nav-sticky' : ''}`} onClick={blur}>
       <div className="nav-logo">
         <img className="logo" src={reelPopcornLogo} alt="Reel Popcorn Logo" />
       </div>
-      <ul>
-        <li><NavLink to="/" className="nav-link">home</NavLink></li>
-        <li><NavLink to="/AboutUs" className="nav-link">about us</NavLink></li>
-        <li><NavLink to="/Favorites" className="nav-link">favourites</NavLink></li>
-        <li><NavLink to="/WatchLater" className="nav-link">watch later</NavLink></li>
-      </ul>
+      <input type="checkbox" id="navi-toggle" className="checkbox" />
+      <label htmlFor="navi-toggle" className="button" onClick={toggleMenu}>
+        <span className="icon">&nbsp;</span>
+      </label>
+      <div className="background">&nbsp;</div>
+
+      <nav class="nav-menu">
+        <ul className="list">
+          <li>
+            <NavLink to="/" className="nav-link">
+              home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/AboutUs" className="nav-link">
+              about us
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/Favorites" className="nav-link">
+              favourites
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/WatchLater" className="nav-link">
+              watch later
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
     </nav>
   );
 };
 
 export default Nav;
-
