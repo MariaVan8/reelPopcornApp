@@ -46,11 +46,7 @@ const Nav = () => {
   };
 
   return (
-    <nav
-      ref={navRef}
-      className={`nav ${isSticky ? "nav-sticky" : ""}`}
-      onClick={blur}
-    >
+    <nav ref={navRef} className={`nav neon-purple ${isSticky ? 'nav-sticky' : ''}`} onClick={blur}>
       <div className="nav-logo">
         <img className="logo" src={reelPopcornLogo} alt="Reel Popcorn Logo" />
       </div>

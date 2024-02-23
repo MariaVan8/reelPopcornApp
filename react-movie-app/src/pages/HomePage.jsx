@@ -117,7 +117,7 @@ function HomePage() {
       <div className="home-movies">
         {sortedMovies.map((movie) => (
           // <li key={movie.id}>
-          <div className="home-movie-container" key={movie.id}>
+          <div className="home-movie-container neon-blue" key={movie.id}>
             <img
               src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               alt={movie.title}
@@ -137,7 +137,7 @@ function HomePage() {
                   day: "numeric",
                 })}
               </p>
-              <p>Rating: {parseFloat(movie.vote_average).toFixed(2)}</p>
+              <p>Rating: {(parseFloat(movie.vote_average)*10).toFixed(2)}%</p>
               <p>
                 {movie.overview.split(" ").slice(0, 20).join(" ") + "..."}
               </p>
@@ -164,7 +164,7 @@ function HomePage() {
                   </svg>
                 </button>
                 <button
-                  className={`button-icon watchlist-button neon-blue`}
+                  className={`button-icon watchlist-button neon-green`}
                   onClick={() => toggleWatchlist(movie)}
                 >
                   {watchlist.some((item) => item.id === movie.id) ? (
