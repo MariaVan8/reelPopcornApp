@@ -86,8 +86,8 @@
     &-movies {
         @include flex-col;
         width: 100%;
-        padding: 20px;
-        gap: 2vh;
+        padding: 40px;
+        gap: 4vh;
     }
 
     &-heading {
@@ -156,7 +156,9 @@
 
     .active {
         border: 3px solid var(--neon);
-
+        box-shadow:
+            0 0 10px var(--neon-glow),
+            inset 0 0 10px var(--neon-glow);
         // border: 1px solid #fff;
         color: #2dd9fe;
     }
@@ -210,8 +212,14 @@
         width: 100%;
         gap: 2vh;
         height: 300px;
-        padding: 10px;
-        border: 1px solid #fff;
+        padding: 20px;
+        border-radius: 20px;
+        border: 3px solid var(--neon);
+        box-shadow:
+            0 0 20px var(--neon-glow),
+            inset 0 0 20px var(--neon-glow);
+
+        // border: 1px solid #fff;
 
         h3 {
             font-size: 1.8rem;
@@ -233,6 +241,7 @@
 
         img {
             width: 175px;
+            border-radius: 20px;
         }
     }
 
@@ -255,6 +264,7 @@
 
             button {
                 @include flex-row;
+                font-family: $secondary-font;
                 justify-content: center;
                 align-items: center;
                 margin-top: 10px;
@@ -395,9 +405,9 @@
             align-items: center;
             justify-content: center;
             width: 450px;
-            padding: 10px;
+            padding: 20px;
             gap: 2vh;
-            height: 320px;
+            height: 340px;
             border: 1px solid #fff;
 
             h2 {
@@ -415,7 +425,7 @@
             text-align: left;
 
             h3 {
-                color: $primary-color;
+                color: $secondary-color;
                 font-size: 1.4rem;
                 margin: 0;
                 padding: 0;
