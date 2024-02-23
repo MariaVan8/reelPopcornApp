@@ -137,7 +137,7 @@ function HomePage() {
                   day: "numeric",
                 })}
               </p>
-              <p>Rating: {parseFloat(movie.vote_average).toFixed(2)}</p>
+              <p>Rating: {(parseFloat(movie.vote_average)*10).toFixed(2)}%</p>
               <p>
                 {movie.overview.split(" ").slice(0, 20).join(" ") + "..."}
               </p>
