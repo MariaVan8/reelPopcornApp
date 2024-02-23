@@ -60,28 +60,30 @@ const Nav = () => {
       </label>
       <div className="background">&nbsp;</div>
 
-      <ul className="list">
-        <li>
-          <NavLink to="/" className="nav-link">
-            home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/AboutUs" className="nav-link">
-            about us
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/Favorites" className="nav-link">
-            favourites
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/WatchLater" className="nav-link">
-            watch later
-          </NavLink>
-        </li>
-      </ul>
+      <nav class="nav-menu">
+        <ul className="list">
+          <li>
+            <NavLink to="/" className="nav-link">
+              home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/AboutUs" className="nav-link">
+              about us
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/Favorites" className="nav-link">
+              favourites
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/WatchLater" className="nav-link">
+              watch later
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
     </nav>
   );
 };
