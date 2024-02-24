@@ -2,25 +2,293 @@
 @use '../variables' as *;
 
 .card{
-    @include flex-col;
-    align-items: center;
-    background: url("../images/movie-black-bg.jpg");
-    background-size: cover;
-    background-position: bottom;
-    background-color: #000;
-    &-container{
-        background-color: rgb(12, 12, 12);
-        @include flex-col;
-        align-items: center;
-        width: 60%;
-        padding-top: 3rem;
+    &-wrapper{
+        width: 100%;
+        padding-top: 0rem;
     }
-    h1{
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    background-size: cover;
+    // background-position: center;
+    // background-position: 50% 25%;
+    aspect-ratio: 3/4;
+    margin: 0 0 2rem;
+    position: relative;
+    &::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000),
+    linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 20%),
+    linear-gradient(to left, rgba(0, 0, 0, 0.5) 0%, transparent 20%),
+    linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, transparent 20%);
+    z-index: 1;
+}
+
+    &-container{
+        z-index: 10;
+        @include flex-row;
+        justify-content: space-evenly;
+        width: 100%;
+        align-items: center;
+    
+    }
+    &-title{
         text-align: center;
+        color: $primary-color;
+        font-size: 2rem;
+        margin: 0;
+        z-index: 10;
+    }
+  
+    &-image{
+        height: 2rem;
+        width: 2rem;
     }
 
-    img{
-        width: 20rem;
-        height: 27rem;
+    &-btn{
+        height: 2rem;
+        width: 4.5rem; 
+        padding: 0;
+        color: $secondary-color;
+        background-color: #ffffff54;
     }
+
+    &-bottom{
+        padding: 0 1rem;
+        @include flex-row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        z-index: 10;
+    }
+
+    &-right{
+        @include flex-col;
+        align-items: center;
+        gap: 0.7rem;
+        button{
+            border: 2px solid $white-color;
+            border-radius: 14px;
+            padding: 0.5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    }
+
+    &-info{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: $secondary-color;
+        img{
+            height: 2rem;
+            width: 2rem;
+        }
+       
+        :nth-child(6){
+            border-radius: 20px;
+            &:hover{
+                background-color: rgb(244, 42, 42);
+            
+            }
+        }
+    }
+    &-details{
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        :nth-child(4){
+            background-color: $white-color;
+            height: 1.4rem;
+        }
+    }
+
+    &-bottom{
+        @include flex-col;
+      align-items: center;
+
+    }
+    &-text{
+        font-weight: 700;
+        color: $white-color;
+    }
+
+    @media (min-width: 426px){
+        padding: 2rem;
+        &-container{
+        aspect-ratio:4/3;
+        background-position: center;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        justify-content: end;
+        gap: 1rem;
+        }
+
+        &-title{
+            font-size: 2.2rem;
+        }
+        &-bottom{
+            width: 100%;
+        }
+        &-top{
+            gap: 0;
+        }
+
+        &-right{
+            margin-left: 1rem;
+            margin-right: 0;
+        }
+
+        &-info{
+            width: 100%;
+            justify-content: center;
+        }
+        &-floor{
+            padding: 0rem 2rem;
+        }
+
+    }
+
+    @media (min-width: 560px){
+        aspect-ratio: 2/2;
+    
+        &-title{
+            font-size: 2rem;
+        }
+        &-container{
+        margin: 0 2rem;
+        align-items: flex-start;
+        }
+
+        &-btn{
+         margin-bottom: 10px;
+        }
+
+        &-top{
+            gap: 0;
+        }
+
+        &-right{
+            margin-right: 0;
+        }
+    }
+
+    @media (min-width: 760px) {
+        aspect-ratio:19/6;
+        background-position: 50% 25%;
+        align-items: flex-end;
+        background-size: none;
+
+    &-container{
+        width: 22rem;
+        background-position: top;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0;
+        :nth-child(1){
+       text-align: left;
+        }
+    };
+
+    &-wrapper{
+        width: 100%;
+    }
+
+    &-info{
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap */
+    align-items: center; 
+     }
+
+    &-bottom{
+        justify-content: space-evenly;
+        flex-direction: column-reverse;
+    }
+
+    &-floor{
+        padding: 0rem 0rem 0rem 1rem;
+    }
+
+    &-big{
+    display: flex;
+    }
+
+    &-info{
+    display: flex;
+    align-items: center;
+    width: 85%;       
+    }
+    }
+
+    @media (min-width: 860px){
+        width: 100%;
+        justify-content: space-between;
+
+        &-top{
+            flex-direction: row-reverse;
+        }
+
+        &-right{
+            width: 9rem;
+        }
+        &-bottom{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            p{
+            align-self: center;
+            }
+        }
+        &-floor{
+            display: flex;
+            width: 100%;
+            gap: 1rem;
+            padding-left: 0rem;
+        }
+
+        &-casting{
+            width: 130%;
+            margin-top: 1rem;
+            @include flex-col;
+            gap: 1rem;
+            
+        }
+    }
+
+    @media (min-width: 960px){
+        width: 100%;
+        &-container{
+            width: 26rem;
+            background-position: top;
+            margin-left: 1rem;
+        };
+        &-floor{
+            width: 80%;
+          }
+  
+    }
+
+    @media (min-width: 1240px){
+        margin-top: 3rem 1rem 0 3rem;
+        width: 80%;
+        &-container{
+            width: 26rem;
+     
+        };
+
+        &-floor{
+          width: 80%;
+        }
+
+    }
+
+  
 }
