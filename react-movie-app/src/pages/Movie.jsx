@@ -15,7 +15,7 @@ function Movie() {
   const [duration, setDuration] = useState('');
   const [ranking, setRanking] = useState(null);
   const [cast, setCast] = useState([]);
-  const [genres, setGenres] = useState([]);
+  const [movieGenres, setMovieGenres] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState('');
   const LANGUAGE = 'en-US';
 
@@ -33,6 +33,36 @@ const handleWindowSizeChange = () => {
 
   const BASE_URL = 'https://api.themoviedb.org/3';
   const API_KEY = 'b49aeaca09961dbfa4e7d1b0fea43944';
+
+  const fetchMovieDetails = async () => {
+    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
+  
+    try {
+      const response = await fetch(url);
+      const movieDetails = await response.json();
+  
+      if (response.ok) {
+        const genres = movieDetails.genres; // This is the array of genres for the movie
+        console.log(genres); // Output the genres to the console
+        return genres;
+      } else {
+        throw new Error('Failed to fetch movie details: ' + response.statusText);
+      }
+    } catch (error) {
+      console.error('Error fetching movie details:', error);
+    }
+  };
+  
+ 
+  useEffect(() => {
+    const fetchGenres = async () => {
+      const genres = await fetchMovieDetails(); // Call the function defined earlier
+      setMovieGenres(genres);
+    };
+
+    fetchGenres();
+  }, [id]); // This will re-run the effect if the movieId prop changes
+
 
 
   const fetchCastList = async () => {
@@ -114,17 +144,7 @@ useEffect(() => {
     const rank = Math.floor(Math.random() * 10) + 1;
     setRanking(`#${rank} in Movies Today`);
 
-    
-        const genreList = [
-          "Action", "Comedy", "Drama", "Fantasy", "Horror",
-          "Mystery", "Romance", "Thriller", "Western", "Documentary",
-          "Science Fiction", "Musical", "Biography", "Animation",
-          "Crime", "Historical", "War", "Adventure", "Superhero", "Noir"
-        ];
-
-        genreList.sort(() => 0.5 - Math.random());
-        setGenres(genreList.slice(0, 2));
-    
+  
 
 }, []);
 
@@ -145,9 +165,6 @@ const fetchMovieRuntime = async () => {
   }
 };
 
-fetchMovieRuntime().then(runtime => {
-  console.log(runtime); // Logs the runtime of the movie to the console
-});
 
   // Convert URL parameter to a number for comparison if movie IDs are numbers
   const movieId = Number(id);
@@ -199,29 +216,19 @@ movie? (
     
     </div>
     <div className="card-floor">
-    <div className="card-box">
-
-    {genres.map((genre, index) => (
-      <button key={index} className="genre-btn">
-        {genre}
-      </button>
-    ))}
-    </div>
-      <p>{movie.overview}</p>
-      {/* <div className="card-casting"> 
-      </div> */}
-      {/* <div>
-      <h2>Cast</h2>
-      <ul>
-        {cast.slice(0,3).map((actor, index) => (
-          <li key={index}>{actor.name} as {actor.character}</li>
+    
+    <ul className="card-box">
+        {movieGenres.map((genre) => (
+          <li key={genre.id}>{genre.name}</li>
         ))}
       </ul>
-    </div> */}
+      <div className="card-wrap">
+      <p>{movie.overview}</p>
+  
     <div className="cast-list">
-  <h2 className="cast-title">Cast</h2>
+  {/* <h2>Cast</h2> */}
   <ul className="cast-members">
-    {cast.slice(0,3).map((actor, index) => (
+    {cast.slice(0,4).map((actor, index) => (
       <li key={index} className="cast-member">
         <span className="actor-name">{actor.name}</span>
         <span className="as"> as </span>
@@ -229,6 +236,7 @@ movie? (
       </li>
     ))}
   </ul>
+</div>
 </div>
 
     </div>
