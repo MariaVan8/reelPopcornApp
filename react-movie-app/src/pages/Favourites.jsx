@@ -35,12 +35,12 @@ function Favourites() {
                   <p>
                     {movie.overview.split(" ").slice(0, 20).join(" ") + "..."}
                   </p>
-                  <Link to={`/movies/${movie.id}`}>
-                    <button>More Info</button>
+                  <Link to={`/movie/${movie.id}`}>
+                    <button className="neon-purple">More Info</button>
                   </Link>
                   <div className="button-group">
                     <button
-                      className={`button-icon`}
+                      className={`button-icon neon-blue`}
                       onClick={() => removeFromFavList(movie)}
                     >
                       <svg

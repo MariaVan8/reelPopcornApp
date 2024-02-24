@@ -174,7 +174,7 @@
         align-items: center;
         margin-top: 10px;
         // padding: 10px;
-        border-radius: 20px;
+
         // border: 1px solid #fff;
         background: none;
         color: #fff;
@@ -228,6 +228,125 @@
       color: #fff;
       font-weight: 700;
       font-size: 2em;
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  .movie-container {
+    margin: 0 auto;
+    width: 100%;
+    padding: 20px;
+    gap: 2vh;
+    height: 340px;
+    border: 3px solid #fff;
+
+    p {
+      font-size: 1rem;
+    }
+    h3 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    img {
+      width: 200px;
+    }
+  }
+}
+
+@media (min-width: 960px) {
+  ul {
+    @include flex-row;
+    flex-wrap: wrap;
+    list-style: none;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 2vh;
+    margin: 0;
+    padding: 0;
+  }
+  ul li {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2vh;
+  }
+  h1 {
+    font-size: 5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-family: $secondary-font;
+    margin: 0;
+  }
+
+  .movie-container {
+    @include flex-row;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    padding: 20px;
+    gap: 2vh;
+    height: 340px;
+    border: 3px solid #fff;
+
+    h2 {
+      margin: 0;
+    }
+
+    img {
+      width: 200px;
+    }
+  }
+  .movie-infomovie-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-top: 15px;
+
+    h3 {
+      color: $secondary-color;
+      font-size: 2rem;
+      margin: 0;
+      padding: 0;
+      line-height: 2.1rem;
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
+      font-size: 0.9rem;
+    }
+
+    .more-info-btn {
+      @include flex-row;
+      margin-top: 10px;
+      padding: 10px;
+
+      // border: 1px solid #fff;
+      // background: none;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      width: 150px;
+      text-align: center;
+      align-items: center;
+      cursor: pointer;
+      border: none;
+      justify-content: center;
+
+      transition: all 0.6s ease;
+      background: #5fb6d9;
+
+      &:hover {
+        background: #2685bf;
+        // color: #000;
+      }
     }
   }
 }
