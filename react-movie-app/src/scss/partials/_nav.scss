@@ -4,6 +4,82 @@
 // body {
 //   background: linear-gradient(90deg, #7bed9f, #3498db);
 // }
+
+:root {
+  --primary: 35 100% 100%;
+  --angle: 0deg;
+  --primary-hue: 250;
+  --primary-saturation: 66%;
+  --primary-lightness: 61%;
+}
+
+.neon-red {
+  --neon: #ff5161;
+  --neon-glow: #d30302;
+}
+
+.neon-pink {
+  --neon: #ff53cd;
+  --neon-glow: #e10361;
+}
+
+.neon-purple {
+  --neon: #9461fd;
+  --neon-glow: #4003e6;
+}
+
+.neon-blue {
+  --neon: #2dd9fe;
+  --neon-glow: #00a3d5;
+}
+
+.neon-green {
+  --neon: #00fe9b;
+  --neon-glow: #02c435;
+}
+
+.neon-yellow {
+  --neon: #ffdb4e;
+  --neon-glow: #b48505;
+}
+
+.neon-white {
+  --neon: #fefefe;
+  --neon-glow: #ffffff;
+}
+
+@supports (background: color(display-p3 1 1 1)) {
+  @media (dynamic-range: high) {
+    .neon-red {
+      --neon-glow: color(display-p3 1 0 0);
+    }
+
+    .neon-pink {
+      --neon-glow: color(display-p3 1 0 1);
+    }
+
+    .neon-purple {
+      --neon-glow: color(display-p3 0 0 1);
+    }
+
+    .neon-blue {
+      --neon-glow: color(display-p3 0 1 1);
+    }
+
+    .neon-green {
+      --neon-glow: color(display-p3 0 1 0);
+    }
+
+    .neon-yellow {
+      --neon-glow: color(display-p3 1 1 0);
+    }
+
+    .neon-white {
+      --neon-glow: color(display-p3 1 1 1);
+    }
+  }
+}
+
 .nav {
   @include flex-col;
   position: relative;
@@ -63,7 +139,7 @@
 
   .button {
     position: relative;
-    background-color: rgb(204, 179, 38);
+    background-color: var(--neon);
     height: 5rem;
     width: 5rem;
     border-radius: 50%;
@@ -71,9 +147,11 @@
     top: 1vh;
     right: 1vw;
     z-index: 2000;
-    box-shadow: 0 1rem 3rem black;
+    // box-shadow: 0 1rem 3rem black;
     text-align: center;
     cursor: pointer;
+    border: 5px solid var(--neon);
+    box-shadow: 0 0 50px var(--neon-glow), inset 0 0 50px var(--neon-glow);
   }
 
   .background {
@@ -83,7 +161,7 @@
     position: fixed;
     top: 1.5vh;
     right: 1.5vw;
-    background-image: radial-gradient(rgb(209, 62, 36), black);
+    background-image: radial-gradient(var(--neon), black);
     z-index: 1000;
 
     transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
@@ -111,19 +189,30 @@
 
   /* styling hamb ICON */
   .icon {
+    @include flex-col;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 20%;
+    // transform: translate(-5%, -45%);
+    margin: 0 auto;
   }
 
   .icon,
   .icon::before,
   .icon::after {
+    @include flex-col;
+    justify-content: center;
+    align-items: center;
     width: 3rem;
-    height: 2px;
+    height: 6px;
+    margin: 0 auto;
     background-color: gray;
     display: inline-block;
+    transform: translate(-5%, -45%);
+    border: 2px solid var(--neon);
+    box-shadow: 0 0 10px var(--neon-glow), inset 0 0 10px var(--neon-glow);
   }
 
   .icon::before,
@@ -150,6 +239,8 @@
 
   .checkbox:checked + .button .icon {
     background-color: transparent;
+    border: none;
+    box-shadow: none;
   }
 
   .checkbox:checked + .button .icon::before {

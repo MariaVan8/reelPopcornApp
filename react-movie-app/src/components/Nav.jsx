@@ -69,10 +69,14 @@ const Nav = () => {
         <img className="logo" src={reelPopcornLogo} alt="Reel Popcorn Logo" />
       </div>
       <input type="checkbox" id="navi-toggle" className="checkbox" />
-      <label htmlFor="navi-toggle" className="button" onClick={toggleMenu}>
-        <span className="icon">&nbsp;</span>
+      <label
+        htmlFor="navi-toggle"
+        className="button neon-purple"
+        onClick={toggleMenu}
+      >
+        <span className="icon neon-blue">&nbsp;</span>
       </label>
-      <div className="background">&nbsp;</div>
+      <div className="background neon-purple">&nbsp;</div>
 
       <nav className={`nav${isDesktop ? "" : "-menu"}`}>
         <div className="nav-logo">
