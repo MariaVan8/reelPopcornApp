@@ -1,6 +1,33 @@
 @use '../mixins' as *;
 @use '../variables' as *;
 
+@keyframes neonBorderFlash {
+    0%, 100% {
+      box-shadow: 0 0 3px #F2A950, 0 0 7px #F2A950, 0 0 20px #ff4500, 0 0 40px #ff7f50, 0 0 80px #ff7f50;
+    }
+    50% {
+      box-shadow: 0 0 7px #F2A950, 0 0 10px #ff4500, 0 0 10px #F2A950, 0 0 60px #ff7f50, 0 0 40px #ff7f50;
+    }
+  }
+  @keyframes neonTextGlow {
+    0%, 100% {
+      text-shadow:
+        0 0 5px #ff4500,
+        0 0 10px #ff4500,
+        0 0 20px #ff4500,
+        0 0 40px #ff7f50,
+        0 0 80px #ff7f50;
+    }
+    50% {
+      text-shadow:
+        0 0 10px #ff4500,
+        0 0 20px #ff4500,
+        0 0 30px #ff4500,
+        0 0 60px #ff7f50,
+        0 0 90px #ff7f50;
+    }
+  }
+  
 .card{
     &-wrapper{
         width: 100%;
@@ -44,6 +71,8 @@
         font-size: 2rem;
         margin: 0;
         z-index: 10;
+        animation: neonTextGlow 1.5s infinite alternate;
+
     }
   
     &-image{
@@ -52,11 +81,22 @@
     }
 
     &-btn{
-        height: 2rem;
-        width: 4.5rem; 
-        padding: 0;
-        color: $secondary-color;
-        background-color: #ffffff54;
+        // height: 2rem;
+        // width: 4.5rem; 
+        // padding: 0;
+        // color: $secondary-color;
+        // background-color: #ffffff54;
+        border: 1px solid #F2A950; /* Neon orange border */
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        background: #000; /* Change the background color as needed */
+        color: #fff; /* Color of the text inside the button */
+        padding: 10px 20px; /* Adjust padding as needed */
+        font-size: 1rem; /* Adjust font size as needed */
+        cursor: pointer;
+        animation: neonBorderFlash 1.5s infinite alternate;
+        outline: none; 
     }
 
     &-bottom{
@@ -65,7 +105,12 @@
         justify-content: space-between;
         align-items: center;
         gap: 1rem;
-        z-index: 10;
+        
+    }
+    &-box{
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     &-right{
@@ -161,11 +206,14 @@
         aspect-ratio: 2/2;
     
         &-title{
-            font-size: 2rem;
+            font-size: 2.5rem;
         }
         &-container{
         margin: 0 2rem;
-        align-items: flex-start;
+        // align-items: flex-start;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-around;
         }
 
         &-btn{
@@ -210,7 +258,7 @@
 
     &-bottom{
         justify-content: space-evenly;
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
 
     &-floor{
@@ -252,6 +300,10 @@
             width: 100%;
             gap: 1rem;
             padding-left: 0rem;
+            flex-direction: column;
+            p{
+                font-size: 20px;
+            }
         }
 
         &-casting{
@@ -272,13 +324,18 @@
         };
         &-floor{
             width: 80%;
+            flex-direction: column;
           }
   
     }
 
     @media (min-width: 1240px){
         margin-top: 3rem 1rem 0 3rem;
-        width: 80%;
+        width: 100%;
+        &-title{
+            font-size: 4rem;
+        
+        }
         &-container{
             width: 26rem;
      
@@ -292,3 +349,64 @@
 
   
 }
+
+.genre-btn {
+    background: transparent; /* No fill, just the border */
+    border: 2px solid #F2A950; /* Neon Orange Border */
+    color: #fff; /* White text */
+    border-radius: 15px;
+    padding: 5px 10px; /* Some padding */
+    margin: 0 5px; /* Margins for spacing between buttons */
+    cursor: pointer; /* Cursor indicates it's clickable */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+  
+    &:hover {
+      background-color: #ff4500; /* Neon Orange background on hover */
+      color: #000; /* Black text on hover */
+    }
+  }
+  .cast-list {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+   align-items: center;
+    border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+    width: auto;
+    max-width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .cast-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .cast-members {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .cast-member {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  }
+  
+  .actor-name {
+    font-weight: bold;
+  }
+  
+  .character-name {
+    font-style: italic;
+    color: #e69a2a; /* Neon-like orange for contrast */
+  }
+  
+  .as {
+    color: #ccc; /* Light gray for the word 'as' */
+  }
+  
+  

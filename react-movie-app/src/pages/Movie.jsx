@@ -14,7 +14,7 @@ function Movie() {
   const [showModal, setShowModal] = useState(false);
   const [duration, setDuration] = useState('');
   const [ranking, setRanking] = useState(null);
-  const [casting, setCasting] = useState([]);
+  const [cast, setCast] = useState([]);
   const [genres, setGenres] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState('');
   const LANGUAGE = 'en-US';
@@ -33,6 +33,29 @@ const handleWindowSizeChange = () => {
 
   const BASE_URL = 'https://api.themoviedb.org/3';
   const API_KEY = 'b49aeaca09961dbfa4e7d1b0fea43944';
+
+
+  const fetchCastList = async () => {
+    const url = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=en-US`;
+  
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+  
+      if (response.ok) {
+        return data.cast; // This is the array of cast members
+      } else {
+        throw new Error('Failed to fetch cast list: ' + response.statusText);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+  useEffect(() => {
+    fetchCastList().then(setCast);
+  }, []); // Empty dependency array ensures this only runs once on mount
+
 
   // Function to fetch trailer video based on movie id
   const fetchTrailerUrl = async (id) => {
@@ -91,17 +114,6 @@ useEffect(() => {
     const rank = Math.floor(Math.random() * 10) + 1;
     setRanking(`#${rank} in Movies Today`);
 
-    const actors = [
-      'Michael Rivers', 'Jessica Stone', 'David Hale', 'Emily Clarkson', 
-      'Alex Duncan', 'Sarah Parker', 'Daniel Marsh', 'Olivia Turner', 
-      'James Ford', 'Laura Brooks', 'Ethan Grant', 'Natalie Cooper', 
-      'Ryan Bishop', 'Chloe Adams', 'Benjamin Knight', 'Sophia Bell', 
-      'Aaron Chase', 'Isabella Hart', 'Christopher Dean', 'Grace Alexander'
-    ];
-
-        // Shuffle the array and pick the first three names
-        actors.sort(() => 0.5 - Math.random());
-        setCasting(actors.slice(0, 3));
     
         const genreList = [
           "Action", "Comedy", "Drama", "Fantasy", "Horror",
@@ -115,6 +127,27 @@ useEffect(() => {
     
 
 }, []);
+
+const fetchMovieRuntime = async () => {
+  const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`;
+
+  try {
+    const response = await fetch(url);
+    const movieDetails = await response.json();
+
+    if (response.ok) {
+      return movieDetails.runtime; // The runtime of the movie in minutes
+    } else {
+      throw new Error('Failed to fetch movie details: ' + response.statusText);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+fetchMovieRuntime().then(runtime => {
+  console.log(runtime); // Logs the runtime of the movie to the console
+});
 
   // Convert URL parameter to a number for comparison if movie IDs are numbers
   const movieId = Number(id);
@@ -166,14 +199,41 @@ movie? (
     
     </div>
     <div className="card-floor">
+    <div className="card-box">
+
+    {genres.map((genre, index) => (
+      <button key={index} className="genre-btn">
+        {genre}
+      </button>
+    ))}
+    </div>
       <p>{movie.overview}</p>
-      <div className="card-casting">
-        <span><span className="card-text">Starring:</span> {casting.join(', ')}</span>
-        <div><span className="card-text">Genres: </span>{genres.join(', ')}</div>
-      </div>
+      {/* <div className="card-casting"> 
+      </div> */}
+      {/* <div>
+      <h2>Cast</h2>
+      <ul>
+        {cast.slice(0,3).map((actor, index) => (
+          <li key={index}>{actor.name} as {actor.character}</li>
+        ))}
+      </ul>
+    </div> */}
+    <div className="cast-list">
+  <h2 className="cast-title">Cast</h2>
+  <ul className="cast-members">
+    {cast.slice(0,3).map((actor, index) => (
+      <li key={index} className="cast-member">
+        <span className="actor-name">{actor.name}</span>
+        <span className="as"> as </span>
+        <span className="character-name">{actor.character}</span>
+      </li>
+    ))}
+  </ul>
+</div>
+
     </div>
   </div>
-  {/* </div> */}
+
   </>
 ):(
   <>
