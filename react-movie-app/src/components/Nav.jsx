@@ -86,7 +86,7 @@ const Nav = () => {
           <li>
             <NavLink
               to="/"
-              className="nav-link"
+              className="nav-link neon-blue"
               onClick={() => {
                 document.getElementById("navi-toggle").checked = false;
                 const h1Element = document.querySelector("h1");
@@ -106,7 +106,7 @@ const Nav = () => {
           <li>
             <NavLink
               to="/AboutUs"
-              className="nav-link"
+              className="nav-link neon-yellow"
               onClick={() => {
                 document.getElementById("navi-toggle").checked = false;
                 const h1Element = document.querySelector("h1");
@@ -126,7 +126,7 @@ const Nav = () => {
           <li>
             <NavLink
               to="/Favorites"
-              className="nav-link"
+              className="nav-link neon-red"
               onClick={() => {
                 document.getElementById("navi-toggle").checked = false;
                 const h1Element = document.querySelector("h1");
@@ -146,7 +146,7 @@ const Nav = () => {
           <li>
             <NavLink
               to="/WatchLater"
-              className="nav-link"
+              className="nav-link neon-green"
               onClick={() => {
                 document.getElementById("navi-toggle").checked = false;
                 const h1Element = document.querySelector("h1");
