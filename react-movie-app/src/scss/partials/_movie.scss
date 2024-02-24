@@ -116,6 +116,7 @@
         justify-content: center;
         list-style-type: none; /* Remove default list bullet */
         padding-left: 0; 
+        flex-wrap: wrap;
         li{
             display: inline-block;
             margin: 0.5rem; /* Adjust margin for proper spacing */
