@@ -355,12 +355,32 @@
       }
     }
 
-    &-movie-info {
-      :nth-child(4) {
-        @include flex-col;
-      }
+        &-movie-info {
+
+            :nth-child(4) {
+                @include flex-col;
+            }
+        }
+
+        .star-container{
+            @include flex-row;
+            width: 150px;
+            flex-wrap: nowrap;
+            // transform: translate(-50%, -50%);
+            margin: 0 ;
+            padding: 0;
+          }
+          .star{
+            background-image: url('./images/A_star.png'); /* Replace with your star icon */
+            background-size: cover; 
+            height: 30px;
+            width: 30px;
+         
+        }
+          .checked{
+            background-color: orange;
+          }
     }
-  }
 
   @media (min-width: 960px) {
     @include flex-col;
