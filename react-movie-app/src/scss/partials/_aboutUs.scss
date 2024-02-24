@@ -1,0 +1,47 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use '../typography' as *;
+
+.about {
+    display: flex;
+    @include flex-col;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    height: 60vh;
+
+    &-heading {
+        display: flex;
+        @include flex-col;
+        width: 100%;
+        margin: 0 auto;
+        align-items: center;
+        color: $primary-color;
+        text-align: center;
+    }
+
+    &-container {
+        display: flex;
+        @include flex-row;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &-info {
+        display: flex;
+        @include flex-col;
+        width: 40%;
+        padding: 50px;
+        text-align: left;
+        justify-content: flex-start;
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 0;
+            text-align: left;
+            color: $secondary-color;
+        }
+    }
+
+}

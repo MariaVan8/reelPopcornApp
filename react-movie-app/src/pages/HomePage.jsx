@@ -14,9 +14,13 @@ function HomePage() {
 
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState(options[0].value);
-  const { movies, fetchUpcomingMovies, fetchPopularMovies, fetchTopRatedMovies, fetchNowPlayingMovies ,toggleFavourite, toggleWatchlist, favourites, watchlist } =
+  const { movies, fetchUpcomingMovies, fetchPopularMovies, fetchTopRatedMovies, fetchNowPlayingMovies, toggleFavourite, toggleWatchlist, favourites, watchlist } =
     useContext(MovieContext);
 
+  const handleSortClick = (option) => {
+    setSearch('');
+    setSort(option);
+  }
 
   function sortMovies(option) {
     setSearch('');
@@ -29,23 +33,27 @@ function HomePage() {
     }
     return true;
   });
+
   useEffect(() => {
-    
-    if (sort === "popularity") {
-      fetchPopularMovies();
-    } 
-    else if (sort === "upcoming") {      
-      fetchUpcomingMovies();
+    switch (sort) {
+      case "popularity":
+        fetchPopularMovies();
+        break;
+      case "top-rated":
+        fetchTopRatedMovies();
+        break;
+      case "upcoming":
+        fetchUpcomingMovies();
+        break;
+      case "now-playing":
+        fetchNowPlayingMovies();
+        break;
+      default:
+        break;
     }
-    else if (sort === "now-playing") {
-      fetchNowPlayingMovies();
-    }
-    else {
-      fetchTopRatedMovies();
-    }
-  }, [sort, fetchPopularMovies, fetchUpcomingMovies, fetchNowPlayingMovies, fetchTopRatedMovies]);
-  
-  const sorting = [...filteredMovies].sort((a, b) => {
+  }, [sort]);
+
+  const sortedMovies = [...filteredMovies].sort((a, b) => {
     switch (sort) {
       case "popularity":
         return b.popularity - a.popularity;
@@ -60,6 +68,28 @@ function HomePage() {
     }
   });
 
+  useEffect(() => {
+    const buttons = document.querySelectorAll(".home-filter-btn");
+
+    buttons.forEach((button) => {
+      button.addEventListener("mousemove", (e) => {
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        button.style.setProperty("--mouseX", `${x}px`);
+        button.style.setProperty("--mouseY", `${y}px`);
+      });
+    });
+
+    return () => {
+      // Cleanup the event listeners when the component unmounts
+      buttons.forEach((button) => {
+        button.removeEventListener("mousemove", () => { });
+      });
+    };
+  }, []);
+
 
   return (
 
@@ -69,24 +99,33 @@ function HomePage() {
         <h2>where movie and popcorn lovers meet</h2>
       </div>
       <div className="home-search-filter">
-        <input onChange={(e) => setSearch(e.target.value)} placeholder="Search Movie">
-        </input>
-        <select onChange={sortMovies}>
-          {options.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+        {/* <input onChange={(e) => setSearch(e.target.value)} placeholder="Search Movie">
+        </input> */}
+        {/* Replace select with buttons */}
+        {options.map((option) => (
+          <button
+            key={option.value}
+            onClick={() => handleSortClick(option.value)}
+            className={`home-filter-btn ${sort === option.value ? 'active neon-blue' : ''}`}
+          >
+            <div class="inner"></div>
+            <span>{option.label}</span>
+          </button>
+        ))}
       </div>
+      {/* ... (existing code) */}
       <div className="home-movies">
-        {sorting.map((movie) => (
+        {sortedMovies.map((movie) => (
           // <li key={movie.id}>
-          <div className="home-movie-container" key={movie.id}>
+          <div className="home-movie-container neon-blue" key={movie.id}>
             <img
               src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               alt={movie.title}
             />
+            {/* <img
+              src={`https://image.tmdb.org/t/p/w1280/${movie.backdrop_path}`}
+              alt={movie.title}
+            /> */}
             <div className="home-movie-info">
               <h3>{movie.title}</h3>
               {/* <p>Released: {movie.release_date}</p> */}
@@ -98,26 +137,26 @@ function HomePage() {
                   day: "numeric",
                 })}
               </p>
-              <p>Rating: {parseFloat(movie.vote_average).toFixed(2)}</p>
+              <p>Rating: {(parseFloat(movie.vote_average)*10).toFixed(2)}%</p>
               <p>
                 {movie.overview.split(" ").slice(0, 20).join(" ") + "..."}
               </p>
-              <Link to={`/movies/${movie.id}`}>
-                <button>More Info</button>
+              <Link to={`/movie/${movie.id}`}>
+                <button className="neon-purple">More Info</button>
               </Link>
               <div className="home-button-group">
                 <button
-                  className={`button-icon`}
+                  className={`button-icon neon-pink`}
                   onClick={() => toggleFavourite(movie)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
+                    viewBox="0 0 25 25"
                     width="24"
                     height="24"
                     fill={
                       favourites.some((fav) => fav.id === movie.id)
-                        ? "red"
+                        ? "#FF53cd"
                         : "white"
                     }
                   >
@@ -125,13 +164,13 @@ function HomePage() {
                   </svg>
                 </button>
                 <button
-                  className={`button-icon watchlist-button`}
+                  className={`button-icon watchlist-button neon-green`}
                   onClick={() => toggleWatchlist(movie)}
                 >
                   {watchlist.some((item) => item.id === movie.id) ? (
-                    <span>-</span>
+                    <p>-</p>
                   ) : (
-                    <span>+</span>
+                    <p>+</p>
                   )}
                 </button>
               </div>

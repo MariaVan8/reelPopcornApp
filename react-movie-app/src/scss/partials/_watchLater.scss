@@ -1,9 +1,14 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use '../typography' as *;
+
 .watchlater-container {
-  display: flex;
-  flex-direction: column;
+  @include flex-col;
+  justify-content: center;
   width: 100%;
   margin: 0 auto;
   text-align: center;
+  height: 100vh;
 
   h1 {
     font-size: 2em;
@@ -97,4 +102,5 @@
 
 .button-group {
   display: flex;
+  gap: 1vh;
 }
