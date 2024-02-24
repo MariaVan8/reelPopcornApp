@@ -11,11 +11,11 @@ function Favourites() {
   return (
     <div>
       <div className="fav-container">
-        <h1>Favourites</h1>
+        <h1>favourites</h1>
         <ul>
           {favourites.map((movie) => (
             <li key={movie.id}>
-              <div className="movie-container">
+              <div className="movie-container neon-red">
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                   alt={movie.title}

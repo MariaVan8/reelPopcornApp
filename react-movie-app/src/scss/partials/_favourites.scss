@@ -1,6 +1,81 @@
-@use '../variables' as *;
-@use '../mixins' as *;
-@use '../typography' as *;
+@use "../variables" as *;
+@use "../mixins" as *;
+@use "../typography" as *;
+
+:root {
+  --primary: 35 100% 100%;
+  --angle: 0deg;
+  --primary-hue: 250;
+  --primary-saturation: 66%;
+  --primary-lightness: 61%;
+}
+
+.neon-red {
+  --neon: #ff5161;
+  --neon-glow: #d30302;
+}
+
+.neon-pink {
+  --neon: #ff53cd;
+  --neon-glow: #e10361;
+}
+
+.neon-purple {
+  --neon: #9461fd;
+  --neon-glow: #4003e6;
+}
+
+.neon-blue {
+  --neon: #2dd9fe;
+  --neon-glow: #00a3d5;
+}
+
+.neon-green {
+  --neon: #00fe9b;
+  --neon-glow: #02c435;
+}
+
+.neon-yellow {
+  --neon: #ffdb4e;
+  --neon-glow: #b48505;
+}
+
+.neon-white {
+  --neon: #fefefe;
+  --neon-glow: #ffffff;
+}
+
+@supports (background: color(display-p3 1 1 1)) {
+  @media (dynamic-range: high) {
+    .neon-red {
+      --neon-glow: color(display-p3 1 0 0);
+    }
+
+    .neon-pink {
+      --neon-glow: color(display-p3 1 0 1);
+    }
+
+    .neon-purple {
+      --neon-glow: color(display-p3 0 0 1);
+    }
+
+    .neon-blue {
+      --neon-glow: color(display-p3 0 1 1);
+    }
+
+    .neon-green {
+      --neon-glow: color(display-p3 0 1 0);
+    }
+
+    .neon-yellow {
+      --neon-glow: color(display-p3 1 1 0);
+    }
+
+    .neon-white {
+      --neon-glow: color(display-p3 1 1 1);
+    }
+  }
+}
 
 .fav-container {
   @include flex-col;
@@ -11,8 +86,12 @@
   justify-content: center;
 
   h1 {
-    font-size: 2em;
-    text-shadow: 1px 1px 2px #f2af06;
+    text-shadow: 1px 1px 2px $secondary-color;
+    color: $primary-color;
+    font-size: 4.3rem;
+    height: 300px;
+    justify-content: center;
+    padding: 20px;
   }
 
   ul {
