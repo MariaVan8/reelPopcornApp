@@ -9,7 +9,7 @@ function WatchLater() {
     useContext(MovieContext);
 
   return (
-    <div className="watchlater-container">
+    <div className="watchlater-container neon-green">
       <h1>Watch Later</h1>
       <ul>
         {watchlist.map((movie) => (
@@ -34,8 +34,8 @@ function WatchLater() {
                 <p>
                   {movie.overview.split(" ").slice(0, 20).join(" ") + "..."}
                 </p>
-                <Link to={`/movies/${movie.id}`}>
-                  <button>More Info</button>
+                <Link to={`/movie/${movie.id}`}>
+                  <button className="neon-purple">More Info</button>
                 </Link>
                 <div className="button-group">
                   <button
@@ -57,7 +57,7 @@ function WatchLater() {
                     </svg>
                   </button>
                   <button
-                    className={`button-icon watchlist-button`}
+                    className={`button-icon watchlist-button neon-yellow`}
                     onClick={() => toggleWatchlist(movie)}
                   >
                     {watchlist.some((item) => item.id === movie.id) ? (
