@@ -19,6 +19,18 @@ function Movie() {
   const [trailerUrl, setTrailerUrl] = useState('');
   const LANGUAGE = 'en-US';
 
+  // Define a state to keep track of the screen width
+const [isMobile, setIsMobile] = useState(window.matchMedia("(max-width: 759px)").matches);
+const [isTabletOrDesktop, setIsTabletOrDesktop] = useState(window.matchMedia("(min-width: 760px)").matches);
+
+// Define a function to update the state based on the screen width
+const handleWindowSizeChange = () => {
+  setIsMobile(window.matchMedia("(max-width: 759px)").matches);
+  setIsTabletOrDesktop(window.matchMedia("(min-width: 760px)").matches);
+};
+
+
+
   const BASE_URL = 'https://api.themoviedb.org/3';
   const API_KEY = 'b49aeaca09961dbfa4e7d1b0fea43944';
 
@@ -53,6 +65,20 @@ const openModal = async () => {
 useEffect(() => {
   fetchTrailerUrl(id).then(setTrailerUrl);
 }, [id]);
+
+
+// Set up an effect that adds the event listener when the component mounts and removes it when it unmounts
+useEffect(() => {
+  window.addEventListener('resize', handleWindowSizeChange);
+  
+  // Call the handler function immediately to set the initial state
+  handleWindowSizeChange();
+
+  // Cleanup the event listener when the component unmounts
+  return () => {
+    window.removeEventListener('resize', handleWindowSizeChange);
+  };
+}, []);
 
 
 useEffect(() => {
@@ -96,23 +122,30 @@ useEffect(() => {
   // Find the movie by id, ensure you compare the same type (both numbers or both strings)
   const movie = movies.find((movie) => movie.id === movieId);
 
-  // Check if movie is found before constructing imageUrl
-  const imageUrl = movie
-    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-    : "";
+ 
+    // Construct image URL for the poster and backdrop
+    const posterUrl = movie ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : "";
+    const backdropUrl = movie ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : "";
   
+    // Define the style objects for poster and banner images
+    const posterStyle = {
+      backgroundImage: `url(${posterUrl})`,
+      // Add any additional styles you need for mobile
+    };
+  
+    const bannerStyle = {
+      backgroundImage: `url(${backdropUrl})`,
+      // Add any additional styles you need for desktop
+    };
 
-  // Define the style object for the background image
-  const cardContainerStyle = {
-    backgroundImage: `url(${imageUrl})`,
-  };
+    const imageStyle = isMobile ? posterStyle : bannerStyle;
 
   return (
 movie? (
   <>
-    <div className="card-big">
+    {/* <div className="card-big"> */}
   <div className="card-wrapper">
-    <div className="card" style={cardContainerStyle}>
+    <div className="card" style={imageStyle}>
       <div className="card-container">
         <h2 className="card-title">{movie.title}</h2>
         <button className="card-btn" onClick={openModal}><img src={play} alt="play"  width={"13rem"} height={"13rem"}/> Play</button>
@@ -140,7 +173,7 @@ movie? (
       </div>
     </div>
   </div>
-  </div>
+  {/* </div> */}
   </>
 ):(
   <>
