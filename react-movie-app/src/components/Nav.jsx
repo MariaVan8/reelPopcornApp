@@ -45,8 +45,26 @@ const Nav = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 960);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 960);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <nav ref={navRef} className={`nav neon-purple ${isSticky ? 'nav-sticky' : ''}`} onClick={blur}>
+    <nav
+      ref={navRef}
+      className={`nav neon-purple ${isSticky ? "nav-sticky" : ""}`}
+      onClick={blur}
+    >
       <div className="nav-logo">
         <img className="logo" src={reelPopcornLogo} alt="Reel Popcorn Logo" />
       </div>
@@ -56,7 +74,10 @@ const Nav = () => {
       </label>
       <div className="background">&nbsp;</div>
 
-      <nav className="nav-menu">
+      <nav className={`nav${isDesktop ? "" : "-menu"}`}>
+        <div className="nav-logo">
+          <img className="logo" src={reelPopcornLogo} alt="Reel Popcorn Logo" />
+        </div>
         <ul className="list">
           <li>
             <NavLink
