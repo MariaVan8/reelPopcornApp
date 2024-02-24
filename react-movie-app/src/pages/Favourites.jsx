@@ -11,11 +11,11 @@ function Favourites() {
   return (
     <div>
       <div className="fav-container">
-        <h1>Favourites</h1>
+        <h1>favourites</h1>
         <ul>
           {favourites.map((movie) => (
             <li key={movie.id}>
-              <div className="movie-container">
+              <div className="movie-container neon-red">
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                   alt={movie.title}
@@ -35,12 +35,12 @@ function Favourites() {
                   <p>
                     {movie.overview.split(" ").slice(0, 20).join(" ") + "..."}
                   </p>
-                  <Link to={`/movies/${movie.id}`}>
-                    <button>More Info</button>
+                  <Link to={`/movie/${movie.id}`}>
+                    <button className="neon-purple">More Info</button>
                   </Link>
                   <div className="button-group">
                     <button
-                      className={`button-icon`}
+                      className={`button-icon neon-blue`}
                       onClick={() => removeFromFavList(movie)}
                     >
                       <svg
