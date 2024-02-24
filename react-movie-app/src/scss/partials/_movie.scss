@@ -369,10 +369,11 @@
         margin-top: 3rem 1rem 0 3rem;
         width: 100%;
         &-wrap{
+            width: 100%;
             @include flex-row;
             gap: 1rem;
             p{
-                width: 60%;
+                margin: 0;
             }
         }
         &-title{
@@ -413,11 +414,11 @@
     font-family: 'Arial', sans-serif;
     color: #fff;
     background-color: rgba(0, 0, 0, 0.5);
-   align-items: center;
+    align-items: center;
     border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: auto;
     max-width: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -425,7 +426,10 @@
     font-size: 1.5rem;
     margin-bottom: 10px;
     text-align: center;
+    @media (min-width: 1024px){
+        padding-top: 3rem;
   
+    }
     }
   }
 
@@ -437,7 +441,7 @@
   
   .cast-member {
     font-size: 1.2rem;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
   }
   
