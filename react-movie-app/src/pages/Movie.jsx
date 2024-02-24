@@ -226,7 +226,7 @@ movie? (
       <p>{movie.overview}</p>
   
     <div className="cast-list">
-  <h2>Cast</h2>
+  {/* <h2>Cast</h2> */}
   <ul className="cast-members">
     {cast.slice(0,4).map((actor, index) => (
       <li key={index} className="cast-member">
