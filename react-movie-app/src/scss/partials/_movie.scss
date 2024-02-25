@@ -1,79 +1,91 @@
 @use '../mixins' as *;
 @use '../variables' as *;
+
 @keyframes neonPulse {
-    0%, 100% {
-      box-shadow: 0 0 5px #ff4500, 0 0 10px #ff4500;
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px #ff4500, 0 0 10px #ff4500;
     }
+
     50% {
-      box-shadow: 0 0 15px #ff7f50, 0 0 20px #ff7f50;
+        box-shadow: 0 0 15px #ff7f50, 0 0 20px #ff7f50;
     }
-  }
+}
 
 @keyframes neonBorderFlash {
-    0%, 100% {
-      box-shadow: 0 0 3px #F2A950, 0 0 7px #F2A950, 0 0 20px #ff4500, 0 0 40px #ff7f50, 0 0 80px #ff7f50;
+
+    0%,
+    100% {
+        box-shadow: 0 0 3px #F2A950, 0 0 7px #F2A950, 0 0 20px #ff4500, 0 0 40px #ff7f50, 0 0 80px #ff7f50;
     }
+
     50% {
-      box-shadow: 0 0 7px #F2A950, 0 0 10px #ff4500, 0 0 10px #F2A950, 0 0 60px #ff7f50, 0 0 40px #ff7f50;
+        box-shadow: 0 0 7px #F2A950, 0 0 10px #ff4500, 0 0 10px #F2A950, 0 0 60px #ff7f50, 0 0 40px #ff7f50;
     }
-  }
-  @keyframes neonTextGlow {
-    0%, 100% {
-      text-shadow:
-        0 0 5px #ff4500,
-        0 0 10px #ff4500,
-        0 0 20px #ff4500,
-        0 0 40px #ff7f50,
-        0 0 80px #ff7f50;
+}
+
+@keyframes neonTextGlow {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 5px #ff4500,
+            0 0 10px #ff4500,
+            0 0 20px #ff4500,
+            0 0 40px #ff7f50,
+            0 0 80px #ff7f50;
     }
+
     50% {
-      text-shadow:
-        0 0 10px #ff4500,
-        0 0 20px #ff4500,
-        0 0 30px #ff4500,
-        0 0 60px #ff7f50,
-        0 0 90px #ff7f50;
+        text-shadow:
+            0 0 10px #ff4500,
+            0 0 20px #ff4500,
+            0 0 30px #ff4500,
+            0 0 60px #ff7f50,
+            0 0 90px #ff7f50;
     }
-  }
-  
-.card{
-    &-wrapper{
+}
+
+.card {
+    &-wrapper {
         width: 100%;
         padding-top: 0rem;
     }
+
     background-repeat: no-repeat;
     display: flex;
     align-items: flex-end;
     width: 100%;
     background-size: cover;
-    // background-position: center;
-    // background-position: 50% 25%;
     aspect-ratio: 3/4;
     margin: 0 0 2rem;
     position: relative;
-    &::after{
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000),
-    linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 20%),
-    linear-gradient(to left, rgba(0, 0, 0, 0.5) 0%, transparent 20%),
-    linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, transparent 20%);
-    z-index: 1;
-}
 
-    &-container{
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000),
+            linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 20%),
+            linear-gradient(to left, rgba(0, 0, 0, 0.5) 0%, transparent 20%),
+            linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, transparent 20%);
+        z-index: 1;
+    }
+
+    &-container {
         z-index: 10;
         @include flex-row;
         justify-content: space-evenly;
         width: 100%;
         align-items: center;
-    
+
     }
-    &-title{
+
+    &-title {
         text-align: center;
         color: $primary-color;
         font-size: 2rem;
@@ -82,73 +94,92 @@
         animation: neonTextGlow 1.5s infinite alternate;
 
     }
-  
-    &-image{
+
+    &-image {
         height: 2rem;
         width: 2rem;
     }
 
-    &-btn{
-        border: 1px solid #F2A950; /* Neon orange border */
+    &-btn {
+        border: 1px solid #F2A950;
+        /* Neon orange border */
         position: relative;
         overflow: hidden;
         border-radius: 15px;
-        background: #000; /* Change the background color as needed */
-        color: #fff; /* Color of the text inside the button */
-        padding: 10px 20px; /* Adjust padding as needed */
-        font-size: 1rem; /* Adjust font size as needed */
+        background: #000;
+        /* Change the background color as needed */
+        color: #fff;
+        /* Color of the text inside the button */
+        padding: 10px 20px;
+        /* Adjust padding as needed */
+        font-size: 1rem;
+        /* Adjust font size as needed */
         cursor: pointer;
         animation: neonBorderFlash 1.5s infinite alternate;
-        outline: none; 
+        outline: none;
     }
 
-    &-bottom{
+    &-bottom {
         padding: 0 1rem;
         @include flex-row;
         justify-content: space-between;
         align-items: center;
         gap: 1rem;
-        
+
     }
-    &-box{
+
+    &-box {
         display: flex;
         align-items: center;
         justify-content: center;
-        list-style-type: none; /* Remove default list bullet */
-        padding-left: 0; 
+        list-style-type: none;
+        /* Remove default list bullet */
+        padding-left: 0;
         flex-wrap: wrap;
-        li{
+
+        li {
             display: inline-block;
-            margin: 0.5rem; /* Adjust margin for proper spacing */
+            margin: 0.5rem;
+            /* Adjust margin for proper spacing */
             padding: 0.5rem 1rem;
             font-size: 1rem;
             color: #fff;
             font-weight: bold;
             text-transform: uppercase;
-            background: linear-gradient(45deg, #ff8966, #ff62a0); /* Soft gradient background */
-            border-radius: 20px; /* Rounded ends for capsule shape */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), /* Subtle shadow for depth */
-                         0 0 10px #ff8966, /* Outer neon glow */
-                         0 0 15px #ff62a0; /* Outer neon glow */
+            background: linear-gradient(45deg, #ff8966, #ff62a0);
+            /* Soft gradient background */
+            border-radius: 20px;
+            /* Rounded ends for capsule shape */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2),
+                /* Subtle shadow for depth */
+                0 0 10px #ff8966,
+                /* Outer neon glow */
+                0 0 15px #ff62a0;
+            /* Outer neon glow */
             transition: box-shadow 0.3s ease-in-out;
+
             :hover {
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), /* Subtle shadow for depth */
-                             0 0 15px #ff8966, /* Stronger glow on hover */
-                             0 0 20px #ff62a0; /* Stronger glow on hover */
-              }
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2),
+                    /* Subtle shadow for depth */
+                    0 0 15px #ff8966,
+                    /* Stronger glow on hover */
+                    0 0 20px #ff62a0;
+                /* Stronger glow on hover */
+            }
         }
-        
+
     }
 
-    &-wrap{
+    &-wrap {
         @include flex-col;
     }
 
-    &-right{
+    &-right {
         @include flex-col;
         align-items: center;
         gap: 0.7rem;
-        button{
+
+        button {
             border: 2px solid $white-color;
             border-radius: 14px;
             padding: 0.5;
@@ -159,276 +190,313 @@
         }
     }
 
-    &-info{
+    &-info {
         display: flex;
         align-items: center;
         gap: 1rem;
         color: $secondary-color;
-        img{
+
+        img {
             height: 2rem;
             width: 2rem;
         }
-       :nth-child(2){
-        // background: #f7465b;
-        border-radius: 8px;
-       }
-        :nth-child(6){
+
+        :nth-child(2) {
+            // background: #f7465b;
+            border-radius: 8px;
+        }
+
+        :nth-child(6) {
             border-radius: 20px;
-            &:hover{
+
+            &:hover {
                 background-color: rgb(244, 42, 42);
-            
+
             }
         }
     }
-    &-details{
+
+    &-details {
         display: flex;
         gap: 1rem;
         align-items: center;
-        :nth-child(4){
+
+        :nth-child(4) {
             background-color: $white-color;
             height: 1.4rem;
         }
     }
 
-    &-bottom{
+    &-bottom {
         @include flex-col;
-      align-items: center;
+        align-items: center;
 
     }
-    &-text{
+
+    &-text {
         font-weight: 700;
         color: $white-color;
     }
 
-    @media (min-width: 426px){
+    @media (min-width: 426px) {
         padding: 2rem;
-        &-container{
-        aspect-ratio:4/3;
-        background-position: center;
-        flex-direction: column-reverse;
-        align-items: flex-start;
-        justify-content: end;
-        gap: 1rem;
+
+        &-container {
+            aspect-ratio: 4/3;
+            background-position: center;
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            justify-content: end;
+            gap: 1rem;
         }
 
-        &-title{
+        &-title {
             font-size: 2.2rem;
         }
-        &-bottom{
+
+        &-bottom {
             width: 100%;
         }
-        &-top{
+
+        &-top {
             gap: 0;
         }
 
-        &-right{
+        &-right {
             margin-left: 1rem;
             margin-right: 0;
         }
 
-        &-info{
+        &-info {
             width: 100%;
             justify-content: center;
         }
-        &-floor{
+
+        &-floor {
             padding: 0rem 2rem;
         }
 
     }
 
-    @media (min-width: 560px){
+    @media (min-width: 560px) {
         aspect-ratio: 2/2;
-    
-        &-title{
+
+        &-title {
             font-size: 2.5rem;
         }
-        &-container{
-        margin: 0 2rem;
-        // align-items: flex-start;
-        flex-direction: row;
-        align-items: flex-end;
-        justify-content: center;
+
+        &-container {
+            margin: 0 2rem;
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: center;
         }
 
-        &-btn{
-         margin-bottom: 10px;
+        &-btn {
+            margin-bottom: 10px;
         }
 
-        &-top{
+        &-top {
             gap: 0;
         }
 
-        &-right{
+        &-right {
             margin-right: 0;
         }
     }
 
     @media (min-width: 760px) {
-        aspect-ratio:19/6;
+        aspect-ratio: 19/6;
         background-position: 50% 25%;
         align-items: flex-end;
         background-size: none;
 
-    &-container{
-        width: 22rem;
-        background-position: top;
-        flex-direction: column;
-        align-items: flex-start;
-        margin: 0;
-        :nth-child(1){
-       text-align: left;
+        &-container {
+            width: 22rem;
+            background-position: top;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 0;
+
+            :nth-child(1) {
+                text-align: left;
+            }
         }
-    };
 
-    &-wrapper{
-        width: 100%;
+        ;
+
+        &-wrapper {
+            width: 100%;
+        }
+
+        &-info {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        &-bottom {
+            justify-content: space-evenly;
+            flex-direction: column;
+        }
+
+        &-floor {
+            padding: 0rem 0rem 0rem 1rem;
+        }
+
+        &-big {
+            display: flex;
+        }
+
+        &-info {
+            display: flex;
+            align-items: center;
+            width: 85%;
+        }
     }
 
-    &-info{
-    display: flex;
-    flex-wrap: wrap; /* Allow items to wrap */
-    align-items: center; 
-     }
-
-    &-bottom{
-        justify-content: space-evenly;
-        flex-direction: column;
-    }
-
-    &-floor{
-        padding: 0rem 0rem 0rem 1rem;
-    }
-
-    &-big{
-    display: flex;
-    }
-
-    &-info{
-    display: flex;
-    align-items: center;
-    width: 85%;       
-    }
-    }
-
-    @media (min-width: 860px){
+    @media (min-width: 860px) {
         width: 100%;
         justify-content: space-between;
 
-        &-top{
+        &-top {
             flex-direction: row-reverse;
         }
 
-        &-right{
+        &-right {
             width: 9rem;
         }
-        &-bottom{
+
+        &-bottom {
             width: 100%;
             display: flex;
             justify-content: center;
-            p{
-            align-self: center;
+
+            p {
+                align-self: center;
             }
         }
-        &-floor{
+
+        &-floor {
             display: flex;
             width: 100%;
             gap: 1rem;
             padding-left: 0rem;
             flex-direction: column;
-            p{
+
+            p {
                 font-size: 20px;
             }
         }
 
-        &-casting{
+        &-casting {
             width: 130%;
             margin-top: 1rem;
             @include flex-col;
             gap: 1rem;
-            
+
         }
     }
 
-    @media (min-width: 960px){
+    @media (min-width: 960px) {
         width: 100%;
-        &-container{
+
+        &-container {
             width: 26rem;
             background-position: top;
             margin-left: 1rem;
         }
-        &-floor{
+
+        &-floor {
             width: 80%;
             display: flex;
             justify-content: center;
             flex-direction: column;
             align-items: center;
         }
-        &-wrap{
+
+        &-wrap {
             width: 80%;
         }
-  
+
     }
 
-    @media (min-width: 1024px){
+    @media (min-width: 1024px) {
         margin-top: 3rem 1rem 0 3rem;
         width: 100%;
-        &-wrap{
+
+        &-wrap {
             width: 80%;
             @include flex-row;
             gap: 1rem;
-            p{
+
+            p {
                 margin: 0;
             }
         }
-        &-title{
+
+        &-title {
             font-size: 4rem;
-        
+
         }
-        &-container{
+
+        &-container {
             width: 26rem;
-     
+
         }
 
-        &-floor{
-          width: 80%;
-        }
-
-        &-wrap{
-            width: 100%;
-        }
-    }
-
-    @media (min-width: 1440px){
-        &-wrap{
+        &-floor {
             width: 80%;
         }
-        &-bottom{
-            margin-bottom: 5rem;
-        }
-        &-floor{
+
+        &-wrap {
             width: 100%;
         }
     }
 
-  
+    @media (min-width: 1440px) {
+        &-wrap {
+            width: 80%;
+        }
+
+        &-bottom {
+            margin-bottom: 5rem;
+        }
+
+        &-floor {
+            width: 100%;
+        }
+    }
+
+
 }
 
 .genre-btn {
-    background: transparent; /* No fill, just the border */
-    border: 2px solid #F2A950; /* Neon Orange Border */
-    color: #fff; /* White text */
+    background: transparent;
+    /* No fill, just the border */
+    border: 2px solid #F2A950;
+    /* Neon Orange Border */
+    color: #fff;
+    /* White text */
     border-radius: 15px;
-    padding: 5px 10px; /* Some padding */
-    margin: 0 5px; /* Margins for spacing between buttons */
-    cursor: pointer; /* Cursor indicates it's clickable */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
-  
+    padding: 5px 10px;
+    /* Some padding */
+    margin: 0 5px;
+    /* Margins for spacing between buttons */
+    cursor: pointer;
+    /* Cursor indicates it's clickable */
+    transition: background-color 0.3s, color 0.3s;
+    /* Smooth transition for hover effect */
+
     &:hover {
-      background-color: #ff4500; /* Neon Orange background on hover */
-      color: #000; /* Black text on hover */
+        background-color: #ff4500;
+        /* Neon Orange background on hover */
+        color: #000;
+        /* Black text on hover */
     }
-  }
-  .cast-list {
+}
+
+.cast-list {
     font-family: 'Arial', sans-serif;
     color: #fff;
     background-color: rgba(0, 0, 0, 0.5);
@@ -440,46 +508,49 @@
     width: auto;
     max-width: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    h2{ 
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    text-align: center;
-    @media (min-width: 1024px){
-        padding-top: 3rem;
-  
-    }
-    }
-  }
 
-  
-  .cast-members {
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        text-align: center;
+
+        @media (min-width: 1024px) {
+            padding-top: 3rem;
+
+        }
+    }
+}
+
+
+.cast-members {
     list-style: none;
     padding: 0;
-    @media (min-width: 1440px){
+
+    @media (min-width: 1440px) {
         width: 80%;
-      
+
     }
 
-  }
-  
- li.cast-member {
+}
+
+li.cast-member {
     font-size: 1.2rem;
     margin-bottom: 2px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
     gap: 4px;
-  }
-  
-  .actor-name {
+}
+
+.actor-name {
     font-weight: bold;
-  }
-  
-  .character-name {
+}
+
+.character-name {
     font-style: italic;
-    color: #e69a2a; /* Neon-like orange for contrast */
-  }
-  
-  .as {
-    color: #ccc; /* Light gray for the word 'as' */
-  }
-  
-  
+    color: #e69a2a;
+    /* Neon-like orange for contrast */
+}
+
+.as {
+    color: #ccc;
+    /* Light gray for the word 'as' */
+}
