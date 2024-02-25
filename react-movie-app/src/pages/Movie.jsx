@@ -262,12 +262,12 @@ movie? (
       <div className="card-wrap">
       <p>{movie.overview}</p>
   
-    <div className="cast-list">
+    <div className="cast">
   <ul className="cast-members">
-    {cast.slice(0,4).map((actor, index) => (
+    {cast.slice(0,3).map((actor, index) => (
       <li key={index} className="cast-member">
-        <span className="actor-name">{actor.name}</span>
-        <span className="as"> as </span>
+        <span>{actor.name}</span>
+        <span> as </span>
         <span className="character-name">{actor.character}</span>
       </li>
     ))}
