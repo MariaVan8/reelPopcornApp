@@ -149,9 +149,9 @@ function HomePage() {
                   day: "numeric",
                 })}
               </p>
-              <p>Rating: {(parseFloat(movie.vote_average) * 10).toFixed(2)}%</p>
-         
-              <div className="stars" style={{'--w': `${(parseFloat(movie.vote_average) * 10).toFixed(0)}%`}}></div>
+         <div className="stars-container">
+              <div className="stars" style={{'--w': `${(parseFloat(movie.vote_average) * 10).toFixed(0)/2}%`}}> </div><p>{(parseFloat(movie.vote_average) * 10).toFixed(2)}%</p>
+                   </div>
 
               <p>
                 {movie.overview.split(" ").slice(0, 20).join(" ") + "..."}

@@ -9,6 +9,35 @@
   --primary-saturation: 66%;
   --primary-lightness: 61%;
 }
+.stars-container {
+  width: 200px;
+@include flex-row;
+  flex-wrap:nowrap;
+}
+
+.stars {
+  position: relative;
+@include flex-row;
+  font-size: 20pt;
+  left:0;
+  height: 1em;
+  line-height: 1em;
+}
+
+.stars:before {	
+ // content: "\2606\2606\2606\2606\2606";
+}
+
+.stars:after {	
+  content: "\2605\2605\2605\2605\2605";
+  position:absolute;
+  left:0;
+  font-size: 20pt;
+  overflow:hidden;
+  width:var(--w,50%);
+  color: rgb(255, 200, 0);
+  z-index:10;
+}
 
 .neon-red {
   --neon: #ff5161;
@@ -290,7 +319,10 @@
       }
     }
 
-    :nth-child(4) {
+    :nth-child(3) {
+@include flex-row;   
+ }
+    :nth-child(5) {
       display: none;
     }
   }
@@ -357,32 +389,15 @@
 
         &-movie-info {
 
-            :nth-child(4) {
+          :nth-child(3) {
+            @include flex-col;
+        }
+            :nth-child(5) {
                 @include flex-col;
             }
         }
 
-        .stars {
-          position: relative;
-          display:inline-block;
-          font-size: 50pt;
-          height: 1em;
-          line-height: 1em;
-      }
-      
-      .stars:before {	
-          content: "\2606\2606\2606\2606\2606";
-      }
-      
-      .stars:after {	
-          content: "\2605\2605\2605\2605\2605";
-          position:absolute;
-          left:0;
-          overflow:hidden;
-          width:var(--w,50%);
-          color: rgb(255, 200, 0);
-          z-index:10;
-      }
+       
     }
 
 
