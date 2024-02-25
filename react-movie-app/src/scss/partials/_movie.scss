@@ -427,11 +427,13 @@
 
         &-wrap {
             width: 80%;
+            margin-top: 3rem;
             @include flex-row;
             gap: 1rem;
 
             p {
                 margin: 0;
+                width: 150%;
             }
         }
 
@@ -456,7 +458,11 @@
 
     @media (min-width: 1440px) {
         &-wrap {
+            margin-top: 2rem;
             width: 80%;
+            p{
+             width: 100%;
+            }
         }
 
         &-bottom {
@@ -496,7 +502,7 @@
     }
 }
 
-.cast-list {
+.cast {
     font-family: 'Arial', sans-serif;
     color: #fff;
     background-color: rgba(0, 0, 0, 0.5);
@@ -508,49 +514,45 @@
     width: auto;
     max-width: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-
-    h2 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-        text-align: center;
-
-        @media (min-width: 1024px) {
-            padding-top: 3rem;
-
+    &-members {
+        list-style: none;
+        padding: 0;
+    
+        @media (min-width: 1440px) {
+            width: 100%;
+    
         }
+    
     }
 }
 
 
-.cast-members {
-    list-style: none;
-    padding: 0;
 
-    @media (min-width: 1440px) {
-        width: 80%;
-
-    }
-
-}
 
 li.cast-member {
     font-size: 1.2rem;
     margin-bottom: 2px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
     gap: 4px;
+    :nth-child(1){
+        font-weight: bold;
+      
+    }
+    :nth-child(2){
+        font-style: italic;
+        color: #ccc;
+    }
+    :nth-child(3){
+      
+        color: #e69a2a;
+    }
 }
 
-.actor-name {
-    font-weight: bold;
-}
 
-.character-name {
-    font-style: italic;
-    color: #e69a2a;
-    /* Neon-like orange for contrast */
-}
-
-.as {
-    color: #ccc;
-    /* Light gray for the word 'as' */
+.button-group{
+    align-items: center;
+    :nth-child(1){
+        width: 2rem;
+        height: 2rem;
+    }
 }
