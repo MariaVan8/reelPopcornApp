@@ -12,6 +12,8 @@ function HomePage() {
     { value: "now-playing", label: "Now Playing" },
   ]
 
+
+
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState(options[0].value);
   const { movies, fetchUpcomingMovies, fetchPopularMovies, fetchTopRatedMovies, fetchNowPlayingMovies, toggleFavourite, toggleWatchlist, favourites, watchlist } =
@@ -89,7 +91,17 @@ function HomePage() {
       });
     };
   }, []);
-
+  // function MovieCard({ movie }) {
+  //   const rating = Math.round(parseFloat(movie.vote_average) / 2); // Divide by 2 if rating is out of 10
+  //   const stars = Array.from({ length: 5 }, (_, index) => (
+  //     <span className={`star ${index < rating ? "checked" : ""}`}></span>
+  //   ));
+  //   return (
+  //       <div className="star-container">
+  //         {stars}
+  //       </div>
+  //   );
+  // }
 
   return (
 
@@ -137,7 +149,10 @@ function HomePage() {
                   day: "numeric",
                 })}
               </p>
-              <p>Rating: {(parseFloat(movie.vote_average)*10).toFixed(2)}%</p>
+         <div className="stars-container">
+              <div className="stars" style={{'--w': `${(parseFloat(movie.vote_average) * 10).toFixed(0)/2}%`}}> </div><p>{(parseFloat(movie.vote_average) * 10).toFixed(2)}%</p>
+                   </div>
+
               <p>
                 {movie.overview.split(" ").slice(0, 20).join(" ") + "..."}
               </p>
