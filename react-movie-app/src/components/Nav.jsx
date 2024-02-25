@@ -78,7 +78,7 @@ const Nav = () => {
       </label>
       <div className="background neon-purple">&nbsp;</div>
 
-      <nav className={`nav${isDesktop ? "" : "-menu"}`}>
+      <div className={`nav${isDesktop ? "" : "-menu"}`}>
         <div className="nav-logo">
           <img className="logo" src={reelPopcornLogo} alt="Reel Popcorn Logo" />
         </div>
@@ -86,7 +86,7 @@ const Nav = () => {
           <li>
             <NavLink
               to="/"
-              className="nav-link neon-blue"
+              className="nav-link"
               onClick={() => {
                 document.getElementById("navi-toggle").checked = false;
                 const h1Element = document.querySelector("h1");
@@ -106,7 +106,7 @@ const Nav = () => {
           <li>
             <NavLink
               to="/AboutUs"
-              className="nav-link neon-yellow"
+              className="nav-link"
               onClick={() => {
                 document.getElementById("navi-toggle").checked = false;
                 const h1Element = document.querySelector("h1");
@@ -126,7 +126,7 @@ const Nav = () => {
           <li>
             <NavLink
               to="/Favorites"
-              className="nav-link neon-red"
+              className="nav-link"
               onClick={() => {
                 document.getElementById("navi-toggle").checked = false;
                 const h1Element = document.querySelector("h1");
@@ -146,7 +146,7 @@ const Nav = () => {
           <li>
             <NavLink
               to="/WatchLater"
-              className="nav-link neon-green"
+              className="nav-link"
               onClick={() => {
                 document.getElementById("navi-toggle").checked = false;
                 const h1Element = document.querySelector("h1");
@@ -164,8 +164,8 @@ const Nav = () => {
             </NavLink>
           </li>
         </ul>
-      </nav>
-    </nav>
+      </div>
+    </nav >
   );
 };
 
