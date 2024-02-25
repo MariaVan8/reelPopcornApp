@@ -10,32 +10,31 @@
     --primary-saturation: 66%;
     --primary-lightness: 61%;
 }
+
 .stars-container {
-  width: 200px;
-@include flex-row;
-  flex-wrap:nowrap;
+    width: 200px;
+    @include flex-row;
+    flex-wrap: nowrap;
 }
 
 .stars {
-  position: relative;
-@include flex-row;
-  font-size: 20pt;
-  left:0;
-  height: 1em;
-  line-height: 1em;
+    position: relative;
+    @include flex-row;
+    font-size: 20pt;
+    left: 0;
+    height: 1em;
+    line-height: 1em;
 }
 
-
-
-.stars:after {	
-  content: "\2605\2605\2605\2605\2605";
-  position:absolute;
-  left:0;
-  font-size: 20pt;
-  overflow:hidden;
-  width:var(--w,50%);
-  color: rgb(255, 200, 0);
-  z-index:10;
+.stars:after {
+    content: "\2605\2605\2605\2605\2605";
+    position: absolute;
+    left: 0;
+    font-size: 20pt;
+    overflow: hidden;
+    width: var(--w, 50%);
+    color: rgb(255, 200, 0);
+    z-index: 10;
 }
 
 .neon-red {
@@ -120,15 +119,12 @@
         transition: all 0.3s ease;
 
         :hover {
-            // background:#000;
             border-radius: 20px;
         }
     }
 
-
     &-heading {
         @include flex-col;
-        // margin: 40px auto;
         height: 300px;
         justify-content: center;
         padding: 20px;
@@ -151,7 +147,6 @@
 
     &-search-filter {
         @include flex-col;
-        // margin: 20px auto;
         justify-content: space-around;
         gap: 2vh;
         padding: 20px;
@@ -162,17 +157,13 @@
         font-size: 24px;
         padding: 14px 52px;
         background: hsl(0, 0%, 0%);
-        // background: #000;
         color: #ffdb4e;
         text-transform: uppercase;
         position: relative;
         border-radius: 100px;
         cursor: pointer;
-        // border: 1px solid $primary-color;
         border: 3px solid #ffdb4e;
-
         font-family: $secondary-font;
-        // z-index: 1;
 
         >span {
             font-family: $secondary-font;
@@ -199,12 +190,6 @@
             text-shadow: 1px 1px 5px var(--neon);
         }
     }
-
-    // @property --angle {
-    //     syntax: "<angle>";
-    //     initial-value: 0deg;
-    //     inherits: false;
-    // }
 
     .home-filter-btn::before,
     .home-filter-btn::after {
@@ -241,7 +226,6 @@
 
     &-movie-container {
         @include flex-row;
-        // margin: 0 auto;
         align-items: center;
         justify-content: space-around;
         width: 100%;
@@ -251,8 +235,6 @@
         border-radius: 20px;
         border: 3px solid var(--neon);
         box-shadow: 0 0 20px var(--neon-glow), inset 0 0 20px var(--neon-glow);
-
-        // border: 1px solid #fff;
 
         h3 {
             font-size: 1.8rem;
@@ -275,13 +257,13 @@
             border-radius: 20px;
         }
 
-
     }
 
     &-movie-info {
         @include flex-col;
         justify-content: space-between;
         gap: 1vh;
+        width: 280px;
 
         h3 {
             color: $secondary-color;
@@ -301,9 +283,7 @@
                 justify-content: center;
                 align-items: center;
                 margin-top: 10px;
-                // padding: 10px;
                 border-radius: 20px;
-                // border: 1px solid #fff;
                 background: none;
                 color: #fff;
                 font-weight: 700;
@@ -318,12 +298,13 @@
         }
 
         :nth-child(3) {
-          @include flex-col;
-      }
-    :nth-child(4) {
-      display: none;
+            @include flex-col;
+        }
+
+        :nth-child(4) {
+            display: none;
+        }
     }
-  }
 
     &-button-group {
         @include flex-row;
@@ -333,10 +314,8 @@
             @include flex-row;
             justify-content: center;
             align-items: center;
-            // margin: 0 auto;
             border: none;
             border-radius: 50px;
-            // background: $secondary-color;
             box-shadow: 0 0 50px var(--neon-glow), inset 0 0 50px var(--neon-glow);
             border: 3px solid var(--neon);
 
@@ -398,8 +377,7 @@
             width: 100%;
             padding: 20px;
             gap: 2vh;
-            height: 340px;
-            // border: 3px solid #fff;
+            height: 370px;
 
             p {
                 font-size: 1.1rem;
@@ -417,20 +395,21 @@
         }
 
         &-movie-info {
+            width: 100%;
 
-         
             :nth-child(4) {
                 @include flex-col;
             }
         }
 
-       
+
     }
 
     @media (min-width: 960px) {
         @include flex-col;
         flex-wrap: wrap;
         width: 100%;
+
 
         .inner {
             position: absolute;
@@ -484,7 +463,6 @@
 
         &-search-filter {
             @include flex-row;
-            // gap: 2vh;
             width: 100%;
             margin: 0 auto;
             justify-content: center;
@@ -501,8 +479,8 @@
             flex-wrap: wrap;
             width: 100%;
             justify-content: center;
-            padding: 20px 0;
-            gap: 4vh;
+            padding: 60px 0;
+            gap: 2vh;
         }
 
         &-movie-container {
@@ -513,8 +491,7 @@
             width: 455px;
             padding: 20px;
             gap: 2vh;
-            height: 340px;
-            // border: 3px solid #fff;
+            height: 400px;
 
             h2 {
                 margin: 0;
@@ -561,8 +538,6 @@
                 margin-top: 10px;
                 padding: 10px;
                 border-radius: 20px;
-                // border: 1px solid #fff;
-                // background: none;
                 color: #fff;
                 font-weight: 700;
                 font-size: 1rem;
@@ -578,7 +553,6 @@
 
                 &:hover {
                     background: #2685bf;
-                    // color: #000;
                 }
             }
         }
@@ -588,10 +562,8 @@
                 @include flex-row;
                 justify-content: center;
                 align-items: center;
-                // margin: 0 auto;
                 border: none;
                 border-radius: 50px;
-                // background: $secondary-color;
                 box-shadow: 0 0 50px var(--neon-glow), inset 0 0 50px var(--neon-glow);
                 border: 3px solid var(--neon);
 
@@ -606,8 +578,19 @@
     }
 
     @media (min-width: 1024px) {
+        &-movies {
+
+            gap: 6vh;
+        }
 
         &-movie-container {
+            @include flex-row;
+            margin: 0;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            gap: 2vh;
+            height: 340px;
             width: 500px;
         }
     }
@@ -622,5 +605,8 @@ img.bookmark-add {
 img.bookmark-remove {
     width: 2rem;
 
+}
 
+.button-group .bookmark {
+    width: 2rem;
 }

@@ -126,7 +126,6 @@ function HomePage() {
           </button>
         ))}
       </div>
-      {/* ... (existing code) */}
       <div className="home-movies">
         {sortedMovies.map((movie) => (
           // <li key={movie.id}>
@@ -135,13 +134,9 @@ function HomePage() {
               src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               alt={movie.title}
             />
-            {/* <img
-              src={`https://image.tmdb.org/t/p/w1280/${movie.backdrop_path}`}
-              alt={movie.title}
-            /> */}
+
             <div className="home-movie-info">
               <h3>{movie.title}</h3>
-              {/* <p>Released: {movie.release_date}</p> */}
               <p>
                 Released:{" "}
                 {new Date(movie.release_date).toLocaleDateString("en-US", {
@@ -150,9 +145,9 @@ function HomePage() {
                   day: "numeric",
                 })}
               </p>
-         <div className="stars-container">
-              <div className="stars" style={{'--w': `${(parseFloat(movie.vote_average) * 10).toFixed(0)/2}%`}}> </div><p>{(parseFloat(movie.vote_average) * 10).toFixed(2)}%</p>
-                   </div>
+              <div className="stars-container">
+                <div className="stars" style={{ '--w': `${(parseFloat(movie.vote_average) * 10).toFixed(0) / 2}%` }}> </div><p>{(parseFloat(movie.vote_average) * 10).toFixed(2)}%</p>
+              </div>
 
               <p>
                 {movie.overview.split(" ").slice(0, 20).join(" ") + "..."}
@@ -185,19 +180,19 @@ function HomePage() {
                 >
                   {watchlist.some((item) => item.id === movie.id) ? (
                     <>
-                    <img src={bookmark} />
+                      <img src={bookmark} />
                     </>
 
                   ) : (
                     <>
-                    <img src={bookmark2} />
+                      <img src={bookmark2} />
                     </>
                   )}
                 </button>
               </div>
             </div>
           </div>
-          // </li>
+
         ))}
       </div>
     </div>

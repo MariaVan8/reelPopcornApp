@@ -16,31 +16,31 @@ function Favourites() {
         <ul>
           {favourites.length === 0 ? (
             <div>
-            <h3>Sorry you have no favourited movies.</h3>
-            <p> Return to the <Link
-              to="/"
-              className="no-favorites"
-              onClick={() => {
-                document.getElementById("navi-toggle").checked = false;
-                const h1Element = document.querySelector("h3");
-                if (h1Element) {
-                  const yOffset = -100; // Adjust this value to leave space for the navigation bar
-                  const y =
-                    h1Element.getBoundingClientRect().top +
-                    window.pageYOffset +
-                    yOffset;
-                  window.scrollTo({ top: y, behavior: "smooth" });
-                }
-              }}
-            >
-              Home Page
-            </Link> to add a
-            favourite movie</p>
+              <h3>Sorry you have no favourited movies.</h3>
+              <p> Return to the <Link
+                to="/"
+                className="no-favorites"
+                onClick={() => {
+                  document.getElementById("navi-toggle").checked = false;
+                  const h1Element = document.querySelector("h3");
+                  if (h1Element) {
+                    const yOffset = -100; // Adjust this value to leave space for the navigation bar
+                    const y =
+                      h1Element.getBoundingClientRect().top +
+                      window.pageYOffset +
+                      yOffset;
+                    window.scrollTo({ top: y, behavior: "smooth" });
+                  }
+                }}
+              >
+                Home Page
+              </Link> to add a
+                favourite movie</p>
             </div>
           ) : (
             favourites.map((movie) => (
               <li key={movie.id}>
-                <div className="movie-container neon-red">
+                <div className="movie-container neon-yellow">
                   <img
                     src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                     alt={movie.title}
@@ -56,7 +56,7 @@ function Favourites() {
                         day: "numeric",
                       })}
                     </p>
-                    <p>Rating: {parseFloat(movie.vote_average).toFixed(2)}</p>
+                    {/* <p>Rating: {parseFloat(movie.vote_average).toFixed(2)}</p> */}
                     <p>
                       {movie.overview.split(" ").slice(0, 20).join(" ") + "..."}
                     </p>
@@ -65,7 +65,7 @@ function Favourites() {
                     </Link>
                     <div className="button-group">
                       <button
-                        className={`button-icon neon-blue`}
+                        className={`button-icon neon-pink`}
                         onClick={() => removeFromFavList(movie)}
                       >
                         <svg
@@ -75,7 +75,7 @@ function Favourites() {
                           height="24"
                           fill={
                             favourites.some((fav) => fav.id === movie.id)
-                              ? "red"
+                              ? "#FF53cd"
                               : "white"
                           }
                         >
@@ -86,16 +86,16 @@ function Favourites() {
                         className={`button-icon watchlist-button`}
                         onClick={() => toggleWatchlist(movie)}
                       >
-                       {watchlist.some((item) => item.id === movie.id) ? (
-                    <>
-                    <img src={bookmark} />
-                    </>
+                        {watchlist.some((item) => item.id === movie.id) ? (
+                          <>
+                            <img src={bookmark} />
+                          </>
 
-                  ) : (
-                    <>
-                    <img src={bookmark2} />
-                    </>
-                      )}
+                        ) : (
+                          <>
+                            <img src={bookmark2} />
+                          </>
+                        )}
                       </button>
                     </div>
                   </div>
