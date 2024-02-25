@@ -189,7 +189,7 @@ const fetchMovieRuntime = async () => {
   
     const bannerStyle = {
       backgroundImage: `url(${backdropUrl})`,
-      // Add any additional styles you need for desktop
+     
     };
 
     const imageStyle = isMobile ? posterStyle : bannerStyle;
@@ -197,7 +197,6 @@ const fetchMovieRuntime = async () => {
   return (
 movie? (
   <>
-    {/* <div className="card-big"> */}
   <div className="card-wrapper">
     <div className="card" style={imageStyle}>
       <div className="card-container">
@@ -209,8 +208,6 @@ movie? (
   </div>
   <div className="card-bottom">
     <div className="card-info">
-     {/* <img src={heart} alt="heart" className="card-image" />
-      <img src={bookmark} alt="icon" width={"13rem"} height={"13rem"}/> */}
         <div className="button-group">
                     <button
                       className={`button-icon neon-blue`}
@@ -265,7 +262,6 @@ movie? (
       <p>{movie.overview}</p>
   
     <div className="cast-list">
-  {/* <h2>Cast</h2> */}
   <ul className="cast-members">
     {cast.slice(0,4).map((actor, index) => (
       <li key={index} className="cast-member">

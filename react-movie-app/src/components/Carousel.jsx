@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { MovieContext } from "../context/MovieContext";
+import { Link } from "react-router-dom";
 
 function Carousel() {
     const [sort, setSort] = useState("popularity");
@@ -26,10 +27,12 @@ function Carousel() {
             <div className="carousel-container">
                 {sortedMovies.map((movie) => (
                     <div className="carousel-movie" key={movie.id}>
-                        <img
+                          <Link to={`/movie/${movie.id}`}>
+                            <img
                             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                             alt={movie.title}
-                        />
+                            />
+                        </Link>
                     </div>
                 ))}
             </div>
