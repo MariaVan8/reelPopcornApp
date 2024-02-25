@@ -184,16 +184,10 @@
         display: flex;
         gap: 1rem;
         align-items: center;
-        // :nth-child(2){
-        //     background-color: #000;
-        //     :active{
-        //         background-color: #f7465b;
-        //     }
-        // }
-        // :nth-child(4){
-        //     background-color: $white-color;
-        //     height: 1.4rem;
-        // }
+        :nth-child(4){
+            background-color: $white-color;
+            height: 1.4rem;
+        }
     }
 
     &-bottom{
