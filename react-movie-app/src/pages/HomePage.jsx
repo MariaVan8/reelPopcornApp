@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
 import { MovieContext } from "../context/MovieContext";
-import bookmark from "/images/bookmark.png";
 import { Link } from "react-router-dom";
+import bookmark from "/images/bookmark-add.png";
+import bookmark2 from "/images/bookmark-remove.png";
 
 function HomePage() {
   const options = [
@@ -179,17 +180,17 @@ function HomePage() {
                   </svg>
                 </button>
                 <button
-                  className={`button-icon watchlist-button neon-green`}
+                  className={`button-icon watchlist-button`}
                   onClick={() => toggleWatchlist(movie)}
                 >
                   {watchlist.some((item) => item.id === movie.id) ? (
                     <>
-                    <img src={bookmark} className="bookmark-add"/>
+                    <img src={bookmark} />
                     </>
 
                   ) : (
                     <>
-                    <img src={bookmark} className="bookmark-remove"/>
+                    <img src={bookmark2} />
                     </>
                   )}
                 </button>

@@ -1,7 +1,8 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
 import { MovieContext } from "../context/MovieContext";
-
+import bookmark from "/images/bookmark-add.png";
+import bookmark2 from "/images/bookmark-remove.png";
 import { Link } from "react-router-dom";
 
 function WatchLater() {
@@ -60,10 +61,15 @@ function WatchLater() {
                     className={`button-icon watchlist-button neon-yellow`}
                     onClick={() => toggleWatchlist(movie)}
                   >
-                    {watchlist.some((item) => item.id === movie.id) ? (
-                      <span>-</span>
-                    ) : (
-                      <span>+</span>
+                 {watchlist.some((item) => item.id === movie.id) ? (
+                    <>
+                    <img src={bookmark} />
+                    </>
+
+                  ) : (
+                    <>
+                    <img src={bookmark2} />
+                    </>
                     )}
                   </button>
                 </div>
