@@ -355,7 +355,7 @@
             width: 26rem;
             background-position: top;
             margin-left: 1rem;
-        };
+        }
         &-floor{
             width: 80%;
             display: flex;
@@ -364,7 +364,7 @@
             align-items: center;
         }
         &-wrap{
-            width: 60%;
+            width: 80%;
         }
   
     }
@@ -373,7 +373,7 @@
         margin-top: 3rem 1rem 0 3rem;
         width: 100%;
         &-wrap{
-            width: 100%;
+            width: 80%;
             @include flex-row;
             gap: 1rem;
             p{
@@ -392,8 +392,22 @@
         &-floor{
           width: 80%;
         }
-      
 
+        &-wrap{
+            width: 100%;
+        }
+    }
+
+    @media (min-width: 1440px){
+        &-wrap{
+            width: 80%;
+        }
+        &-bottom{
+            margin-bottom: 5rem;
+        }
+        &-floor{
+            width: 100%;
+        }
     }
 
   
@@ -441,12 +455,18 @@
   .cast-members {
     list-style: none;
     padding: 0;
+    @media (min-width: 1440px){
+        width: 80%;
+      
+    }
+
   }
   
-  .cast-member {
+ li.cast-member {
     font-size: 1.2rem;
     margin-bottom: 2px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    gap: 4px;
   }
   
   .actor-name {
