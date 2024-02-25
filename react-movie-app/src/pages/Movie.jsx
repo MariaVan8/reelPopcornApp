@@ -7,7 +7,8 @@ import full from "/images/hd.png";
 import sub from "/images/subtitles.png"; 
 import play from "/images/play.png";
 import back from "/images/arrow.png";
-import bookmark from "/images/bookmark.png";
+import bookmark from "/images/bookmark-add.png";
+import bookmark2 from "/images/bookmark-remove.png";
 
 function Movie() {
   const { movies } = useContext(MovieContext);
@@ -228,17 +229,17 @@ movie? (
                       </svg>
                     </button>
                     <button
-                  className={`button-icon watchlist-button neon-green`}
+                  className={`button-icon watchlist-button`}
                   onClick={() => toggleWatchlist(movie)}
                 >
                   {watchlist.some((item) => item.id === movie.id) ? (
                     <>
-                    <img src={bookmark} className="bookmark-add"/>
+                    <img src={bookmark} />
                     </>
 
                   ) : (
                     <>
-                    <img src={bookmark} className="bookmark-remove"/>
+                    <img src={bookmark2} />
                     </>
                   )}
                 </button>
