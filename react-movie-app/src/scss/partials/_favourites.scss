@@ -83,8 +83,7 @@
   justify-content: space-around;
   width: 100%;
   gap: 2vh;
-  height: 300px;
-
+  height: 360px;
   border-radius: 20px;
   border: 3px solid var(--neon);
   box-shadow: 0 0 20px var(--neon-glow), inset 0 0 20px var(--neon-glow);
@@ -102,6 +101,7 @@
     @include flex-col;
     justify-content: space-between;
     gap: 1vh;
+    width: 150px;
 
     h2 {
       font-family: $primary-font;
@@ -258,11 +258,12 @@
     // }
   }
 
-  .movie-infomovie-info {
+  .movie-info {
     display: flex;
     flex-direction: column;
     text-align: left;
     padding-top: 15px;
+    width: 100%;
 
     h3 {
       color: $secondary-color;
