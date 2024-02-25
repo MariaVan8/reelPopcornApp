@@ -7,7 +7,7 @@ import bookmark2 from "/images/bookmark-remove.png";
 
 function HomePage() {
   const options = [
-    { value: "popularity", label: "Popularity" },
+    { value: "popularity", label: "Popular" },
     { value: "top-rated", label: "Top Rated" },
     { value: "upcoming", label: "Upcoming" },
     { value: "now-playing", label: "Now Playing" },
@@ -92,17 +92,7 @@ function HomePage() {
       });
     };
   }, []);
-  // function MovieCard({ movie }) {
-  //   const rating = Math.round(parseFloat(movie.vote_average) / 2); // Divide by 2 if rating is out of 10
-  //   const stars = Array.from({ length: 5 }, (_, index) => (
-  //     <span className={`star ${index < rating ? "checked" : ""}`}></span>
-  //   ));
-  //   return (
-  //       <div className="star-container">
-  //         {stars}
-  //       </div>
-  //   );
-  // }
+
 
   return (
 
@@ -114,7 +104,6 @@ function HomePage() {
       <div className="home-search-filter">
         {/* <input onChange={(e) => setSearch(e.target.value)} placeholder="Search Movie">
         </input> */}
-        {/* Replace select with buttons */}
         {options.map((option) => (
           <button
             key={option.value}
