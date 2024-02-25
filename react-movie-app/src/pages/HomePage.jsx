@@ -91,17 +91,17 @@ function HomePage() {
       });
     };
   }, []);
-  function MovieCard({ movie }) {
-    const rating = Math.round(parseFloat(movie.vote_average) / 2); // Divide by 2 if rating is out of 10
-    const stars = Array.from({ length: 5 }, (_, index) => (
-      <span className={`star ${index < rating ? "checked" : ""}`}></span>
-    ));
-    return (
-        <div className="star-container">
-          {stars}
-        </div>
-    );
-  }
+  // function MovieCard({ movie }) {
+  //   const rating = Math.round(parseFloat(movie.vote_average) / 2); // Divide by 2 if rating is out of 10
+  //   const stars = Array.from({ length: 5 }, (_, index) => (
+  //     <span className={`star ${index < rating ? "checked" : ""}`}></span>
+  //   ));
+  //   return (
+  //       <div className="star-container">
+  //         {stars}
+  //       </div>
+  //   );
+  // }
 
   return (
 
@@ -149,10 +149,9 @@ function HomePage() {
                   day: "numeric",
                 })}
               </p>
-              <p>Rating: {(parseFloat(movie.vote_average)*10).toFixed(2)}%</p>
-              <div className="star-container">
-                <MovieCard movie={movie} />
-   </div>
+              <p>Rating: {(parseFloat(movie.vote_average) * 10).toFixed(2)}%</p>
+         
+              <div className="stars" style={{'--w': `${(parseFloat(movie.vote_average) * 10).toFixed(0)}%`}}></div>
 
               <p>
                 {movie.overview.split(" ").slice(0, 20).join(" ") + "..."}
