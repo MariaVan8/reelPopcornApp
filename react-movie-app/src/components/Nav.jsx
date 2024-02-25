@@ -69,10 +69,14 @@ const Nav = () => {
         <img className="logo" src={reelPopcornLogo} alt="Reel Popcorn Logo" />
       </div>
       <input type="checkbox" id="navi-toggle" className="checkbox" />
-      <label htmlFor="navi-toggle" className="button" onClick={toggleMenu}>
-        <span className="icon">&nbsp;</span>
+      <label
+        htmlFor="navi-toggle"
+        className="button neon-purple"
+        onClick={toggleMenu}
+      >
+        <span className="icon neon-blue">&nbsp;</span>
       </label>
-      <div className="background">&nbsp;</div>
+      <div className="background neon-purple">&nbsp;</div>
 
       <nav className={`nav${isDesktop ? "" : "-menu"}`}>
         <div className="nav-logo">
@@ -82,7 +86,7 @@ const Nav = () => {
           <li>
             <NavLink
               to="/"
-              className="nav-link"
+              className="nav-link neon-blue"
               onClick={() => {
                 document.getElementById("navi-toggle").checked = false;
                 const h1Element = document.querySelector("h1");
@@ -102,7 +106,7 @@ const Nav = () => {
           <li>
             <NavLink
               to="/AboutUs"
-              className="nav-link"
+              className="nav-link neon-yellow"
               onClick={() => {
                 document.getElementById("navi-toggle").checked = false;
                 const h1Element = document.querySelector("h1");
@@ -122,7 +126,7 @@ const Nav = () => {
           <li>
             <NavLink
               to="/Favorites"
-              className="nav-link"
+              className="nav-link neon-red"
               onClick={() => {
                 document.getElementById("navi-toggle").checked = false;
                 const h1Element = document.querySelector("h1");
@@ -142,7 +146,7 @@ const Nav = () => {
           <li>
             <NavLink
               to="/WatchLater"
-              className="nav-link"
+              className="nav-link neon-green"
               onClick={() => {
                 document.getElementById("navi-toggle").checked = false;
                 const h1Element = document.querySelector("h1");

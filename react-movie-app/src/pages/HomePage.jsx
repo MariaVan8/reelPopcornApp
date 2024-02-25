@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
 import { MovieContext } from "../context/MovieContext";
-
+import bookmark from "/images/bookmark.png";
 import { Link } from "react-router-dom";
 
 function HomePage() {
@@ -120,7 +120,7 @@ function HomePage() {
             onClick={() => handleSortClick(option.value)}
             className={`home-filter-btn ${sort === option.value ? 'active neon-blue' : ''}`}
           >
-            <div class="inner"></div>
+            <div className="inner"></div>
             <span>{option.label}</span>
           </button>
         ))}
@@ -183,9 +183,14 @@ function HomePage() {
                   onClick={() => toggleWatchlist(movie)}
                 >
                   {watchlist.some((item) => item.id === movie.id) ? (
-                    <p>-</p>
+                    <>
+                    <img src={bookmark} className="bookmark-add"/>
+                    </>
+
                   ) : (
-                    <p>+</p>
+                    <>
+                    <img src={bookmark} className="bookmark-remove"/>
+                    </>
                   )}
                 </button>
               </div>
