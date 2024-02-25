@@ -11,31 +11,31 @@ function WatchLater() {
 
   return (
     <div className="watchlater-container neon-green">
-      <h1>Watch Later</h1> 
+      <h1>watch later</h1>
       <ul>
         {watchlist.length === 0 ? (
-        <div>
-        <h3>Sorry you have nothing in your watch later.</h3>
-        <p> Return to the <Link
- to="/"
- className="no-favorites"
- onClick={() => {
-   document.getElementById("navi-toggle").checked = false;
-   const h1Element = document.querySelector("h3");
-   if (h1Element) {
-     const yOffset = -100; // Adjust this value to leave space for the navigation bar
-     const y =
-       h1Element.getBoundingClientRect().top +
-       window.pageYOffset +
-       yOffset;
-     window.scrollTo({ top: y, behavior: "smooth" });
-   }
- }}
->
- Home Page
-</Link> to add to your watch later</p>        
-        </div>
-) : (
+          <div>
+            <h3>Sorry you have nothing in your watch later.</h3>
+            <p> Return to the <Link
+              to="/"
+              className="no-favorites"
+              onClick={() => {
+                document.getElementById("navi-toggle").checked = false;
+                const h1Element = document.querySelector("h3");
+                if (h1Element) {
+                  const yOffset = -100; // Adjust this value to leave space for the navigation bar
+                  const y =
+                    h1Element.getBoundingClientRect().top +
+                    window.pageYOffset +
+                    yOffset;
+                  window.scrollTo({ top: y, behavior: "smooth" });
+                }
+              }}
+            >
+              Home Page
+            </Link> to add to your watch later</p>
+          </div>
+        ) : (
           watchlist.map((movie) => (
             <li key={movie.id}>
               <div className="movie-container">
@@ -54,7 +54,8 @@ function WatchLater() {
                       day: "numeric",
                     })}
                   </p>
-                  <p>Rating: {parseFloat(movie.vote_average).toFixed(2)}</p>
+                  {/* <p>Rating: {parseFloat(movie.vote_average).toFixed(2)}</p> */}
+
                   <p>
                     {movie.overview.split(" ").slice(0, 20).join(" ") + "..."}
                   </p>
@@ -63,7 +64,7 @@ function WatchLater() {
                   </Link>
                   <div className="button-group">
                     <button
-                      className={`button-icon`}
+                      className={`button-icon neon-pink`}
                       onClick={() => toggleFavourite(movie)}
                     >
                       <svg
@@ -73,7 +74,7 @@ function WatchLater() {
                         height="24"
                         fill={
                           favourites.some((fav) => fav.id === movie.id)
-                            ? "red"
+                            ? "#FF53cd"
                             : "white"
                         }
                       >
@@ -81,19 +82,19 @@ function WatchLater() {
                       </svg>
                     </button>
                     <button
-                      className={`button-icon watchlist-button neon-yellow`}
+                      className={`button-icon watchlist-button `}
                       onClick={() => toggleWatchlist(movie)}
                     >
-                    {watchlist.some((item) => item.id === movie.id) ? (
-                    <>
-                    <img src={bookmark} />
-                    </>
+                      {watchlist.some((item) => item.id === movie.id) ? (
+                        <>
+                          <img className="bookmark" src={bookmark} />
+                        </>
 
-                  ) : (
-                    <>
-                    <img src={bookmark2} />
-                    </>
-                    )}
+                      ) : (
+                        <>
+                          <img className="bookmark" src={bookmark2} />
+                        </>
+                      )}
                     </button>
                   </div>
                 </div>

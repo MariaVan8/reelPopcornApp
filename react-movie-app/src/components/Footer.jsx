@@ -5,33 +5,13 @@ import { NavLink } from 'react-router-dom';
 
 function Footer() {
   return (
-    // <footer className='footer'>
-    //   <div className="footer-container">
-    //     <div className="footer-info">
-    //       <div className="footer-links">
-    //         <ul>
-    //           <li><a href="/">Home</a></li>
-    //           <li><a href="/aboutus">About Us</a></li>
-    //           <li><a href="/favorites">Favorites</a></li>
-    //           <li><a href="/watchlater">Watch Later</a></li>
-    //         </ul>
-    //       </div>
-    // <img className="footer-logo" src={tmdbLogo} alt="TMDB logo" />
-    //     </div>
 
-
-    // <div className="footer-copyright">
-    //   <p>&copy; reel popcorn</p>
-    //   <p>pam, maria, charlotte & alex a</p>
-    // </div>
-    //   </div>
-    // </footer>
     <footer className="footer">
-      <div className="waves">
-        <div className="wave" id="wave1"></div>
-        <div className="wave" id="wave2"></div>
-        <div className="wave" id="wave3"></div>
-        <div className="wave" id="wave4"></div>
+      <div className="footer-waves">
+        <div className="footer-wave" id="wave1"></div>
+        <div className="footer-wave" id="wave2"></div>
+        <div className="footer-wave" id="wave3"></div>
+        <div className="footer-wave" id="wave4"></div>
       </div>
       <div className="footer-links">
         <ul>
@@ -43,7 +23,7 @@ function Footer() {
         <img className="footer-logo" src={tmdbLogo} alt="TMDB logo" />
       </div>
       <div className="footer-copyright">
-        <p>&copy; reel popcorn | pam, maria, charlotte & alex a</p>
+        <p>&copy; reel popcorn 2024 | pam, maria, charlotte & alex a</p>
       </div>
     </footer>
   )
