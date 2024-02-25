@@ -7,6 +7,7 @@ import full from "/images/hd.png";
 import sub from "/images/subtitles.png"; 
 import play from "/images/play.png";
 import back from "/images/arrow.png";
+import bookmark from "/images/bookmark.png";
 
 function Movie() {
   const { movies } = useContext(MovieContext);
@@ -18,6 +19,9 @@ function Movie() {
   const [movieGenres, setMovieGenres] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState('');
   const LANGUAGE = 'en-US';
+
+  const { favourites, removeFromFavList, toggleWatchlist, watchlist } =
+  useContext(MovieContext);
 
   // Define a state to keep track of the screen width
 const [isMobile, setIsMobile] = useState(window.matchMedia("(max-width: 759px)").matches);
@@ -205,9 +209,44 @@ movie? (
   </div>
   <div className="card-bottom">
     <div className="card-info">
-      <img src={heart} alt="heart" className="card-image" />
-      <button>+</button>
-      <div class="card-details">
+     {/* <img src={heart} alt="heart" className="card-image" />
+      <img src={bookmark} alt="icon" width={"13rem"} height={"13rem"}/> */}
+        <div className="button-group">
+                    <button
+                      className={`button-icon neon-blue`}
+                      onClick={() => removeFromFavList(movie)}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        height="24"
+                        fill={
+                          favourites.some((fav) => fav.id === movie.id)
+                            ? "red"
+                            : "white"
+                        }
+                      >
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C16.09 3.81 17.76 3 19.5 3 22.58 3 25 5.42 25 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                      </svg>
+                    </button>
+                    <button
+                  className={`button-icon watchlist-button neon-green`}
+                  onClick={() => toggleWatchlist(movie)}
+                >
+                  {watchlist.some((item) => item.id === movie.id) ? (
+                    <>
+                    <img src={bookmark} className="bookmark-add"/>
+                    </>
+
+                  ) : (
+                    <>
+                    <img src={bookmark} className="bookmark-remove"/>
+                    </>
+                  )}
+                </button>
+                  </div>
+      <div className="card-details">
       <span>{new Date(movie.release_date).getFullYear()}</span>
       <span>{duration}</span>
       <img src={full} alt="hd" />
