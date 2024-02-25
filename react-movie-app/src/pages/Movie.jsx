@@ -21,7 +21,7 @@ function Movie() {
   const [trailerUrl, setTrailerUrl] = useState('');
   const LANGUAGE = 'en-US';
 
-  const { favourites, removeFromFavList, toggleWatchlist, watchlist } =
+  const { favourites, toggleFavourite, toggleWatchlist, watchlist } =
   useContext(MovieContext);
 
   // Define a state to keep track of the screen width
@@ -212,7 +212,7 @@ movie? (
         <div className="button-group">
                     <button
                       className={`button-icon neon-blue`}
-                      onClick={() => removeFromFavList(movie)}
+                      onClick={() => toggleFavourite(movie)}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
