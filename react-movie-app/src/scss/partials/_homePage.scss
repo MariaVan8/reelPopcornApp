@@ -2,6 +2,7 @@
 @use "../mixins" as *;
 @use "../typography" as *;
 
+
 :root {
     --primary: 35 100% 100%;
     --angle: 0deg;
@@ -24,9 +25,7 @@
   line-height: 1em;
 }
 
-.stars:before {	
- // content: "\2606\2606\2606\2606\2606";
-}
+
 
 .stars:after {	
   content: "\2605\2605\2605\2605\2605";
@@ -318,10 +317,10 @@
             }
         }
 
-    :nth-child(3) {
-@include flex-row;   
- }
-    :nth-child(5) {
+        :nth-child(3) {
+          @include flex-col;
+      }
+    :nth-child(4) {
       display: none;
     }
   }
@@ -419,10 +418,8 @@
 
         &-movie-info {
 
-          :nth-child(3) {
-            @include flex-col;
-        }
-            :nth-child(5) {
+         
+            :nth-child(4) {
                 @include flex-col;
             }
         }
