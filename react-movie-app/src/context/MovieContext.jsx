@@ -2,7 +2,9 @@ import React from "react";
 import { createContext, useState, useEffect, useContext } from "react";
 
 export const MovieContext = React.createContext();
-
+const BASE_URL = 'https://api.themoviedb.org/3';
+const API_KEY = 'b49aeaca09961dbfa4e7d1b0fea43944';
+const LANGUAGE = 'en-US';
 // Create a provider component
 export const MovieProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
@@ -17,6 +19,8 @@ export const MovieProvider = ({ children }) => {
     const storedWatchlist = localStorage.getItem("watchlist");
     return storedWatchlist ? JSON.parse(storedWatchlist) : [];
   });
+
+
 
   // Use effect to save favorites to both local storage and session storage whenever it changes
   useEffect(() => {
@@ -41,81 +45,123 @@ export const MovieProvider = ({ children }) => {
     };
   }, [favourites, watchlist]);
 
+  const fetchPopularMovies = async () => {
+    let page = 1;
+    let fetchedMovies = [];
 
-  const fetchPopularMovies = () => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=b49aeaca09961dbfa4e7d1b0fea43944`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-
-        // Sort movies based on popularity (descending order) and then limit to top 12
-        const popularMovies = data.results
-          .sort((a, b) => b.popularity - a.popularity)
-          .slice(0, 12);
-
-        setMovies(popularMovies);
-      })
-      .catch((error) => {
-        console.error("Error fetching movie data:", error);
-      });
-
-
+    let uniqueMovieIds = new Set(); // Track unique movie IDs to avoid duplicates
+    try {
+      while (fetchedMovies.length < 24) {
+        const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=${LANGUAGE}&page=${page}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        const movies = data.results.filter(movie => movie.poster_path && !uniqueMovieIds.has(movie.id));
+        movies.forEach(movie => {
+          uniqueMovieIds.add(movie.id);
+          if (fetchedMovies.length < 24) {
+            fetchedMovies.push(movie);
+          }
+        });
+        if (data.page >= data.total_pages) {
+          break;
+        }
+        page++;
+      }
+      setMovies(fetchedMovies);
+    } catch (error) {
+      console.error('Error fetching popular movies:', error);
+    }
   };
-  const fetchTopRatedMovies = () => {
-    fetch(
-      "https://api.themoviedb.org/3/movie/top_rated?api_key=b49aeaca09961dbfa4e7d1b0fea43944"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const topRated = data.results
-          .sort((a, b) => b.vote_average - a.vote_average)
-          .slice(0, 12);
-       setMovies(topRated); // Set movies state here
-    
-      })
-      .catch((error) => {
-        console.error("Error fetching upcoming movie data:", error);
-      });
-  };
-  const fetchNowPlayingMovies = () => {
-    fetch(
-      "https://api.themoviedb.org/3/movie/now_playing?api_key=b49aeaca09961dbfa4e7d1b0fea43944"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const upcomingMovies = data.results
-          .sort((a, b) => new Date(a.release_date) - new Date(b.release_date))
-          .slice(0, 12);
-       setMovies(upcomingMovies); // Set movies state here
 
-      })
-      .catch((error) => {
-        console.error("Error fetching upcoming movie data:", error);
-      });
+  const fetchNowPlayingMovies = async () => {
+    let page = 1;
+    let fetchedMovies = [];
+    let uniqueMovieIds = new Set();
+    const limit = 24;
+    try {
+      while (fetchedMovies.length < limit) {
+        const API_URL = `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=${LANGUAGE}&page=${page}`;
+        const response = await fetch(API_URL);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        const movies = data.results.filter((movie) => movie.poster_path && !uniqueMovieIds.has(movie.id));
+        movies.forEach(movie => uniqueMovieIds.add(movie.id));
+        fetchedMovies = [...fetchedMovies, ...movies.slice(0, limit - fetchedMovies.length)];
+        if (data.page < data.total_pages) {
+          page++;
+        } else {
+          break;
+        }
+      }
+      setMovies(fetchedMovies);
+    } catch (error) {
+      console.error('Error fetching now playing movies:', error);
+    }
   };
-  const fetchUpcomingMovies = () => {
-    fetch(
-      "https://api.themoviedb.org/3/movie/upcoming?api_key=b49aeaca09961dbfa4e7d1b0fea43944"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const upcomingMovies = data.results
-          .sort((a, b) => new Date(b.release_date) - new Date(a.release_date))
-          .slice(0, 12);
-          console.log("fetching upcoming movies", data)
-       setMovies(upcomingMovies); // Set movies state here
-      console.log("fetching upcoming movies", upcomingMovies)
-      console.log(upcomingMovies,"upcoming moviest  his const should be")
-      })
-      .catch((error) => {
-        console.error("Error fetching upcoming movie data:", error);
-      });
+  const fetchUpcomingMovies = async () => {
+    let page = 1;
+    let fetchedMovies = [];
+    let uniqueMovieIds = new Set();
+    const limit = 24;
+    try {
+      while (fetchedMovies.length < limit) {
+        const API_URL = `${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=${LANGUAGE}&page=${page}`;
+        const response = await fetch(API_URL);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        const movies = data.results.filter((movie) => movie.poster_path && !uniqueMovieIds.has(movie.id));
+        movies.forEach(movie => uniqueMovieIds.add(movie.id));
+        fetchedMovies = [...fetchedMovies, ...movies.slice(0, limit - fetchedMovies.length)];
+        if (data.page < data.total_pages) {
+          page++;
+        } else {
+          break;
+        }
+      }
+      setMovies(fetchedMovies);
+    } catch (error) {
+      console.error('Error fetching upcoming movies:', error);
+    }
   };
+
+  const fetchTopRatedMovies = async () => {
+    let page = 1;
+    let fetchedMovies = [];
+    let uniqueMovieIds = new Set(); // Set to track unique movie IDs
+    const limit = 24;
+    try {
+      while (fetchedMovies.length < limit) {
+        const API_URL = `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=${LANGUAGE}&page=${page}`;
+        const response = await fetch(API_URL);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        const movies = data.results.filter((movie) => movie.poster_path && !uniqueMovieIds.has(movie.id)); // Check if movie ID is unique
+        movies.forEach(movie => uniqueMovieIds.add(movie.id)); // Add movie IDs to the set
+        fetchedMovies = [...fetchedMovies, ...movies.slice(0, limit - fetchedMovies.length)];
+        if (data.page < data.total_pages) {
+          page++;
+        } else {
+          break;
+        }
+      }
+      setMovies(fetchedMovies);
+    } catch (error) {
+      console.error('Error fetching top-rated movies:', error);
+    }
+  };
+
 
   useEffect(() => {
-   
-    
+
+
 
     // Load data from localStorage on component mount
     const loadFromStorage = () => {
@@ -135,7 +181,7 @@ export const MovieProvider = ({ children }) => {
     fetchPopularMovies();
   }, [setMovies, setFavourites, setWatchlist]);
 
-  
+
   // Function to toggle a movie's favorite status
   const toggleFavourite = (movie) => {
     const isFavourite = favourites.some((fav) => fav.id === movie.id);
@@ -183,7 +229,7 @@ export const MovieProvider = ({ children }) => {
 
     favourites,
     watchlist,
-    
+
     fetchPopularMovies,
     fetchUpcomingMovies,
     fetchNowPlayingMovies,

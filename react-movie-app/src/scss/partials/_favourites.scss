@@ -6,32 +6,6 @@
   width: 2rem;
 }
 
-.stars-container {
-  width: 200px;
-  @include flex-row;
-  flex-wrap: nowrap;
-}
-
-.stars {
-  position: relative;
-  @include flex-row;
-  font-size: 20pt;
-  left: 0;
-  height: 1em;
-  line-height: 1em;
-}
-
-.stars:after {
-  content: "\2605\2605\2605\2605\2605";
-  position: absolute;
-  left: 0;
-  font-size: 20pt;
-  overflow: hidden;
-  width: var(--w, 50%);
-  color: rgb(255, 200, 0);
-  z-index: 10;
-}
-
 .fav-container {
   @include flex-col;
   width: 100%;

@@ -20,7 +20,7 @@
 .stars {
     position: relative;
     @include flex-row;
-    font-size: 20pt;
+    font-size: 17pt;
     left: 0;
     height: 1em;
     line-height: 1em;
@@ -30,7 +30,7 @@
     content: "\2605\2605\2605\2605\2605";
     position: absolute;
     left: 0;
-    font-size: 20pt;
+    font-size: 17pt;
     overflow: hidden;
     width: var(--w, 50%);
     color: rgb(255, 200, 0);
@@ -118,7 +118,7 @@
         background: none;
         transition: all 0.3s ease;
 
-        :hover {
+        x :hover {
             border-radius: 20px;
         }
     }
@@ -591,7 +591,7 @@
             padding: 20px;
             gap: 2vh;
             height: 360px;
-            width: 500px;
+            width: 545px;
         }
     }
 }
