@@ -3,45 +3,44 @@
 @use "../typography" as *;
 
 .header {
-  z-index: 100;
-  @include flex-col;
-  width: 100%;
-  height: auto;
+	z-index: 100;
+	@include flex-col;
+	width: 100%;
+	height: auto;
 
+	&-nav {
+		@include flex-col;
+		width: 100%;
 
-  &-nav {
-    @include flex-col;
-    width: 100%;
+		.logo {
+			margin: 0 auto;
+			margin-top: 1em;
+		}
+	}
 
-    .logo {
-      margin: 0 auto;
-      margin-top: 1em;
-    }
-  }
+	@media (min-width: 760px) {
+	}
 
-  @media (min-width: 760px) {}
+	@media (min-width: 960px) {
+		@include flex-col;
+		margin: 0 auto;
+		height: 100vh;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		text-align: center;
 
-  @media (min-width: 960px) {
-    @include flex-col;
-    margin: 0 auto;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    text-align: center;
+		&-nav {
+			@include flex-row;
+			margin: 0 auto;
+			padding: 10px 20px;
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
 
-    &-nav {
-      @include flex-row;
-      margin: 0 auto;
-      padding: 10px 20px;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-
-      .logo {
-        margin: 0 auto;
-      }
-    }
-  }
-
+			.logo {
+				margin: 0 auto;
+			}
+		}
+	}
 }
